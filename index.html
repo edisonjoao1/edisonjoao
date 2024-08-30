@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edison João - Visionary | Innovator | Futurist</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --background-color: #000033;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #000033 0%, #1a1a4a 100%);
+        }
+
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 51, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        #animated-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        #animated-logo:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes rotateLogo {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #animated-logo {
+            animation: rotateLogo 30s linear infinite;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .idea-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .idea-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .idea-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .idea-card p {
+            margin-bottom: 20px;
+        }
+
+        .idea-card a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .idea-card a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Edison João</a>
+                <div class="nav-links">
+                    <a href="#ideas">Ideas</a>
+                    <a href="#future">Future</a>
+                    <a href="#contact">Connect</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <svg id="animated-logo" viewBox="0 0 200 200">
+                <defs>
+                    <radialGradient id="circleGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color:#ffffff" />
+                        <stop offset="100%" style="stop-color:#00ffff" />
+                    </radialGradient>
+                </defs>
+                
+                <!-- Animating circles -->
+                <circle cx="100" cy="100" r="60" fill="none" stroke="url(#circleGradient)" stroke-width="2" opacity="0.5">
+                    <animate attributeName="r" values="60;70;60" dur="4s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="100" cy="100" r="40" fill="none" stroke="url(#circleGradient)" stroke-width="2" opacity="0.7">
+                    <animate attributeName="r" values="40;50;40" dur="3s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="100" cy="100" r="20" fill="url(#circleGradient)" opacity="0.9">
+                    <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+            <h1>Shaping Tomorrow</h1>
+            <p>Visionary ideas, groundbreaking innovations, and future-forward thinking</p>
+            <a href="#ideas" class="cta-button">Explore the Future</a>
+        </div>
+    </section>
+
+    <section id="ideas" class="section">
+        <div class="container">
+            <h2>Visionary Ideas</h2>
+            <div class="ideas-grid">
+                <div class="idea-card" data-project="quantum-fashion">
+                    <h3>Quantum Fashion</h3>
+                    <p>Explore the intersection of quantum computing and fashion design, creating garments that adapt to the wearer's mood and environment.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div class="idea-card" data-project="neurolink-creativity">
+                    <h3>NeuroLink Creativity</h3>
+                    <p>Harness the power of brain-computer interfaces to unlock unprecedented levels of creativity and innovation.</p>
+                    <a href="#">Discover more</a>
+                </div>
+                <div class="idea-card" data-project="eco-synth">
+                    <h3>Eco-Synth Materials</h3>
+                    <p>Developing synthetic materials that are not only sustainable but actively contribute to environmental regeneration.</p>
+                    <a href="#">Explore the future</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Three.js background animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        for (let i = 0; i < 10000; i++) {
+            vertices.push(THREE.MathUtils.randFloatSpread(2000)); // x
+            vertices.push(THREE.MathUtils.randFloatSpread(2000)); // y
+            vertices.push(THREE.MathUtils.randFloatSpread(2000)); // z
+        }
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x00ffff, size: 2 }));
+        scene.add(particles);
+
+        camera.position.z = 1000;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Scroll animations
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // GSAP animations
+        gsap.from('.hero h1', {opacity: 0, y: 50, duration: 1, delay: 0.5});
+        gsap.from('.hero p', {opacity: 0, y: 50, duration: 1, delay: 0.8});
+        gsap.from('.cta-button', {opacity: 0, y: 50, duration: 1, delay: 1.1});
+
+        gsap.from('.idea-card', {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '#ideas',
+                start: 'top 80%'
+            }
+        });
+    </script>
+</body>
+</html>
