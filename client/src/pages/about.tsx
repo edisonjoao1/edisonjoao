@@ -1,6 +1,6 @@
 import Layout from "@/components/layout";
 import { motion } from "framer-motion";
-import { Brain, Smartphone, Rocket } from "lucide-react";
+import { Brain, Smartphone, Rocket, PenTool } from "lucide-react";
 
 export default function About() {
   return (
@@ -65,7 +65,7 @@ export default function About() {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { 
                 num: "01",
@@ -87,6 +87,13 @@ export default function About() {
                 desc: "Strategic thinking that creates compounding value. Every input designed for maximum output.",
                 details: "Roadmapping, prioritization, user research, growth strategy, and go-to-market.",
                 icon: Rocket
+              },
+              { 
+                num: "04",
+                title: "Full Range", 
+                desc: "From CAD drafting to Swift code. No creative limits. Design to deployment.",
+                details: "Industrial design, 3D modeling, UI/UX, frontend, backend, and everything in between.",
+                icon: PenTool
               },
             ].map((item, idx) => (
               <motion.div 
@@ -129,7 +136,7 @@ export default function About() {
             className="mt-24 flex flex-wrap justify-between items-center gap-8 pb-12 border-b border-black/10"
           >
             {[
-              { value: "7+", label: "Years Building" },
+              { value: "10+", label: "Years Building" },
               { value: "20+", label: "Apps Shipped" },
               { value: "1M+", label: "Users Reached" },
               { value: "6 Days", label: "Fastest MVP" },

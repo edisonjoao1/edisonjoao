@@ -133,7 +133,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-between gap-8">
             {[
-              { value: "7+", label: "Years Building" },
+              { value: "10+", label: "Years Building" },
               { value: "20+", label: "Apps Shipped" },
               { value: "1M+", label: "Users Reached" },
               { value: "6 Days", label: "Fastest MVP" },
