@@ -11,7 +11,8 @@ import {
   PenTool,
   Filter,
   CheckCircle2,
-  Send
+  Send,
+  ExternalLink
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
