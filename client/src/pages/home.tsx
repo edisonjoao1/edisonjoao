@@ -136,30 +136,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MANIFESTO - Light & Clean */}
-      <section id="vision" className="py-32 md:py-48 relative z-10 bg-background text-foreground">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl">
-            <h2 className="text-sm font-mono uppercase tracking-widest mb-8 text-muted-foreground">The Philosophy</h2>
-            <p className="text-3xl md:text-6xl font-display font-bold leading-tight text-primary">
-              "I lost $3M. I'm rebuilding with <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">absolute intent</span>. 
-              Every product must solve a problem, create value, or build a legacy."
-            </p>
+      {/* MANIFESTO - Bold & Dramatic */}
+      <section id="vision" className="relative z-10 overflow-hidden">
+        {/* Giant Quote Section */}
+        <div className="min-h-screen flex items-center justify-center bg-zinc-950 text-white relative py-32">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            <div className="absolute top-1/3 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
+            <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-[100px]"></div>
           </div>
+          
+          <div className="container mx-auto px-6 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="max-w-5xl mx-auto text-center"
+            >
+              <div className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-mono uppercase tracking-widest mb-12 text-white/60">
+                The Philosophy
+              </div>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight">
+                I lost <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">$3M</span>.
+              </h2>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight mt-2">
+                I'm rebuilding with
+              </h2>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight mt-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">absolute intent</span>.
+              </h2>
+              <p className="text-xl md:text-2xl text-white/50 mt-12 max-w-2xl mx-auto font-light">
+                Every product must solve a problem, create value, or build a legacy.
+              </p>
+            </motion.div>
+          </div>
+        </div>
 
-          <div className="grid md:grid-cols-4 gap-8 mt-24 border-t border-black/10 pt-12">
-             {[
-               { icon: Brain, title: "Product Vision", desc: "Connecting AI to real user needs." },
-               { icon: Smartphone, title: "iOS Scale", desc: "Building apps that reach millions." },
-               { icon: Zap, title: "System Impact", desc: "Inputs, outputs, compounding value." },
-               { icon: PenTool, title: "Range", desc: "From CAD to Code. No limits." },
-             ].map((item, idx) => (
-               <div key={idx} className="group p-6 rounded-2xl hover:bg-secondary transition-colors">
-                 <item.icon className="w-8 h-8 mb-4 text-primary/50 group-hover:text-primary transition-colors" />
-                 <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                 <p className="text-sm text-muted-foreground">{item.desc}</p>
-               </div>
-             ))}
+        {/* Expertise Grid */}
+        <div className="bg-white py-24">
+          <div className="container mx-auto px-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-black/10">
+              {[
+                { icon: Brain, title: "AI Product", desc: "Building intelligent systems that understand and serve real human needs.", gradient: "from-blue-500 to-indigo-600" },
+                { icon: Smartphone, title: "iOS at Scale", desc: "Engineering apps that reach millions with flawless user experience.", gradient: "from-purple-500 to-pink-500" },
+                { icon: Zap, title: "System Impact", desc: "Creating compounding value through strategic product architecture.", gradient: "from-amber-500 to-orange-500" },
+                { icon: PenTool, title: "Full Range", desc: "From CAD drafting to Swift code. No creative limits.", gradient: "from-emerald-500 to-teal-500" },
+              ].map((item, idx) => (
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="group p-10 border-r border-b border-black/10 last:border-r-0 hover:bg-zinc-50 transition-all duration-500 relative overflow-hidden"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                    <item.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -304,229 +344,299 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SELECTED WORK - Sticky Cards */}
-      <section id="work" className="py-32 bg-secondary/30">
-        <div className="container mx-auto px-6">
-          <h2 className="text-[12vw] font-display font-black tracking-tighter leading-none mb-24 opacity-5 select-none text-black">
-            IMPACT
-          </h2>
-
-          <div className="space-y-40">
-            
-            {/* Project 1 */}
-            <div className="sticky top-32 group">
-              <div className="bg-white border border-black/5 rounded-3xl overflow-hidden p-1 shadow-xl">
-                <div className="grid lg:grid-cols-2 bg-white rounded-[1.3rem]">
-                   <div className="p-12 flex flex-col justify-between h-full min-h-[500px]">
-                      <div>
-                        <div className="flex items-center gap-3 mb-6">
-                          <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                          <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">01 / AI & Operations</span>
-                        </div>
-                        <h3 className="text-6xl font-display font-bold mb-6 text-black">Ai 4u</h3>
-                        <p className="text-xl text-muted-foreground leading-relaxed max-w-md">
-                          Operational efficiency engines powered by Multi-Agent Systems. 
-                          Automating the impossible.
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <div className="grid grid-cols-2 gap-8 mb-12 border-t border-black/5 pt-8">
-                          <div>
-                            <div className="text-4xl font-display font-bold text-black mb-1">40%</div>
-                            <div className="text-xs font-mono uppercase text-muted-foreground">Efficiency Gain</div>
-                          </div>
-                          <div>
-                            <div className="text-4xl font-display font-bold text-black mb-1">$2M+</div>
-                            <div className="text-xs font-mono uppercase text-muted-foreground">Client Savings</div>
-                          </div>
-                        </div>
-                        <a href="#" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:opacity-60 transition-opacity text-black">
-                          View Case Study <ArrowUpRight size={16} />
-                        </a>
-                      </div>
-                   </div>
-                   <div className="relative min-h-[400px] lg:min-h-full bg-gradient-to-br from-blue-50 to-indigo-50 border-t lg:border-t-0 lg:border-l border-black/5">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-64 h-64 bg-blue-500/10 rounded-full blur-[80px]"></div>
-                        <h4 className="relative z-10 text-[8vw] font-display font-black text-blue-900/10 mix-blend-multiply">AI4U</h4>
-                      </div>
-                   </div>
-                </div>
+      {/* SELECTED WORK - Full Width Impact */}
+      <section id="work" className="relative">
+        {/* Section Header */}
+        <div className="bg-white py-24 border-b border-black/5">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6"
+            >
+              <div>
+                <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">Selected Work</div>
+                <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight">Case Studies</h2>
               </div>
-            </div>
-
-             {/* Project 2 */}
-             <div className="sticky top-36 group">
-              <div className="bg-white border border-black/5 rounded-3xl overflow-hidden p-1 shadow-2xl">
-                <div className="grid lg:grid-cols-2 bg-white rounded-[1.3rem]">
-                   <div className="p-12 flex flex-col justify-between h-full min-h-[500px] order-2 lg:order-1">
-                      <div>
-                        <div className="flex items-center gap-3 mb-6">
-                          <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
-                          <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">02 / Consumer Social</span>
-                        </div>
-                        <h3 className="text-6xl font-display font-bold mb-6 text-black">Foxie</h3>
-                        <p className="text-xl text-muted-foreground leading-relaxed max-w-md">
-                          Architected viral growth loops. 
-                          Scaled from zero to massive adoption purely through product engineering.
-                        </p>
-                      </div>
-                      
-                      <div>
-                        <div className="grid grid-cols-2 gap-8 mb-12 border-t border-black/5 pt-8">
-                          <div>
-                            <div className="text-4xl font-display font-bold text-black mb-1">500K</div>
-                            <div className="text-xs font-mono uppercase text-muted-foreground">Active Users</div>
-                          </div>
-                          <div>
-                            <div className="text-4xl font-display font-bold text-black mb-1">#10</div>
-                            <div className="text-xs font-mono uppercase text-muted-foreground">App Store Rank</div>
-                          </div>
-                        </div>
-                        <a href="#" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:opacity-60 transition-opacity text-black">
-                          View Case Study <ArrowUpRight size={16} />
-                        </a>
-                      </div>
-                   </div>
-                   <div className="order-1 lg:order-2 relative min-h-[400px] lg:min-h-full bg-gradient-to-bl from-orange-50 to-red-50 border-b lg:border-b-0 lg:border-l border-black/5">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-64 h-64 bg-orange-500/10 rounded-full blur-[80px]"></div>
-                        <h4 className="relative z-10 text-[8vw] font-display font-black text-orange-900/10 mix-blend-multiply">FOXIE</h4>
-                      </div>
-                   </div>
-                </div>
-              </div>
-            </div>
-
+              <p className="text-lg text-muted-foreground max-w-md">
+                Deep dives into products that moved metrics, solved problems, and created real value.
+              </p>
+            </motion.div>
           </div>
         </div>
-      </section>
 
-      {/* ECOSYSTEM - Dynamic Filter */}
-      <section id="ecosystem" className="py-32">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">The Ecosystem</h2>
-              <div className="flex flex-wrap gap-2">
-                {categories.map(cat => (
-                  <button 
-                    key={cat}
-                    onClick={() => setFilter(cat)}
-                    className={`px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide border transition-all ${
-                      filter === cat 
-                        ? "bg-black text-white border-black" 
-                        : "bg-white text-muted-foreground border-black/10 hover:border-black"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
+        {/* Project 1 - AI4U Full Width */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white relative overflow-hidden"
+        >
+          <div className="absolute inset-0">
+            <div className="absolute top-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-[100px]"></div>
+            <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-400/20 rounded-full blur-[80px]"></div>
+          </div>
+          
+          <div className="container mx-auto px-6 py-32 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="inline-flex items-center gap-3 mb-8">
+                  <span className="w-3 h-3 bg-white rounded-full"></span>
+                  <span className="font-mono text-sm uppercase tracking-widest opacity-80">01 / AI & Operations</span>
+                </div>
+                <h3 className="text-6xl md:text-8xl font-display font-black mb-8 leading-none">Ai 4u</h3>
+                <p className="text-xl md:text-2xl opacity-80 leading-relaxed mb-12 max-w-lg">
+                  Multi-Agent AI systems that automate complex operational workflows. 
+                  Enterprise-grade intelligence for real business outcomes.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-8 mb-12">
+                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                    <div className="text-5xl font-display font-black mb-2">40%</div>
+                    <div className="text-sm uppercase tracking-widest opacity-70">Efficiency Gain</div>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                    <div className="text-5xl font-display font-black mb-2">$2M+</div>
+                    <div className="text-sm uppercase tracking-widest opacity-70">Client Savings</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <div className="aspect-square bg-white/5 rounded-3xl backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                  <div className="text-[20vw] font-display font-black opacity-20 select-none">AI</div>
+                </div>
               </div>
             </div>
-            <a href="https://appgallery.io/edison" target="_blank" className="text-sm font-mono uppercase tracking-widest hover:underline flex items-center gap-2">
-              View All Apps <ExternalLink size={14} />
-            </a>
           </div>
+        </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-black/5 border border-black/5">
+        {/* Project 2 - Foxie Full Width */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="min-h-screen bg-gradient-to-br from-cyan-500 via-teal-500 to-purple-600 text-white relative overflow-hidden"
+        >
+          <div className="absolute inset-0">
+            <div className="absolute top-40 left-20 w-96 h-96 bg-white/10 rounded-full blur-[100px]"></div>
+            <div className="absolute bottom-40 right-20 w-72 h-72 bg-purple-400/20 rounded-full blur-[80px]"></div>
+          </div>
+          
+          <div className="container mx-auto px-6 py-32 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="order-2 lg:order-1 relative">
+                <div className="aspect-[3/4] max-w-sm mx-auto">
+                  <div className="w-full h-full rounded-[3rem] bg-gradient-to-b from-zinc-800 to-zinc-900 p-3 shadow-2xl">
+                    <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-black">
+                      <img src={foxieScreen} alt="Foxie App" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="order-1 lg:order-2">
+                <div className="inline-flex items-center gap-3 mb-8">
+                  <span className="w-3 h-3 bg-white rounded-full"></span>
+                  <span className="font-mono text-sm uppercase tracking-widest opacity-80">02 / Consumer Social</span>
+                </div>
+                <h3 className="text-6xl md:text-8xl font-display font-black mb-8 leading-none">Foxie</h3>
+                <p className="text-xl md:text-2xl opacity-80 leading-relaxed mb-12 max-w-lg">
+                  Social discovery reimagined. Connecting people through activities and shared experiences in the real world.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-8 mb-12">
+                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                    <div className="text-5xl font-display font-black mb-2">500K</div>
+                    <div className="text-sm uppercase tracking-widest opacity-70">Active Users</div>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                    <div className="text-5xl font-display font-black mb-2">#10</div>
+                    <div className="text-sm uppercase tracking-widest opacity-70">App Store Rank</div>
+                  </div>
+                </div>
+                
+                <a href="https://foxie.cool" target="_blank" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-wider hover:bg-white/90 transition-all group">
+                  Visit Foxie <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ECOSYSTEM - Bold Grid */}
+      <section id="ecosystem" className="py-32 bg-zinc-950 text-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight mb-6">The Ecosystem</h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto mb-12">
+              A growing portfolio of products across AI, health, social, and productivity.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map(cat => (
+                <button 
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide border transition-all ${
+                    filter === cat 
+                      ? "bg-white text-black border-white" 
+                      : "bg-transparent text-white/70 border-white/20 hover:border-white/50 hover:text-white"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <AnimatePresence mode="popLayout">
-              {filteredApps.map((app) => (
+              {filteredApps.map((app, idx) => (
                 <motion.a 
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ delay: idx * 0.05 }}
                   href={app.url || "https://appgallery.io/edison"} 
                   target="_blank"
                   key={app.name}
-                  className="aspect-square bg-white p-8 flex flex-col justify-between hover:bg-secondary/50 transition-colors group relative overflow-hidden"
+                  className="aspect-square rounded-3xl p-6 flex flex-col justify-between group relative overflow-hidden bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-500"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${app.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${app.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                   
-                  <div className="flex justify-between items-start">
-                    <div className="w-2 h-2 bg-black/10 rounded-full group-hover:bg-black transition-colors"></div>
-                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity -translate-y-2 group-hover:translate-y-0" />
+                  <div className="flex justify-end">
+                    <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-2 translate-x-2 group-hover:translate-y-0 group-hover:translate-x-0" />
                   </div>
 
                   <div className="relative z-10">
-                     <img src={app.icon} alt={app.name} className="w-12 h-12 mb-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300" />
-                     <h4 className="font-bold text-lg leading-none mb-1">{app.name}</h4>
-                     <p className="text-[10px] uppercase tracking-wider opacity-50">{app.category}</p>
+                    <img src={app.icon} alt={app.name} className="w-16 h-16 mb-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500" />
+                    <h4 className="font-bold text-xl leading-none mb-2">{app.name}</h4>
+                    <p className="text-xs uppercase tracking-wider text-white/50">{app.category}</p>
                   </div>
                 </motion.a>
               ))}
             </AnimatePresence>
              
-             {/* Stats Card */}
-             <a 
-                href="https://appgallery.io/edison" 
-                target="_blank"
-                className="aspect-square bg-black text-white p-8 flex flex-col justify-between hover:bg-black/90 transition-colors"
-              >
-                <div className="flex justify-between items-start">
-                  <span className="font-mono text-[10px] opacity-50">TOTAL</span>
-                  <ArrowUpRight size={14} />
-                </div>
-                <div>
-                   <h4 className="font-display font-black text-3xl leading-none mb-1">10+</h4>
-                   <p className="text-[10px] uppercase tracking-wider font-bold opacity-70">Apps Shipped</p>
-                </div>
-              </a>
+            {/* Stats Card */}
+            <motion.a 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              href="https://appgallery.io/edison" 
+              target="_blank"
+              className="aspect-square rounded-3xl bg-gradient-to-br from-indigo-600 to-purple-600 p-6 flex flex-col justify-between hover:scale-105 transition-all duration-500 group"
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-mono text-xs opacity-70">TOTAL SHIPPED</span>
+                <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </div>
+              <div>
+                <h4 className="font-display font-black text-5xl leading-none mb-2">10+</h4>
+                <p className="text-sm uppercase tracking-wider font-bold opacity-80">Live Apps</p>
+              </div>
+            </motion.a>
           </div>
         </div>
       </section>
 
-      {/* CONTACT - Functional Form UI */}
-      <section id="contact" className="py-32 md:py-48 bg-secondary/30">
-        <div className="container mx-auto px-6 max-w-2xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold mb-4">Initiate Dialogue</h2>
-            <p className="text-muted-foreground">Ready to build? Send me a secure transmission.</p>
+      {/* CONTACT - Premium & Bold */}
+      <section id="contact" className="relative overflow-hidden">
+        <div className="min-h-screen flex items-center justify-center bg-white py-32">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-indigo-100 rounded-full blur-[120px] opacity-50"></div>
+            <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-100 rounded-full blur-[120px] opacity-50"></div>
           </div>
+          
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">Get In Touch</div>
+                <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight mb-8">
+                  Let's Build<br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Something Great</span>
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-md mb-12">
+                  Have a project in mind? I'm always open to discussing product design work, consulting opportunities, or partnerships.
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <a href="mailto:hello@edison.dev" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
+                    hello@edison.dev
+                  </a>
+                  <a href="#" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
+                    LinkedIn
+                  </a>
+                  <a href="#" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
+                    Twitter
+                  </a>
+                </div>
+              </motion.div>
 
-          <div className="bg-white p-8 md:p-12 rounded-3xl border border-black/5 shadow-xl">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="uppercase text-xs font-bold tracking-widest">Email Address</FormLabel>
-                      <FormControl>
-                        <Input placeholder="you@company.com" {...field} className="bg-secondary/30 border-black/5 focus:border-black transition-colors" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="uppercase text-xs font-bold tracking-widest">Brief</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="Describe your project scope..." 
-                          className="min-h-[120px] bg-secondary/30 border-black/5 focus:border-black transition-colors resize-none" 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <button 
-                  type="submit" 
-                  className="w-full py-4 bg-black text-white font-bold uppercase tracking-widest rounded-xl hover:bg-black/90 transition-all flex items-center justify-center gap-2 group"
-                >
-                  Send Message <Send size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </form>
-            </Form>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-zinc-950 text-white p-10 md:p-12 rounded-3xl shadow-2xl"
+              >
+                <h3 className="text-2xl font-display font-bold mb-8">Send a Message</h3>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="uppercase text-xs font-bold tracking-widest text-white/60">Email Address</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="you@company.com" 
+                              {...field} 
+                              className="bg-white/10 border-white/10 focus:border-white/30 text-white placeholder:text-white/30 h-12 rounded-xl" 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="uppercase text-xs font-bold tracking-widest text-white/60">Your Message</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Tell me about your project..." 
+                              className="min-h-[140px] bg-white/10 border-white/10 focus:border-white/30 text-white placeholder:text-white/30 rounded-xl resize-none" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <button 
+                      type="submit" 
+                      className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold uppercase tracking-widest rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-3 group"
+                    >
+                      Send Message <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </form>
+                </Form>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
