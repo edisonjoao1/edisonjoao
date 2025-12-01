@@ -30,7 +30,8 @@ import swirlIcon from "@assets/generated_images/abstract_colorful_swirl_icon_cre
 import robotIcon from "@assets/generated_images/cute_3d_robot_character_icon_for_accountability_app.png";
 import paintIcon from "@assets/generated_images/artistic_digital_creation_icon_for_ai_image_app.png";
 import sphereIcon from "@assets/generated_images/abstract_colorful_sphere_icon_for_general_ai_app.png";
-import foxieScreen from "@assets/generated_images/foxie_app_screenshot.png";
+import foxieScreen from "@assets/foxie_iphoneimg.png";
+import foxieLogo from "@assets/foxie_logo.png";
 import aiAmigoScreen from "@assets/generated_images/ai_amigo_app_screenshot.png";
 import soberScreen from "@assets/generated_images/sober_ai_app_screenshot.png";
 
@@ -229,100 +230,75 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CAPABILITIES ARENA - Iconic Section */}
-        <div className="min-h-screen bg-black text-white relative overflow-hidden py-32">
-          {/* Ambient Background */}
-          <div className="absolute inset-0">
-            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]"></div>
-            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[150px]"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/5 rounded-full blur-[200px]"></div>
-          </div>
-
-          <div className="container mx-auto px-6 relative z-10">
-            {/* Section Label */}
+        {/* CAPABILITIES - Clean Iconic Section */}
+        <div className="bg-white text-black relative overflow-hidden py-32">
+          <div className="container mx-auto px-6">
+            {/* Section Header */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="mb-24"
             >
-              <span className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-mono uppercase tracking-widest text-white/60">
-                Core Capabilities
-              </span>
+              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-6">What I Do</p>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[0.95] tracking-tight max-w-4xl">
+                Full-Stack
+                <span className="italic font-light"> Product </span>
+                <br />
+                Development
+              </h2>
             </motion.div>
 
-            {/* Giant Typography Grid */}
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Capabilities Grid - Flip Card Style */}
+            <div className="grid md:grid-cols-3 gap-6">
               {[
                 { 
-                  keyword: "AI", 
-                  title: "Artificial Intelligence", 
-                  desc: "Building intelligent systems that understand context, learn from data, and serve real human needs at scale.",
-                  gradient: "from-blue-400 to-cyan-400",
+                  num: "01",
+                  title: "AI Products", 
+                  desc: "GPT apps, MCP servers, voice AI, and intelligent systems that ship to millions of users.",
+                  details: "OpenAI, Anthropic, Google integrations. From idea to App Store in days, not months.",
                   icon: Brain
                 },
                 { 
-                  keyword: "SCALE", 
+                  num: "02",
                   title: "iOS Engineering", 
-                  desc: "Engineering apps that reach millions with flawless UX. From Swift to App Store optimization.",
-                  gradient: "from-purple-400 to-pink-400",
+                  desc: "Native Swift apps with flawless UX. App Store optimization that drives downloads.",
+                  details: "20+ apps shipped. 1M+ total users. Swift, SwiftUI, React Native expertise.",
                   icon: Smartphone
                 },
                 { 
-                  keyword: "SYSTEM", 
-                  title: "Product Architecture", 
-                  desc: "Creating compounding value through strategic thinking. Every input designed for maximum output.",
-                  gradient: "from-amber-400 to-orange-400",
-                  icon: Zap
-                },
-                { 
-                  keyword: "RANGE", 
-                  title: "Full Stack Builder", 
-                  desc: "From CAD drafting to Swift code. Design to deployment. No creative or technical limits.",
-                  gradient: "from-emerald-400 to-teal-400",
-                  icon: PenTool
+                  num: "03",
+                  title: "Product Strategy", 
+                  desc: "Strategic thinking that creates compounding value. Every input designed for maximum output.",
+                  details: "Roadmapping, prioritization, user research, growth strategy, and go-to-market.",
+                  icon: Rocket
                 },
               ].map((item, idx) => (
                 <motion.div 
                   key={idx} 
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: idx * 0.15 }}
-                  className="group relative"
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className="group"
                 >
-                  {/* Giant Outlined Keyword */}
-                  <div className="absolute -top-8 md:-top-12 left-0 overflow-hidden pointer-events-none">
-                    <span 
-                      className="text-[20vw] md:text-[12vw] font-display font-black leading-none tracking-tighter select-none opacity-10 group-hover:opacity-20 transition-opacity duration-700"
-                      style={{ 
-                        WebkitTextStroke: "1px rgba(255,255,255,0.3)",
-                        WebkitTextFillColor: "transparent"
-                      }}
-                    >
-                      {item.keyword}
-                    </span>
-                  </div>
-
-                  {/* Content Card */}
-                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 mt-16 md:mt-20">
-                    {/* Gradient Glow on Hover */}
-                    <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`}></div>
+                  <div className="bg-zinc-50 hover:bg-black hover:text-white rounded-3xl p-8 md:p-10 transition-all duration-500 min-h-[320px] flex flex-col">
+                    <div className="flex justify-between items-start mb-8">
+                      <span className="text-xs font-mono text-muted-foreground group-hover:text-white/60">{item.num}</span>
+                      <item.icon className="w-6 h-6 opacity-40 group-hover:opacity-100" />
+                    </div>
                     
-                    <div className="relative z-10">
-                      {/* Icon */}
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                        <item.icon className="w-8 h-8 text-white" />
-                      </div>
-
-                      {/* Title */}
-                      <h3 className={`text-2xl md:text-3xl font-display font-bold mb-4 bg-gradient-to-r ${item.gradient} text-transparent bg-clip-text`}>
-                        {item.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-white/60 leading-relaxed text-lg">
-                        {item.desc}
+                    <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground group-hover:text-white/70 leading-relaxed flex-grow">
+                      {item.desc}
+                    </p>
+                    
+                    <div className="mt-6 pt-6 border-t border-black/5 group-hover:border-white/10">
+                      <p className="text-sm text-muted-foreground group-hover:text-white/50">
+                        {item.details}
                       </p>
                     </div>
                   </div>
@@ -330,25 +306,22 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Bottom Stats Row */}
+            {/* Stats Row - Clean */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+              className="mt-24 flex flex-wrap justify-between items-center gap-8 pb-12 border-b border-black/10"
             >
               {[
                 { value: "7+", label: "Years Building" },
-                { value: "10+", label: "Apps Shipped" },
-                { value: "500K+", label: "Users Reached" },
-                { value: "$2M+", label: "Value Created" },
+                { value: "20+", label: "Apps Shipped" },
+                { value: "1M+", label: "Users Reached" },
+                { value: "6 Days", label: "Fastest MVP" },
               ].map((stat, idx) => (
-                <div key={idx} className="group">
-                  <div className="text-4xl md:text-5xl font-display font-black mb-2 bg-gradient-to-r from-white to-white/60 text-transparent bg-clip-text group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-500">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs uppercase tracking-widest text-white/40">{stat.label}</div>
+                <div key={idx}>
+                  <div className="text-4xl md:text-5xl font-display font-black">{stat.value}</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -673,58 +646,99 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Project 2 - Foxie Full Width */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="min-h-screen bg-gradient-to-br from-cyan-500 via-teal-500 to-purple-600 text-white relative overflow-hidden"
-        >
-          <div className="absolute inset-0">
-            <div className="absolute top-40 left-20 w-96 h-96 bg-white/10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-40 right-20 w-72 h-72 bg-purple-400/20 rounded-full blur-[80px]"></div>
-          </div>
-          
-          <div className="container mx-auto px-6 py-32 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1 relative">
-                <div className="aspect-[3/4] max-w-sm mx-auto">
-                  <div className="w-full h-full rounded-[3rem] bg-gradient-to-b from-zinc-800 to-zinc-900 p-3 shadow-2xl">
-                    <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-black">
-                      <img src={foxieScreen} alt="Foxie App" className="w-full h-full object-cover" />
+        {/* Project 2 - Foxie - Fresh Social Vibe */}
+        <div className="bg-gradient-to-b from-emerald-50 via-green-50 to-white text-black relative overflow-hidden">
+          <div className="min-h-screen flex items-center relative">
+            <div className="container mx-auto px-6 py-32">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Left - Phone Mockup */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative order-2 lg:order-1"
+                >
+                  <div className="absolute -top-20 -left-20 w-96 h-96 bg-emerald-200/50 rounded-full blur-3xl"></div>
+                  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-green-200/50 rounded-full blur-3xl"></div>
+                  
+                  <div className="relative max-w-md mx-auto">
+                    <img 
+                      src={foxieScreen} 
+                      alt="Foxie App Screenshot" 
+                      className="w-full h-auto rounded-[2.5rem] shadow-2xl"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Right - Content */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="order-1 lg:order-2"
+                >
+                  <div className="flex items-center gap-4 mb-8">
+                    <img src={foxieLogo} alt="Foxie" className="w-12 h-12" />
+                    <span className="text-xs font-mono uppercase tracking-widest text-emerald-600">Consumer Social App</span>
+                  </div>
+                  
+                  <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[0.95] tracking-tight mb-8" style={{ color: '#3EBF82' }}>
+                    Connect with the world around you
+                  </h2>
+                  
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-lg">
+                    Foxie was created to connect you to the world around you through activities in a simple way. 
+                    Discover new friends, places and things. Join groups, chat with the world and much more.
+                  </p>
+
+                  {/* Feature Highlights */}
+                  <div className="grid grid-cols-2 gap-4 mb-12">
+                    {[
+                      { title: "Add Activities", desc: "What you want to do, where and when" },
+                      { title: "Discover", desc: "Find people, events, and experiences" },
+                      { title: "Connect", desc: "Message and join activities together" },
+                      { title: "World Chat", desc: "Global conversation, local connections" },
+                    ].map((feature, idx) => (
+                      <div key={idx} className="p-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-emerald-100">
+                        <div className="font-bold text-emerald-700 mb-1">{feature.title}</div>
+                        <div className="text-sm text-muted-foreground">{feature.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Stats */}
+                  <div className="flex flex-wrap gap-8 mb-12 pb-8 border-b border-black/10">
+                    <div>
+                      <div className="text-4xl font-display font-black text-emerald-600">500K+</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">Users</div>
+                    </div>
+                    <div className="w-px bg-black/10"></div>
+                    <div>
+                      <div className="text-4xl font-display font-black text-emerald-600">4.9★</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">App Store</div>
+                    </div>
+                    <div className="w-px bg-black/10"></div>
+                    <div>
+                      <div className="text-4xl font-display font-black text-emerald-600">#10</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">Top Social</div>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-3 mb-8">
-                  <span className="w-3 h-3 bg-white rounded-full"></span>
-                  <span className="font-mono text-sm uppercase tracking-widest opacity-80">02 / Consumer Social</span>
-                </div>
-                <h3 className="text-6xl md:text-8xl font-display font-black mb-8 leading-none">Foxie</h3>
-                <p className="text-xl md:text-2xl opacity-80 leading-relaxed mb-12 max-w-lg">
-                  Social discovery reimagined. Connecting people through activities and shared experiences in the real world.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-8 mb-12">
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-                    <div className="text-5xl font-display font-black mb-2">500K</div>
-                    <div className="text-sm uppercase tracking-widest opacity-70">Active Users</div>
+
+                  <div className="flex flex-wrap gap-4">
+                    <a href="https://apps.apple.com/us/app/foxie/id1369279200" target="_blank" className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-500 text-white rounded-full font-bold hover:bg-emerald-600 transition-all group">
+                      Download on App Store <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
+                    <a href="https://foxie.cool" target="_blank" className="inline-flex items-center gap-2 px-8 py-4 border border-emerald-200 rounded-full font-bold hover:bg-emerald-50 transition-all">
+                      Visit foxie.cool
+                    </a>
                   </div>
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-                    <div className="text-5xl font-display font-black mb-2">#10</div>
-                    <div className="text-sm uppercase tracking-widest opacity-70">App Store Rank</div>
-                  </div>
-                </div>
-                
-                <a href="https://foxie.cool" target="_blank" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-wider hover:bg-white/90 transition-all group">
-                  Visit Foxie <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </a>
+                </motion.div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ECOSYSTEM - Bold Grid */}
