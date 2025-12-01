@@ -314,7 +314,7 @@ export default function Home() {
               className="mt-24 flex flex-wrap justify-between items-center gap-8 pb-12 border-b border-black/10"
             >
               {[
-                { value: "7+", label: "Years Building" },
+                { value: "10+", label: "Years Building" },
                 { value: "20+", label: "Apps Shipped" },
                 { value: "1M+", label: "Users Reached" },
                 { value: "6 Days", label: "Fastest MVP" },
