@@ -1,71 +1,71 @@
 import { Link } from "wouter";
-import { Menu, X, Square, Circle, Triangle } from "lucide-react";
-import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
-    { name: "Specs", href: "#specs" },
-    { name: "Blueprints", href: "#work" },
-    { name: "Systems", href: "#systems" },
+    { name: "Vision", href: "#vision" },
+    { name: "Impact", href: "#work" },
+    { name: "Ecosystem", href: "#ecosystem" },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-mono bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
+    <div className="min-h-screen flex flex-col font-sans bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
       
-      {/* Technical Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-background/90 backdrop-blur-md">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+          scrolled ? "bg-background/80 backdrop-blur-xl border-white/5 py-4" : "bg-transparent border-transparent py-6"
+        }`}
+      >
+        <div className="container mx-auto px-6 flex items-center justify-between">
           <Link href="/">
             <div className="flex items-center gap-2 cursor-pointer group">
-              <div className="w-8 h-8 border border-primary flex items-center justify-center bg-primary/10 group-hover:bg-primary group-hover:text-black transition-colors">
-                <span className="font-bold text-lg">E</span>
-              </div>
-              <div className="flex flex-col text-[10px] uppercase leading-none tracking-widest">
-                <span className="font-bold">Edison.CAD</span>
-                <span className="text-primary">System.v2.0</span>
+              <div className="w-2 h-8 bg-primary rounded-sm group-hover:h-10 transition-all duration-300"></div>
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-bold text-xl tracking-tight group-hover:text-white transition-colors">EDISON.</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-primary transition-colors">Visionary Builder</span>
               </div>
             </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item, idx) => (
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-xs uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-2 group"
+                className="text-sm font-medium text-muted-foreground hover:text-white transition-colors relative group"
               >
-                <span className="text-[10px] text-muted-foreground group-hover:text-primary">0{idx + 1}</span>
                 {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full"></span>
               </a>
             ))}
-            <div className="h-4 w-[1px] bg-white/20 mx-2"></div>
+            <div className="h-6 w-[1px] bg-white/10 mx-2"></div>
             <a 
-              href="#status"
-              className="text-xs uppercase tracking-widest text-primary animate-pulse"
+              href="#contact"
+              className="text-sm font-bold px-6 py-2 bg-white/5 hover:bg-primary hover:text-black border border-white/10 hover:border-primary rounded-full transition-all duration-300"
             >
-              ● Online
+              Connect
             </a>
           </nav>
 
           {/* Mobile Nav Toggle */}
           <button
-            className="md:hidden p-2 text-foreground border border-white/10"
+            className="md:hidden p-2 text-foreground"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-        </div>
-        
-        {/* Measurement Markers */}
-        <div className="absolute bottom-0 left-0 w-full flex justify-between px-2 opacity-20 pointer-events-none">
-           {[...Array(20)].map((_, i) => (
-             <div key={i} className="h-1 w-[1px] bg-white"></div>
-           ))}
         </div>
       </header>
 
@@ -73,45 +73,50 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 20 }}
-            className="fixed inset-0 z-40 bg-background border-l border-white/10 pt-20 px-6 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100vh" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="fixed inset-0 z-40 bg-background pt-24 px-6 md:hidden overflow-hidden"
           >
-            <div className="flex flex-col gap-6">
-              {navItems.map((item, idx) => (
+            <div className="flex flex-col gap-8">
+              {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl uppercase font-bold hover:text-primary transition-colors border-b border-white/5 pb-4 flex justify-between items-center"
+                  className="text-4xl font-display font-bold hover:text-primary transition-colors"
                 >
                   {item.name}
-                  <span className="text-xs text-muted-foreground">0{idx + 1}</span>
                 </a>
               ))}
+              <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="text-4xl font-display font-bold text-primary mt-4"
+                >
+                  Connect
+                </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <main className="flex-grow pt-16 relative">
-        {/* Background Grid Overlay */}
-        <div className="absolute inset-0 pointer-events-none blueprint-grid opacity-30 fixed"></div>
+      <main className="flex-grow pt-20">
         {children}
       </main>
 
-      <footer className="border-t border-white/10 bg-background relative z-10">
-        <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-muted-foreground">
-          <div className="flex gap-4">
-            <span>Fig. 1.0 - Portfolio</span>
-            <span>Scale: 1:1</span>
+      <footer className="py-12 border-t border-white/5 bg-black/20">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <span className="font-display font-bold text-white">EDISON ESPINOSA</span>
+            <span>Architecting Systems & Intelligence</span>
           </div>
-          <div className="flex gap-4">
-             <span>© {new Date().getFullYear()} Edison Espinosa</span>
-             <span className="text-primary">Approved for Construction</span>
+          <div className="flex gap-8">
+             <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
+             <a href="#" className="hover:text-primary transition-colors">GitHub</a>
+             <a href="#" className="hover:text-primary transition-colors">Twitter</a>
           </div>
+          <p>© {new Date().getFullYear()} All Rights Reserved.</p>
         </div>
       </footer>
     </div>
