@@ -1,12 +1,17 @@
-import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Link } from "wouter";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [time, setTime] = useState("");
-  const [location] = useLocation();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const updateTime = () => {
@@ -19,14 +24,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   const navItems = [
-    { name: "About", href: "/about" },
-    { name: "Work", href: "/work" },
-    { name: "Ecosystem", href: "/ecosystem" },
-    { name: "Contact", href: "/contact" },
+    { name: "Philosophy", href: "#vision" },
+    { name: "Work", href: "#work" },
+    { name: "Ecosystem", href: "#ecosystem" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-background text-foreground overflow-x-hidden selection:bg-black selection:text-white">
+      
+      {/* Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-primary z-[60] origin-left"
+        style={{ scaleX }}
+      />
 
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-start mix-blend-difference text-white pointer-events-none">
         <Link href="/" className="group flex flex-col gap-1 cursor-pointer pointer-events-auto">
@@ -39,15 +50,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="hidden md:flex flex-col items-center gap-2 fixed left-1/2 -translate-x-1/2 top-6 pointer-events-auto">
           <div className="flex gap-8 bg-black/5 backdrop-blur-md px-6 py-2 rounded-full border border-black/5 text-black shadow-sm">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
-                className={`text-xs font-medium uppercase tracking-wider transition-opacity ${
-                  location === item.href ? "opacity-100" : "opacity-60 hover:opacity-100"
-                }`}
+                className="text-xs font-medium uppercase tracking-wider hover:opacity-50 transition-opacity"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -78,14 +87,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           >
             <div className="flex flex-col gap-8 text-center">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-5xl font-display font-black uppercase tracking-tighter hover:opacity-50 transition-all"
+                  className="text-5xl font-display font-black uppercase tracking-tighter hover:text-transparent hover:text-stroke-black transition-all"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </div>
           </motion.div>
@@ -96,37 +105,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <footer className="bg-zinc-950 text-white py-20">
+      <footer className="bg-background text-foreground py-20 border-t border-black/5">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="md:col-span-2">
-              <h2 className="text-4xl font-display font-black tracking-tighter mb-4">EDISON©</h2>
-              <p className="text-white/60 max-w-sm">
-                Architecting systems that bridge AI, mobile, and reality.
-              </p>
-            </div>
+          <div className="flex flex-col md:flex-row justify-between items-end">
             <div>
-              <p className="text-xs uppercase tracking-widest text-white/40 mb-4">Navigate</p>
-              <div className="flex flex-col gap-2">
-                {navItems.map((item) => (
-                  <Link key={item.name} href={item.href} className="text-white/60 hover:text-white transition-colors">
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
+              <h2 className="text-[10vw] leading-none font-display font-black tracking-tighter opacity-5 select-none">
+                EDISON
+              </h2>
             </div>
-            <div>
-              <p className="text-xs uppercase tracking-widest text-white/40 mb-4">Connect</p>
-              <div className="flex flex-col gap-2">
-                <a href="#" className="text-white/60 hover:text-white transition-colors">Twitter</a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">LinkedIn</a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">GitHub</a>
-              </div>
+            <div className="flex gap-8 text-sm font-mono uppercase tracking-widest mb-4 md:mb-0">
+              <a href="#" className="hover:underline">Twitter</a>
+              <a href="#" className="hover:underline">LinkedIn</a>
+              <a href="#" className="hover:underline">GitHub</a>
             </div>
           </div>
-          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-[10px] font-mono uppercase text-white/40">
+          <div className="mt-8 pt-8 border-t border-black/5 flex justify-between text-[10px] font-mono uppercase opacity-40">
             <span>© 2025 Edison Espinosa</span>
-            <span>Building with absolute intent</span>
+            <span>Architecting Systems</span>
           </div>
         </div>
       </footer>
