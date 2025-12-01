@@ -214,10 +214,15 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Transition: Hero to Capabilities */}
+      <div className="h-32 bg-gradient-to-b from-black via-zinc-900 to-white relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/50"></div>
+      </div>
+
       {/* CAPABILITIES - Clean Iconic Section */}
       <section id="vision" className="relative z-10 overflow-hidden">
         {/* CAPABILITIES */}
-        <div className="bg-white text-black relative overflow-hidden py-32">
+        <div className="bg-white text-black relative overflow-hidden pt-16 pb-32">
           <div className="container mx-auto px-6">
             {/* Section Header */}
             <motion.div
@@ -315,8 +320,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transition: Capabilities to Built Universe */}
+      <div className="h-32 bg-gradient-to-b from-white via-zinc-100 to-black relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent"></div>
+      </div>
+
       {/* THE BUILT UNIVERSE - Immersive Showcase */}
-      <section className="py-32 md:py-48 bg-black text-white relative overflow-hidden">
+      <section className="pt-16 pb-32 md:pb-48 bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px]"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]"></div>
@@ -455,10 +465,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transition: Built Universe to Case Studies */}
+      <div className="h-32 bg-gradient-to-b from-black via-zinc-800 to-white relative z-10"></div>
+
       {/* SELECTED WORK - Full Width Impact */}
       <section id="work" className="relative">
         {/* Section Header */}
-        <div className="bg-white py-24 border-b border-black/5">
+        <div className="bg-white pt-16 pb-24 border-b border-black/5">
           <div className="container mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -727,8 +740,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transition: Foxie to Ecosystem */}
+      <div className="h-24 bg-gradient-to-b from-white via-zinc-200 to-zinc-950 relative z-10"></div>
+
       {/* ECOSYSTEM - Bold Grid */}
-      <section id="ecosystem" className="py-32 bg-zinc-950 text-white">
+      <section id="ecosystem" className="pt-16 pb-32 bg-zinc-950 text-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -822,9 +838,11 @@ export default function Home() {
 
       {/* PHILOSOPHY - The WHY (Story Climax) */}
       <section className="relative overflow-hidden">
+        {/* Subtle divider line */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        
         <div className="min-h-[70vh] flex items-center justify-center bg-zinc-950 text-white relative py-32">
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             <div className="absolute top-1/3 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
             <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-[100px]"></div>
           </div>
@@ -857,9 +875,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transition: Philosophy to Contact */}
+      <div className="h-32 bg-gradient-to-b from-zinc-950 via-zinc-800 to-white relative z-10"></div>
+
       {/* CONTACT - Premium & Bold */}
       <section id="contact" className="relative overflow-hidden">
-        <div className="min-h-screen flex items-center justify-center bg-white py-32">
+        <div className="min-h-screen flex items-center justify-center bg-white pt-8 pb-32">
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
             <div className="absolute top-1/4 right-0 w-96 h-96 bg-indigo-100 rounded-full blur-[120px] opacity-50"></div>
