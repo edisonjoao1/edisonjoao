@@ -187,10 +187,31 @@ export default function Home() {
                 >
                   View Selected Work <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
+                <a 
+                  href="#contact" 
+                  className="group px-8 py-4 border border-white/30 text-white rounded-full font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2"
+                >
+                  Get In Touch
+                </a>
               </div>
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-xs uppercase tracking-widest text-white/40">Scroll</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent"
+          />
+        </motion.div>
       </section>
 
       {/* MANIFESTO - Bold & Dramatic */}
@@ -748,28 +769,35 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="mb-20"
           >
-            <h2 className="text-5xl md:text-7xl font-display font-black tracking-tight mb-6">The Ecosystem</h2>
-            <p className="text-xl text-white/60 max-w-2xl mx-auto mb-12">
-              A growing portfolio of products across AI, health, social, and productivity.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map(cat => (
-                <button 
-                  key={cat}
-                  onClick={() => setFilter(cat)}
-                  className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide border transition-all ${
-                    filter === cat 
-                      ? "bg-white text-black border-white" 
-                      : "bg-transparent text-white/70 border-white/20 hover:border-white/50 hover:text-white"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
+            <p className="text-sm uppercase tracking-widest text-white/40 mb-6">The Ecosystem</p>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight leading-[0.95]">
+                10+ Apps<br/>
+                <span className="italic font-light text-white/60">in Production</span>
+              </h2>
+              <p className="text-lg text-white/50 max-w-md">
+                From health and fitness to finance and education. All powered by AI. 1M+ total users.
+              </p>
             </div>
           </motion.div>
+          
+          <div className="flex flex-wrap gap-3 mb-12">
+            {categories.map(cat => (
+              <button 
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide border transition-all ${
+                  filter === cat 
+                    ? "bg-white text-black border-white" 
+                    : "bg-transparent text-white/70 border-white/20 hover:border-white/50 hover:text-white"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <AnimatePresence mode="popLayout">
@@ -852,14 +880,14 @@ export default function Home() {
                   Have a project in mind? I'm always open to discussing product design work, consulting opportunities, or partnerships.
                 </p>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <a href="mailto:hello@edison.dev" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
-                    hello@edison.dev
+                  <a href="mailto:edison@ai4u.space" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
+                    edison@ai4u.space
                   </a>
-                  <a href="#" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
+                  <a href="https://linkedin.com/in/edisonespinosa" target="_blank" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
                     LinkedIn
                   </a>
-                  <a href="#" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
-                    Twitter
+                  <a href="https://twitter.com/edisonjoao1" target="_blank" className="px-6 py-3 rounded-full border border-black/10 hover:border-black hover:bg-black hover:text-white transition-all">
+                    Twitter / X
                   </a>
                 </div>
               </motion.div>
@@ -920,6 +948,31 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="bg-black text-white py-16 border-t border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div>
+              <div className="text-2xl font-display font-black mb-2">Edison Espinosa</div>
+              <p className="text-sm text-white/50">Senior Product Manager • AI Specialist • iOS Engineer</p>
+            </div>
+            
+            <div className="flex flex-wrap gap-6 text-sm">
+              <a href="https://ai4u.space" target="_blank" className="text-white/60 hover:text-white transition-colors">AI 4U Labs</a>
+              <a href="https://foxie.cool" target="_blank" className="text-white/60 hover:text-white transition-colors">Foxie</a>
+              <a href="https://apps.apple.com/us/developer/edison-espinosa/id1368707952" target="_blank" className="text-white/60 hover:text-white transition-colors">App Store</a>
+              <a href="https://linkedin.com/in/edisonespinosa" target="_blank" className="text-white/60 hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://twitter.com/edisonjoao1" target="_blank" className="text-white/60 hover:text-white transition-colors">Twitter</a>
+            </div>
+          </div>
+          
+          <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
+            <p>© {new Date().getFullYear()} Edison Espinosa. All rights reserved.</p>
+            <p>Designed & Built with precision.</p>
+          </div>
+        </div>
+      </footer>
 
     </Layout>
   );
