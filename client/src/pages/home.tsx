@@ -21,6 +21,9 @@ import foxIcon from "@assets/generated_images/minimalist_orange_fox_head_icon_gr
 import aiIcon from "@assets/generated_images/futuristic_ai_brain_chip_icon_blue_and_purple.png";
 import lotusIcon from "@assets/generated_images/serene_lotus_flower_icon_teal_gradient.png";
 import swirlIcon from "@assets/generated_images/abstract_colorful_swirl_icon_creative_art.png";
+import robotIcon from "@assets/generated_images/cute_3d_robot_character_icon_for_accountability_app.png";
+import paintIcon from "@assets/generated_images/artistic_digital_creation_icon_for_ai_image_app.png";
+import sphereIcon from "@assets/generated_images/abstract_colorful_sphere_icon_for_general_ai_app.png";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -298,6 +301,9 @@ export default function Home() {
               { name: "AI Amigo", category: "AI Companion", icon: aiIcon, color: "from-blue-500/20 to-purple-500/20" },
               { name: "Sober AI", category: "Health", icon: lotusIcon, color: "from-emerald-500/20 to-teal-500/20" },
               { name: "SheGPT", category: "Assistant", icon: swirlIcon, color: "from-pink-500/20 to-rose-500/20" },
+              { name: "Accountability Buddie", category: "Productivity", icon: robotIcon, color: "from-amber-500/20 to-yellow-500/20" },
+              { name: "Ai Image Create", category: "Creative Tools", icon: paintIcon, color: "from-indigo-500/20 to-violet-500/20" },
+              { name: "Global AI", category: "Intelligence", icon: sphereIcon, color: "from-cyan-500/20 to-blue-500/20" },
             ].map((app, index) => (
               <motion.a
                 href="https://appgallery.io/edison"
