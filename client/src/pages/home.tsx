@@ -34,15 +34,71 @@ import foxieScreen from "@assets/generated_images/foxie_app_screenshot.png";
 import aiAmigoScreen from "@assets/generated_images/ai_amigo_app_screenshot.png";
 import soberScreen from "@assets/generated_images/sober_ai_app_screenshot.png";
 
-// Data
+// Real App Store Data
 const apps = [
-  { name: "Foxie", category: "Social", icon: foxIcon, color: "from-cyan-400 to-purple-500", url: "https://foxie.cool" },
-  { name: "AI Amigo", category: "Companion", icon: aiIcon, color: "from-blue-500 to-purple-500", url: null },
-  { name: "Sober AI", category: "Health", icon: lotusIcon, color: "from-emerald-500 to-teal-500", url: null },
-  { name: "SheGPT", category: "Assistant", icon: swirlIcon, color: "from-pink-500 to-rose-500", url: null },
-  { name: "Accountability", category: "Productivity", icon: robotIcon, color: "from-amber-500 to-yellow-500", url: null },
-  { name: "Ai Image", category: "Creative", icon: paintIcon, color: "from-indigo-500 to-violet-500", url: null },
-  { name: "Global AI", category: "Intelligence", icon: sphereIcon, color: "from-cyan-500 to-blue-500", url: null },
+  { 
+    name: "Foxie.", 
+    category: "Social", 
+    desc: "Post. Connect. Engage. Go Out.",
+    icon: foxIcon, 
+    color: "from-amber-400 to-orange-500", 
+    url: "https://apps.apple.com/us/app/foxie/id1369279200",
+    rating: "4.9"
+  },
+  { 
+    name: "ai amigo", 
+    category: "Health", 
+    desc: "AI Friend, Human Understanding",
+    icon: aiIcon, 
+    color: "from-amber-300 to-amber-500", 
+    url: "https://apps.apple.com/us/app/ai-amigo/id6670725604",
+    rating: "5.0"
+  },
+  { 
+    name: "sober ai", 
+    category: "Health", 
+    desc: "Sobriety Tracking & AI Support",
+    icon: lotusIcon, 
+    color: "from-stone-200 to-stone-400", 
+    url: "https://apps.apple.com/us/app/sober-ai/id6740759999",
+    rating: "5.0"
+  },
+  { 
+    name: "SheGPT", 
+    category: "Health", 
+    desc: "AI for women",
+    icon: swirlIcon, 
+    color: "from-orange-400 to-rose-500", 
+    url: "https://apps.apple.com/us/app/shegpt/id6744063469",
+    rating: null
+  },
+  { 
+    name: "Accountability Buddie", 
+    category: "Productivity", 
+    desc: "AI-Powered Goal & Habit Coach",
+    icon: robotIcon, 
+    color: "from-teal-400 to-cyan-500", 
+    url: "https://apps.apple.com/us/app/accountability-buddie/id6742691299",
+    rating: null
+  },
+  { 
+    name: "Ai Image Create", 
+    category: "Creative", 
+    desc: "AI Art & Image Creator",
+    icon: paintIcon, 
+    color: "from-blue-500 to-indigo-600", 
+    url: "https://apps.apple.com/us/app/ai-image-create/id6744127405",
+    rating: null
+  },
+  { 
+    name: "Inteligencia Artificial", 
+    category: "AI Assistant", 
+    desc: "IA en Español",
+    icon: sphereIcon, 
+    color: "from-blue-500 to-blue-700", 
+    url: "https://apps.apple.com/us/app/inteligencia-artificial-ia/id6743879085",
+    rating: null
+  },
 ];
 
 // Form Schema
@@ -58,7 +114,7 @@ export default function Home() {
   const [filter, setFilter] = useState("All");
   const { toast } = useToast();
 
-  const categories = ["All", "Social", "Companion", "Health", "Productivity", "Creative"];
+  const categories = ["All", "Social", "Health", "Productivity", "Creative", "AI Assistant"];
   
   const filteredApps = filter === "All" 
     ? apps 
@@ -505,21 +561,25 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: idx * 0.05 }}
-                  href={app.url || "https://appgallery.io/edison"} 
+                  href={app.url} 
                   target="_blank"
                   key={app.name}
-                  className="aspect-square rounded-3xl p-6 flex flex-col justify-between group relative overflow-hidden bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-500"
+                  className="rounded-3xl p-6 flex flex-col justify-between group relative overflow-hidden bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-500 min-h-[280px]"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${app.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                   
-                  <div className="flex justify-end">
-                    <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-2 translate-x-2 group-hover:translate-y-0 group-hover:translate-x-0" />
+                  <div className="flex justify-between items-start">
+                    {app.rating && (
+                      <span className="px-2 py-1 rounded-full bg-white/10 text-xs font-bold">{app.rating} ★</span>
+                    )}
+                    <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-2 translate-x-2 group-hover:translate-y-0 group-hover:translate-x-0 ml-auto" />
                   </div>
 
                   <div className="relative z-10">
                     <img src={app.icon} alt={app.name} className="w-16 h-16 mb-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500" />
-                    <h4 className="font-bold text-xl leading-none mb-2">{app.name}</h4>
-                    <p className="text-xs uppercase tracking-wider text-white/50">{app.category}</p>
+                    <h4 className="font-bold text-lg leading-tight mb-1">{app.name}</h4>
+                    <p className="text-xs text-white/70 mb-2 line-clamp-2">{app.desc}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-white/40">{app.category}</p>
                   </div>
                 </motion.a>
               ))}
@@ -530,17 +590,18 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              href="https://appgallery.io/edison" 
+              href="https://apps.apple.com/us/developer/edison-espinosa/id1368707952" 
               target="_blank"
-              className="aspect-square rounded-3xl bg-gradient-to-br from-indigo-600 to-purple-600 p-6 flex flex-col justify-between hover:scale-105 transition-all duration-500 group"
+              className="rounded-3xl bg-gradient-to-br from-indigo-600 to-purple-600 p-6 flex flex-col justify-between hover:scale-105 transition-all duration-500 group min-h-[280px]"
             >
               <div className="flex justify-between items-start">
-                <span className="font-mono text-xs opacity-70">TOTAL SHIPPED</span>
+                <span className="font-mono text-xs opacity-70">APP STORE</span>
                 <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </div>
               <div>
                 <h4 className="font-display font-black text-5xl leading-none mb-2">10+</h4>
-                <p className="text-sm uppercase tracking-wider font-bold opacity-80">Live Apps</p>
+                <p className="text-sm uppercase tracking-wider font-bold opacity-80">Live on iOS</p>
+                <p className="text-xs opacity-60 mt-2">View all on App Store</p>
               </div>
             </motion.a>
           </div>
