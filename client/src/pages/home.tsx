@@ -518,51 +518,160 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Project 1 - AI4U Full Width */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white relative overflow-hidden"
-        >
-          <div className="absolute inset-0">
-            <div className="absolute top-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-400/20 rounded-full blur-[80px]"></div>
-          </div>
-          
-          <div className="container mx-auto px-6 py-32 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="inline-flex items-center gap-3 mb-8">
-                  <span className="w-3 h-3 bg-white rounded-full"></span>
-                  <span className="font-mono text-sm uppercase tracking-widest opacity-80">01 / AI & Operations</span>
-                </div>
-                <h3 className="text-6xl md:text-8xl font-display font-black mb-8 leading-none">Ai 4u</h3>
-                <p className="text-xl md:text-2xl opacity-80 leading-relaxed mb-12 max-w-lg">
-                  Multi-Agent AI systems that automate complex operational workflows. 
-                  Enterprise-grade intelligence for real business outcomes.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-8 mb-12">
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-                    <div className="text-5xl font-display font-black mb-2">40%</div>
-                    <div className="text-sm uppercase tracking-widest opacity-70">Efficiency Gain</div>
+        {/* Project 1 - AI 4U - Clean Modern Design */}
+        <div className="bg-white text-black relative overflow-hidden">
+          {/* Hero Section */}
+          <div className="min-h-screen flex items-center relative">
+            <div className="container mx-auto px-6 py-32">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Left Content */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                    <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">AI 4U Labs</span>
                   </div>
-                  <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-                    <div className="text-5xl font-display font-black mb-2">$2M+</div>
-                    <div className="text-sm uppercase tracking-widest opacity-70">Client Savings</div>
+                  <p className="text-sm uppercase tracking-widest text-muted-foreground mb-6">AI Development Studio</p>
+                  
+                  <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[0.95] tracking-tight mb-8">
+                    We Build<br/>
+                    <span className="italic font-light">Anything</span><br/>
+                    with AI
+                  </h2>
+                  
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-lg">
+                    From mobile apps to payment systems to customer support—we ship AI products fast. 
+                    For startups, Fortune 500s, and everyone in between.
+                  </p>
+
+                  {/* Stats Row */}
+                  <div className="flex flex-wrap gap-8 mb-12 pb-8 border-b border-black/10">
+                    <div>
+                      <div className="text-4xl font-display font-black">1M+</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">Users</div>
+                    </div>
+                    <div className="w-px bg-black/10"></div>
+                    <div>
+                      <div className="text-4xl font-display font-black">20+</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">Since 2023</div>
+                    </div>
+                    <div className="w-px bg-black/10"></div>
+                    <div>
+                      <div className="text-4xl font-display font-black">6 Days</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">Record</div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <div className="aspect-square bg-white/5 rounded-3xl backdrop-blur-sm border border-white/10 flex items-center justify-center">
-                  <div className="text-[20vw] font-display font-black opacity-20 select-none">AI</div>
-                </div>
+
+                  <div className="flex flex-wrap gap-4">
+                    <a href="https://ai4u.space" target="_blank" className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-black/90 transition-all group">
+                      Start a Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a href="https://ai4u.space/work" target="_blank" className="inline-flex items-center gap-2 px-8 py-4 border border-black/20 rounded-full font-bold hover:border-black hover:bg-black hover:text-white transition-all">
+                      View Our Work
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Right - Flip Card Style */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative"
+                >
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4 text-right">Building since 2023</div>
+                  <div className="bg-zinc-100 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full blur-3xl opacity-50"></div>
+                    <div className="relative z-10">
+                      <div className="text-[15vw] md:text-[10vw] font-display font-black leading-none text-black/10">
+                        AI
+                      </div>
+                      <p className="text-sm uppercase tracking-widest text-muted-foreground mt-4">In Production</p>
+                      <div className="mt-8 p-4 bg-white rounded-xl shadow-sm">
+                        <p className="text-sm text-muted-foreground">SheGPT — Shipped to App Store in 6 days</p>
+                      </div>
+                    </div>
+                    
+                    {/* Stats Overlay */}
+                    <div className="mt-8 grid grid-cols-2 gap-4">
+                      <div className="bg-white p-4 rounded-xl">
+                        <div className="text-3xl font-display font-black">2-4</div>
+                        <div className="text-xs uppercase tracking-widest text-muted-foreground">Weeks to MVP</div>
+                      </div>
+                      <div className="bg-white p-4 rounded-xl">
+                        <div className="text-3xl font-display font-black">$500K+</div>
+                        <div className="text-xs uppercase tracking-widest text-muted-foreground">Annual Savings</div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
-        </motion.div>
+
+          {/* AI Partnerships Section */}
+          <div className="border-t border-black/5 py-24">
+            <div className="container mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">AI Partnerships</p>
+                <h3 className="text-3xl md:text-5xl font-display font-black">
+                  Every major <span className="italic font-light">AI lab</span>
+                </h3>
+              </motion.div>
+
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                {[
+                  { name: "OpenAI", tech: "GPT-4, Realtime API" },
+                  { name: "Anthropic", tech: "Claude, MCP" },
+                  { name: "Google", tech: "Gemini Pro" },
+                  { name: "Meta", tech: "Llama 3.2" },
+                  { name: "Mistral", tech: "Large, EU" },
+                ].map((partner, idx) => (
+                  <motion.div
+                    key={partner.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="group bg-zinc-50 hover:bg-black hover:text-white p-6 rounded-2xl transition-all duration-300 cursor-default"
+                  >
+                    <div className="font-bold text-lg mb-1">{partner.name}</div>
+                    <div className="text-xs text-muted-foreground group-hover:text-white/60">{partner.tech}</div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="mt-12 flex flex-wrap justify-center gap-8 text-center"
+              >
+                {[
+                  { value: "10+", label: "AI Labs" },
+                  { value: "25+", label: "Models" },
+                  { value: "20+", label: "Apps Since 2023" },
+                  { value: "1M+", label: "API Calls/Day" },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <div className="text-2xl font-display font-black">{stat.value}</div>
+                    <div className="text-xs uppercase tracking-widest text-muted-foreground">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </div>
 
         {/* Project 2 - Foxie Full Width */}
         <motion.div 
