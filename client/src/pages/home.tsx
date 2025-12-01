@@ -79,8 +79,8 @@ export default function Home() {
     <Layout>
       <div className="noise-bg"></div>
 
-      {/* HERO SECTION - Light & Iconic */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white text-black">
+      {/* HERO SECTION - Dark to Light Contrast */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
         <motion.div 
           style={{ y, opacity }}
           className="absolute inset-0 z-0"
@@ -88,9 +88,9 @@ export default function Home() {
           <img 
             src={heroBg} 
             alt="Liquid Chrome Abstract" 
-            className="w-full h-full object-cover opacity-90"
+            className="w-full h-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background"></div>
         </motion.div>
 
         <div className="container relative z-10 px-6 pt-32 md:pt-0">
@@ -100,10 +100,10 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="text-[15vw] leading-[0.8] font-display font-black tracking-tighter text-black/10 select-none mix-blend-multiply">
+              <h1 className="text-[15vw] leading-[0.8] font-display font-black tracking-tighter mix-blend-overlay select-none text-white">
                 VISIONARY
               </h1>
-              <h1 className="text-[15vw] leading-[0.8] font-display font-black tracking-tighter text-transparent text-stroke-black select-none opacity-80" style={{ WebkitTextStroke: "1px black" }}>
+              <h1 className="text-[15vw] leading-[0.8] font-display font-black tracking-tighter text-transparent text-stroke-white select-none opacity-80" style={{ WebkitTextStroke: "1px white" }}>
                 BUILDER
               </h1>
             </motion.div>
@@ -114,16 +114,16 @@ export default function Home() {
               transition={{ delay: 0.5, duration: 1 }}
               className="mt-12 max-w-xl mx-auto space-y-8"
             >
-              <p className="text-lg md:text-xl text-zinc-900 font-medium leading-relaxed">
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white">
                 Architecting systems that bridge AI, mobile, and reality.
                 <br/>
-                <span className="text-zinc-500">Tested by loss. Driven by outcome.</span>
+                <span className="text-amber-400">Tested by loss. Driven by outcome.</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="#work" 
-                  className="group px-8 py-4 bg-black text-white rounded-full font-bold uppercase tracking-wider hover:bg-black/80 transition-all flex items-center justify-center gap-2 shadow-lg"
+                  className="group px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-wider hover:bg-white/90 transition-all flex items-center justify-center gap-2"
                 >
                   View Selected Work <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
