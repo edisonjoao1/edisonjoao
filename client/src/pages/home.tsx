@@ -12,9 +12,15 @@ import {
   ArrowRight,
   Mail,
   Github,
-  Linkedin
+  Linkedin,
+  ExternalLink,
+  Download
 } from "lucide-react";
 import heroBg from "@assets/generated_images/abstract_dark_tech_background_with_subtle_neon_data_lines.png";
+import foxIcon from "@assets/generated_images/minimalist_orange_fox_head_icon_gradient_style.png";
+import aiIcon from "@assets/generated_images/futuristic_ai_brain_chip_icon_blue_and_purple.png";
+import lotusIcon from "@assets/generated_images/serene_lotus_flower_icon_teal_gradient.png";
+import swirlIcon from "@assets/generated_images/abstract_colorful_swirl_icon_creative_art.png";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -262,6 +268,57 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* App Gallery Section */}
+      <section id="apps" className="py-24 relative border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">App Gallery</h2>
+              <p className="text-muted-foreground">
+                A collection of 10+ apps shipped to the App Store. From social connection to AI companions.
+              </p>
+            </div>
+            <a 
+              href="https://appgallery.io/edison" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-white/5 border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-all flex items-center gap-2"
+            >
+              View All Apps <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { name: "Foxie", category: "Social", icon: foxIcon, color: "from-orange-500/20 to-red-500/20" },
+              { name: "AI Amigo", category: "AI Companion", icon: aiIcon, color: "from-blue-500/20 to-purple-500/20" },
+              { name: "Sober AI", category: "Health", icon: lotusIcon, color: "from-emerald-500/20 to-teal-500/20" },
+              { name: "SheGPT", category: "Assistant", icon: swirlIcon, color: "from-pink-500/20 to-rose-500/20" },
+            ].map((app, index) => (
+              <motion.a
+                href="https://appgallery.io/edison"
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+                whileHover={{ y: -5 }}
+                className="group block p-1 rounded-2xl bg-card border border-white/5 hover:border-primary/20 transition-all"
+              >
+                <div className={`aspect-square rounded-xl bg-gradient-to-br ${app.color} flex items-center justify-center relative overflow-hidden mb-0`}>
+                  <img src={app.icon} alt={app.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <ExternalLink className="text-white w-8 h-8 drop-shadow-lg" />
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">{app.name}</h3>
+                  <p className="text-xs text-muted-foreground font-mono">{app.category}</p>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
