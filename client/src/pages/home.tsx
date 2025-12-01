@@ -30,6 +30,9 @@ import swirlIcon from "@assets/generated_images/abstract_colorful_swirl_icon_cre
 import robotIcon from "@assets/generated_images/cute_3d_robot_character_icon_for_accountability_app.png";
 import paintIcon from "@assets/generated_images/artistic_digital_creation_icon_for_ai_image_app.png";
 import sphereIcon from "@assets/generated_images/abstract_colorful_sphere_icon_for_general_ai_app.png";
+import foxieScreen from "@assets/generated_images/foxie_app_screenshot.png";
+import aiAmigoScreen from "@assets/generated_images/ai_amigo_app_screenshot.png";
+import soberScreen from "@assets/generated_images/sober_ai_app_screenshot.png";
 
 // Data
 const apps = [
@@ -158,6 +161,146 @@ export default function Home() {
                </div>
              ))}
           </div>
+        </div>
+      </section>
+
+      {/* THE BUILT UNIVERSE - Immersive Showcase */}
+      <section className="py-32 md:py-48 bg-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-[8vw] md:text-[6vw] font-display font-black tracking-tighter leading-none mb-6">
+              THE BUILT <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">UNIVERSE</span>
+            </h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              From concept to App Store. A portfolio of products that solve real problems, 
+              generate real revenue, and touch real lives.
+            </p>
+          </motion.div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-32">
+            {[
+              { value: "10+", label: "Apps Shipped", sub: "iOS & Web" },
+              { value: "500K+", label: "Total Users", sub: "And Growing" },
+              { value: "#10", label: "App Store Rank", sub: "Category Peak" },
+              { value: "$2M+", label: "Client Value", sub: "Delivered" },
+            ].map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="text-center p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-white/30 transition-colors group"
+              >
+                <div className="text-4xl md:text-5xl font-display font-black mb-2 bg-gradient-to-r from-white to-white/70 text-transparent bg-clip-text group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-500">
+                  {stat.value}
+                </div>
+                <div className="text-sm font-bold uppercase tracking-widest mb-1">{stat.label}</div>
+                <div className="text-xs text-white/40">{stat.sub}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Phone Mockup Showcase */}
+          <div className="relative">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex justify-center items-end gap-4 md:gap-8 perspective-1000"
+            >
+              {/* Left Phone - Sober AI */}
+              <motion.div
+                initial={{ opacity: 0, x: -100, rotateY: 15 }}
+                whileInView={{ opacity: 1, x: 0, rotateY: 5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="hidden md:block relative group"
+              >
+                <div className="w-48 lg:w-56 rounded-[2.5rem] bg-gradient-to-b from-zinc-800 to-zinc-900 p-2 shadow-2xl transform hover:scale-105 hover:rotate-0 transition-all duration-500" style={{ transform: "rotateY(5deg) rotateX(2deg)" }}>
+                  <div className="rounded-[2rem] overflow-hidden bg-black aspect-[9/19.5]">
+                    <img src={soberScreen} alt="Sober AI" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="font-bold text-sm">Sober AI</div>
+                  <div className="text-xs text-white/50">Health & Wellness</div>
+                </div>
+              </motion.div>
+
+              {/* Center Phone - Foxie (Hero) */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative group z-10"
+              >
+                <div className="absolute -inset-8 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="w-64 md:w-72 lg:w-80 rounded-[3rem] bg-gradient-to-b from-zinc-700 to-zinc-900 p-2 shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
+                  <div className="rounded-[2.5rem] overflow-hidden bg-black aspect-[9/19.5]">
+                    <img src={foxieScreen} alt="Foxie" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full"></div>
+                </div>
+                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-center">
+                  <div className="font-bold text-lg">Foxie</div>
+                  <div className="text-xs text-white/50">Social • 500K Users</div>
+                  <a href="https://foxie.cool" target="_blank" className="inline-flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 mt-1 transition-colors">
+                    Visit Site <ArrowUpRight size={12} />
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Right Phone - AI Amigo */}
+              <motion.div
+                initial={{ opacity: 0, x: 100, rotateY: -15 }}
+                whileInView={{ opacity: 1, x: 0, rotateY: -5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="hidden md:block relative group"
+              >
+                <div className="w-48 lg:w-56 rounded-[2.5rem] bg-gradient-to-b from-zinc-800 to-zinc-900 p-2 shadow-2xl transform hover:scale-105 hover:rotate-0 transition-all duration-500" style={{ transform: "rotateY(-5deg) rotateX(2deg)" }}>
+                  <div className="rounded-[2rem] overflow-hidden bg-black aspect-[9/19.5]">
+                    <img src={aiAmigoScreen} alt="AI Amigo" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="font-bold text-sm">AI Amigo</div>
+                  <div className="text-xs text-white/50">AI Companion</div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Tech Stack Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-32 text-center"
+          >
+            <p className="text-xs uppercase tracking-widest text-white/40 mb-6">Built With</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["Swift", "React Native", "Node.js", "OpenAI", "Firebase", "PostgreSQL", "AWS", "Figma"].map((tech) => (
+                <span key={tech} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-colors cursor-default">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

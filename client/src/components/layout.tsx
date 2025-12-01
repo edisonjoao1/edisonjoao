@@ -40,13 +40,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       />
 
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-start mix-blend-difference text-white pointer-events-none">
-        <Link href="/">
-          <a className="group flex flex-col gap-1 cursor-pointer pointer-events-auto">
-            <span className="text-xl font-display font-black tracking-tighter leading-none">EDISON©</span>
-            <span className="text-[10px] font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">
-              Est. 2025
-            </span>
-          </a>
+        <Link href="/" className="group flex flex-col gap-1 cursor-pointer pointer-events-auto">
+          <span className="text-xl font-display font-black tracking-tighter leading-none">EDISON©</span>
+          <span className="text-[10px] font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">
+            Est. 2025
+          </span>
         </Link>
 
         <div className="hidden md:flex flex-col items-center gap-2 fixed left-1/2 -translate-x-1/2 top-6 pointer-events-auto">
