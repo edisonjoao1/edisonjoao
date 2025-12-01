@@ -1,0 +1,256 @@
+1. Core profile
+	•	Name: Edison Espinosa
+	•	Primary identities:
+	•	Senior Product Manager
+	•	AI Product Specialist
+	•	iOS Engineer (Swift / SwiftUI)
+	•	UX / Product Designer
+	•	Founder and solo builder
+	•	Experience: 6+ years in product, 8+ years building apps
+	•	Impact:
+	•	Built and scaled a social app to 500K+ users (Foxie)
+	•	Led B2B product to 40K+ users and $10M+ revenue (Deloitte)
+	•	AI solutions that saved clients $2M+ per year and raised efficiency by 40%
+
+⸻
+
+2. Product management skills
+
+2.1 Product strategy and vision
+	•	Define product vision for mobile and AI products
+	•	Turn vague ideas into clear product scopes and features
+	•	Align product work with business goals, revenue, and cost savings
+	•	Identify high value problems, not just feature requests
+	•	Create product narratives that connect user pain to business value
+
+2.2 Roadmapping and prioritization
+	•	Build and maintain roadmaps for apps and platforms
+	•	Prioritize using impact vs effort, cost vs value, and risk
+	•	Balance short term wins with long term bets
+	•	Split large goals into epics, features, and tickets
+	•	Keep the roadmap in sync with tech, design, and leadership
+
+2.3 Execution and delivery
+	•	Write clear PRDs and user stories with acceptance criteria
+	•	Run sprints with engineering and design
+	•	Unblock teams and make quick trade off decisions
+	•	Coordinate across iOS, Android, backend, and design
+	•	Ship, measure, and iterate on features rather than one off launches
+
+2.4 User research and insight
+	•	Run user interviews and surveys
+	•	Map user flows and identify friction
+	•	Turn qualitative feedback into specific product changes
+	•	Use app store reviews, support tickets, and usage data for insight
+	•	Build for real user jobs to be done, not only internal ideas
+
+2.5 Analytics, testing, and growth
+	•	Define core metrics for products
+	•	Activation, retention, engagement, and revenue
+	•	Design and read A/B tests
+	•	Use funnels to find drop off points
+	•	Turn metrics into backlog items and experiments
+	•	Run growth tests on onboarding, paywalls, pricing, and feature entry points
+
+⸻
+
+3. AI and machine learning skills
+
+3.1 LLM product thinking
+	•	Design AI powered features that actually solve a user problem
+	•	Decide when to use chat, agents, or simple automations
+	•	Turn workflows into prompts, tools, and state machines
+	•	Balance quality, latency, and cost for AI features
+
+3.2 LLM tools and models
+	•	Experience with:
+	•	OpenAI models
+	•	Claude
+	•	Llama models and other open source models
+	•	Comfortable comparing models on quality, speed, and price
+	•	Use function calling, tool use, and structured outputs
+
+3.3 RAG and data products
+	•	Design RAG systems for support, knowledge bases, and internal tools
+	•	Think through retrieval quality and evaluation
+	•	Work with vector databases concepts
+	•	Plan data pipelines, chunking, and metadata strategies
+
+3.4 Multi agent and workflow design
+	•	Break complex tasks into smaller agents: planner, researcher, coder, tester
+	•	Think about how agents share context and hand off work
+	•	Match agent design to the product use case
+	•	Design safety flows and guardrails for AI features
+
+3.5 AI for business outcomes
+	•	Use AI to cut manual work in operations and support
+	•	Design AI tools that reduce support load and response times
+	•	Support sales and leadership with AI powered dashboards and insights
+	•	Translate AI jargon into clear business value language
+
+⸻
+
+4. iOS development skills
+
+4.1 Core iOS engineering
+	•	Languages: Swift
+	•	Frameworks: SwiftUI, UIKit (where needed)
+	•	Strong with Xcode and the full iOS build process
+	•	Understands app architecture, MVVM style patterns, clean layering
+
+4.2 Features and system APIs
+	•	User onboarding flows and deep links
+	•	Push notifications and in app messaging
+	•	Local storage and network calls
+	•	Background tasks where needed
+
+4.3 Monetization and App Store
+	•	Auto renewable subscriptions in iOS
+	•	In App Purchases setup and flows
+	•	Paywall design and placement
+	•	App Store Connect setup, app records, builds, and releases
+	•	Handle App Review feedback and re submissions
+
+4.4 iOS product quality
+	•	Strong focus on fast, smooth experiences
+	•	Reduces friction in flows for sign up, pay, and core actions
+	•	Uses analytics inside apps to track behavior
+	•	Optimizes for performance and practical details like slow laptops and real world constraints
+
+⸻
+
+5. UX and product design skills
+
+5.1 UX research and flows
+	•	Turn user interviews and notes into flows and wireframes
+	•	Create end to end flows from entry to outcome
+	•	Reduce steps and cognitive load in each flow
+	•	Design for real constraints like small screens and one handed use
+
+5.2 Visual and interaction design
+	•	Tools: Figma and others
+	•	Design clear layouts for mobile apps and web
+	•	Work with card based layouts, hierarchy, and spacing
+	•	Design states: empty, loading, success, error
+	•	Use motion and micro interactions with care, not noise
+
+5.3 Design systems
+	•	Help define reusable components and patterns
+	•	Ensure consistency across many screens and features
+	•	Name and document components so devs can follow
+	•	Keep design systems practical instead of heavy
+
+⸻
+
+6. Entrepreneurship and founder skills
+
+6.1 Company and product creation
+	•	Founded and built social app Foxie from 0 to 500K+ users
+	•	Launched 10+ apps on the App Store across different themes:
+	•	Social connection
+	•	AI companions
+	•	Sobriety and addiction support
+	•	Accountability and goals
+	•	Localized AI apps for different languages and markets
+
+6.2 Shipping bias and velocity
+	•	Strong habit of shipping apps and features in the real world
+	•	Comfortable building MVPs fast, then improving with feedback
+	•	Can scope down to a small first release that still gives value
+	•	Handles marketing, store assets, and launch coordination solo
+
+6.3 Business and monetization sense
+	•	Thinks in LTV, CAC, churn, and payback
+	•	Tests different pricing and packaging options
+	•	Builds both B2B and B2C products
+	•	Connects product features to revenue, cost savings, or growth
+
+6.4 Resilience and learning
+	•	Came back from losing a large sum of money and rebuilt plan from zero
+	•	Uses setbacks as input into systems and habits
+	•	Very strong bias for self learning and skill stacking
+
+⸻
+
+7. Domain experience
+	•	Fintech / neobank: money transfers, deposits, payments, rewards, marketplace
+	•	AI and automation: internal tools, agent systems, customer support bots
+	•	Consumer social: friend networks, engagement loops, growth mechanics
+	•	Mental health / sobriety: Sober AI and addiction related products
+	•	Productivity and accountability: Accountability Buddie and similar apps
+	•	Education and coaching: apps that act as personal companions and guides
+
+⸻
+
+8. Leadership and collaboration skills
+
+8.1 Cross functional leadership
+	•	Lead squads of engineers, designers, and analysts
+	•	Facilitate alignment between product, ops, and execs
+	•	Keep everyone clear on the goal, scope, and timeline
+	•	Help teams focus on user outcome rather than only tasks
+
+8.2 Communication
+	•	Turn complex tech and AI topics into plain language
+	•	Present product work to leadership and clients
+	•	Write clear specs, updates, and decision notes
+	•	Strong listener and interviewer with users and teammates
+
+8.3 Mentoring and teaching
+	•	Mentor students and early professionals
+	•	Teach coding and product thinking to younger groups
+	•	Share frameworks and mental models that others can reuse
+
+⸻
+
+9. Tools and tech stack
+
+Product & design
+	•	Figma
+	•	Notion
+	•	Jira and similar tools
+	•	Miro or whiteboarding tools
+
+Development
+	•	Swift, SwiftUI
+	•	Xcode
+	•	GitHub
+	•	REST APIs and JSON
+	•	Some experience with backend concepts and cloud basics
+
+AI & data
+	•	OpenAI platform
+	•	Claude
+	•	Llama and other open models
+	•	Vector DB concepts
+	•	Prompt design and evaluation
+	•	Analytics tools for product metrics
+
+⸻
+
+10. Signature projects and results
+
+You can feed this section to a model as “examples of impact”.
+	•	Foxie (Founder, iOS Engineer, Product Lead)
+	•	Built iOS app from scratch
+	•	Reached 500K+ users and top 10 in App Store in its category
+	•	Increased weekly downloads by 20 percent through growth experiments
+	•	Improved retention using data and A/B tests
+	•	Deloitte B2B Product (Senior Product Manager / iOS Dev)
+	•	Led cross functional team on a B2B platform
+	•	Grew to 40K+ business users
+	•	Generated $10M+ in revenue
+	•	Improved release speed and efficiency by 34 percent with better process
+	•	Ai 4u (Product Lead / AI Specialist)
+	•	Built AI tools that saved clients over $2M per year
+	•	Increased operational efficiency by 40 percent
+	•	Boosted customer experience scores by 25 percent
+	•	Helped leadership use AI to speed decisions by around 60 percent
+	•	AI Companion apps (AI Amigo, She GPT, localized AI apps)
+	•	Designed and shipped multiple AI companion apps for different audiences and languages
+	•	Managed prompts, flows, and UX for chat, voice, and daily support
+	•	Worked on monetization with subscriptions and paywalls
+	•	Sober AI and Accountability Buddie
+	•	Designed AI powered accountability and sobriety products
+	•	Focus on streaks, check ins, and emotional support
+	•	Built for both practical tools and supportive tone
