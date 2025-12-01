@@ -1,70 +1,71 @@
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Menu, X, Square, Circle, Triangle } from "lucide-react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#work" },
-    { name: "Apps", href: "#apps" },
+    { name: "Specs", href: "#specs" },
+    { name: "Blueprints", href: "#work" },
+    { name: "Systems", href: "#systems" },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-background text-foreground overflow-x-hidden selection:bg-white/20">
-      <header 
-        className={`fixed top-6 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "max-w-xl mx-auto" : "max-w-7xl mx-auto px-6"
-        }`}
-      >
-        <div className={`
-          flex items-center justify-between px-6 py-4 rounded-full border transition-all duration-300
-          ${scrolled 
-            ? "bg-black/50 backdrop-blur-xl border-white/10 shadow-2xl shadow-black/50" 
-            : "bg-transparent border-transparent"
-          }
-        `}>
+    <div className="min-h-screen flex flex-col font-mono bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
+      
+      {/* Technical Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-background/90 backdrop-blur-md">
+        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+          
           <Link href="/">
-            <span className="font-display font-bold text-lg tracking-tighter cursor-pointer mix-blend-difference">
-              EDISON.
-            </span>
+            <div className="flex items-center gap-2 cursor-pointer group">
+              <div className="w-8 h-8 border border-primary flex items-center justify-center bg-primary/10 group-hover:bg-primary group-hover:text-black transition-colors">
+                <span className="font-bold text-lg">E</span>
+              </div>
+              <div className="flex flex-col text-[10px] uppercase leading-none tracking-widest">
+                <span className="font-bold">Edison.CAD</span>
+                <span className="text-primary">System.v2.0</span>
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-8">
-            {navItems.map((item) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item, idx) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+                className="text-xs uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-2 group"
               >
+                <span className="text-[10px] text-muted-foreground group-hover:text-primary">0{idx + 1}</span>
                 {item.name}
               </a>
             ))}
+            <div className="h-4 w-[1px] bg-white/20 mx-2"></div>
             <a 
-              href="#contact"
-              className="text-sm font-medium bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90 transition-colors"
+              href="#status"
+              className="text-xs uppercase tracking-widest text-primary animate-pulse"
             >
-              Contact
+              ● Online
             </a>
           </nav>
 
           {/* Mobile Nav Toggle */}
           <button
-            className="md:hidden p-1 text-foreground"
+            className="md:hidden p-2 text-foreground border border-white/10"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
+        </div>
+        
+        {/* Measurement Markers */}
+        <div className="absolute bottom-0 left-0 w-full flex justify-between px-2 opacity-20 pointer-events-none">
+           {[...Array(20)].map((_, i) => (
+             <div key={i} className="h-1 w-[1px] bg-white"></div>
+           ))}
         </div>
       </header>
 
@@ -72,46 +73,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-4 z-40 bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 md:hidden flex flex-col justify-center items-center"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 20 }}
+            className="fixed inset-0 z-40 bg-background border-l border-white/10 pt-20 px-6 md:hidden"
           >
-             <button
-              className="absolute top-6 right-6 p-2 text-foreground/50 hover:text-foreground"
-              onClick={() => setIsOpen(false)}
-            >
-              <X size={24} />
-            </button>
-            <nav className="flex flex-col gap-8 text-center">
-              {navItems.map((item) => (
+            <div className="flex flex-col gap-6">
+              {navItems.map((item, idx) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-3xl font-display font-bold hover:text-white/50 transition-colors"
+                  className="text-2xl uppercase font-bold hover:text-primary transition-colors border-b border-white/5 pb-4 flex justify-between items-center"
                 >
                   {item.name}
+                  <span className="text-xs text-muted-foreground">0{idx + 1}</span>
                 </a>
               ))}
-               <a 
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="text-3xl font-display font-bold hover:text-white/50 transition-colors"
-              >
-                Contact
-              </a>
-            </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow pt-16 relative">
+        {/* Background Grid Overlay */}
+        <div className="absolute inset-0 pointer-events-none blueprint-grid opacity-30 fixed"></div>
+        {children}
+      </main>
 
-      <footer className="py-12 mt-20 border-t border-white/5">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground text-sm">
-          <p>© {new Date().getFullYear()} Edison Espinosa.</p>
-          <p className="font-mono">Architecting Intelligence.</p>
+      <footer className="border-t border-white/10 bg-background relative z-10">
+        <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-muted-foreground">
+          <div className="flex gap-4">
+            <span>Fig. 1.0 - Portfolio</span>
+            <span>Scale: 1:1</span>
+          </div>
+          <div className="flex gap-4">
+             <span>© {new Date().getFullYear()} Edison Espinosa</span>
+             <span className="text-primary">Approved for Construction</span>
+          </div>
         </div>
       </footer>
     </div>
