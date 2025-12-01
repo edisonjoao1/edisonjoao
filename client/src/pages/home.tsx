@@ -1,56 +1,68 @@
 import Layout from "@/components/layout";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 import heroBg from "@assets/generated_images/abstract_liquid_chrome_metal_flowing_in_dark_void_with_iridescent_reflections.png";
 
 export default function Home() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 400]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+
   return (
     <Layout>
-      {/* HERO - Full Impact */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-        <div 
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
-        
-        <div className="container mx-auto px-6 relative z-10 text-white text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <div className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-mono uppercase tracking-widest mb-8 text-white/60">
-              Senior Product Manager • AI Specialist • iOS Engineer
-            </div>
-            
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black leading-[0.85] tracking-tighter mb-8">
-              EDISON
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-                ESPINOSA
-              </span>
-            </h1>
-          </motion.div>
+      {/* HERO SECTION - VISIONARY BUILDER */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
+        <motion.div 
+          style={{ y, opacity }}
+          className="absolute inset-0 z-0"
+        >
+          <img 
+            src={heroBg} 
+            alt="Liquid Chrome Abstract" 
+            className="w-full h-full object-cover opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="mt-12 max-w-xl mx-auto space-y-8"
-          >
-            <p className="text-lg md:text-xl font-medium leading-relaxed text-white/80">
-              Architecting systems that bridge AI, mobile, and reality.
-              <br/>
-              <span className="text-amber-400">Tested by loss. Driven by outcome.</span>
-            </p>
-          </motion.div>
+        <div className="container relative z-10 px-6 pt-32 md:pt-0">
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h1 className="text-[15vw] leading-[0.8] font-display font-black tracking-tighter mix-blend-overlay select-none text-white">
+                VISIONARY
+              </h1>
+              <h1 className="text-[15vw] leading-[0.8] font-display font-black tracking-tighter text-transparent select-none opacity-80" style={{ WebkitTextStroke: "1px white" }}>
+                BUILDER
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="mt-12 max-w-xl mx-auto space-y-8"
+            >
+              <p className="text-lg md:text-xl font-medium leading-relaxed text-white">
+                Architecting systems that bridge AI, mobile, and reality.
+                <br/>
+                <span className="text-amber-400">Tested by loss. Driven by outcome.</span>
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/work" 
+                  className="group px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-wider hover:bg-white/90 transition-all flex items-center justify-center gap-2"
+                >
+                  View Selected Work <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
