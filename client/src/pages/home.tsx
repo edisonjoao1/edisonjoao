@@ -214,44 +214,9 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* MANIFESTO - Bold & Dramatic */}
+      {/* CAPABILITIES - Clean Iconic Section */}
       <section id="vision" className="relative z-10 overflow-hidden">
-        {/* Giant Quote Section */}
-        <div className="min-h-screen flex items-center justify-center bg-zinc-950 text-white relative py-32">
-          <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-            <div className="absolute top-1/3 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-[100px]"></div>
-          </div>
-          
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="max-w-5xl mx-auto text-center"
-            >
-              <div className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-mono uppercase tracking-widest mb-12 text-white/60">
-                The Philosophy
-              </div>
-              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight">
-                I lost <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">$3M</span>.
-              </h2>
-              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight mt-2">
-                I'm rebuilding with
-              </h2>
-              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight mt-2">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">absolute intent</span>.
-              </h2>
-              <p className="text-xl md:text-2xl text-white/50 mt-12 max-w-2xl mx-auto font-light">
-                Every product must solve a problem, create value, or build a legacy.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* CAPABILITIES - Clean Iconic Section */}
+        {/* CAPABILITIES */}
         <div className="bg-white text-black relative overflow-hidden py-32">
           <div className="container mx-auto px-6">
             {/* Section Header */}
@@ -851,6 +816,43 @@ export default function Home() {
                 <p className="text-xs opacity-60 mt-2">View all on App Store</p>
               </div>
             </motion.a>
+          </div>
+        </div>
+      </section>
+
+      {/* PHILOSOPHY - The WHY (Story Climax) */}
+      <section className="relative overflow-hidden">
+        <div className="min-h-[70vh] flex items-center justify-center bg-zinc-950 text-white relative py-32">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            <div className="absolute top-1/3 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
+            <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-purple-500/10 rounded-full blur-[100px]"></div>
+          </div>
+          
+          <div className="container mx-auto px-6 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="max-w-5xl mx-auto text-center"
+            >
+              <div className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-mono uppercase tracking-widest mb-12 text-white/60">
+                The Philosophy
+              </div>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight">
+                I lost <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">$3M</span>.
+              </h2>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight mt-2">
+                I'm rebuilding with
+              </h2>
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-display font-black leading-[0.9] tracking-tight mt-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">absolute intent</span>.
+              </h2>
+              <p className="text-xl md:text-2xl text-white/50 mt-12 max-w-2xl mx-auto font-light">
+                Every product must solve a problem, create value, or build a legacy.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
