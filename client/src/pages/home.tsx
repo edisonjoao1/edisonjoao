@@ -33,13 +33,13 @@ import sphereIcon from "@assets/generated_images/abstract_colorful_sphere_icon_f
 
 // Data
 const apps = [
-  { name: "Foxie", category: "Social", icon: foxIcon, color: "from-orange-500 to-red-500" },
-  { name: "AI Amigo", category: "Companion", icon: aiIcon, color: "from-blue-500 to-purple-500" },
-  { name: "Sober AI", category: "Health", icon: lotusIcon, color: "from-emerald-500 to-teal-500" },
-  { name: "SheGPT", category: "Assistant", icon: swirlIcon, color: "from-pink-500 to-rose-500" },
-  { name: "Accountability", category: "Productivity", icon: robotIcon, color: "from-amber-500 to-yellow-500" },
-  { name: "Ai Image", category: "Creative", icon: paintIcon, color: "from-indigo-500 to-violet-500" },
-  { name: "Global AI", category: "Intelligence", icon: sphereIcon, color: "from-cyan-500 to-blue-500" },
+  { name: "Foxie", category: "Social", icon: foxIcon, color: "from-cyan-400 to-purple-500", url: "https://foxie.cool" },
+  { name: "AI Amigo", category: "Companion", icon: aiIcon, color: "from-blue-500 to-purple-500", url: null },
+  { name: "Sober AI", category: "Health", icon: lotusIcon, color: "from-emerald-500 to-teal-500", url: null },
+  { name: "SheGPT", category: "Assistant", icon: swirlIcon, color: "from-pink-500 to-rose-500", url: null },
+  { name: "Accountability", category: "Productivity", icon: robotIcon, color: "from-amber-500 to-yellow-500", url: null },
+  { name: "Ai Image", category: "Creative", icon: paintIcon, color: "from-indigo-500 to-violet-500", url: null },
+  { name: "Global AI", category: "Intelligence", icon: sphereIcon, color: "from-cyan-500 to-blue-500", url: null },
 ];
 
 // Form Schema
@@ -295,7 +295,7 @@ export default function Home() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  href="https://appgallery.io/edison" 
+                  href={app.url || "https://appgallery.io/edison"} 
                   target="_blank"
                   key={app.name}
                   className="aspect-square bg-white p-8 flex flex-col justify-between hover:bg-secondary/50 transition-colors group relative overflow-hidden"
