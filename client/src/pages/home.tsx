@@ -229,33 +229,129 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Expertise Grid */}
-        <div className="bg-white py-24">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-black/10">
+        {/* CAPABILITIES ARENA - Iconic Section */}
+        <div className="min-h-screen bg-black text-white relative overflow-hidden py-32">
+          {/* Ambient Background */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]"></div>
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[150px]"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/5 rounded-full blur-[200px]"></div>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            {/* Section Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <span className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-mono uppercase tracking-widest text-white/60">
+                Core Capabilities
+              </span>
+            </motion.div>
+
+            {/* Giant Typography Grid */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
               {[
-                { icon: Brain, title: "AI Product", desc: "Building intelligent systems that understand and serve real human needs.", gradient: "from-blue-500 to-indigo-600" },
-                { icon: Smartphone, title: "iOS at Scale", desc: "Engineering apps that reach millions with flawless user experience.", gradient: "from-purple-500 to-pink-500" },
-                { icon: Zap, title: "System Impact", desc: "Creating compounding value through strategic product architecture.", gradient: "from-amber-500 to-orange-500" },
-                { icon: PenTool, title: "Full Range", desc: "From CAD drafting to Swift code. No creative limits.", gradient: "from-emerald-500 to-teal-500" },
+                { 
+                  keyword: "AI", 
+                  title: "Artificial Intelligence", 
+                  desc: "Building intelligent systems that understand context, learn from data, and serve real human needs at scale.",
+                  gradient: "from-blue-400 to-cyan-400",
+                  icon: Brain
+                },
+                { 
+                  keyword: "SCALE", 
+                  title: "iOS Engineering", 
+                  desc: "Engineering apps that reach millions with flawless UX. From Swift to App Store optimization.",
+                  gradient: "from-purple-400 to-pink-400",
+                  icon: Smartphone
+                },
+                { 
+                  keyword: "SYSTEM", 
+                  title: "Product Architecture", 
+                  desc: "Creating compounding value through strategic thinking. Every input designed for maximum output.",
+                  gradient: "from-amber-400 to-orange-400",
+                  icon: Zap
+                },
+                { 
+                  keyword: "RANGE", 
+                  title: "Full Stack Builder", 
+                  desc: "From CAD drafting to Swift code. Design to deployment. No creative or technical limits.",
+                  gradient: "from-emerald-400 to-teal-400",
+                  icon: PenTool
+                },
               ].map((item, idx) => (
                 <motion.div 
                   key={idx} 
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group p-10 border-r border-b border-black/10 last:border-r-0 hover:bg-zinc-50 transition-all duration-500 relative overflow-hidden"
+                  transition={{ duration: 0.8, delay: idx * 0.15 }}
+                  className="group relative"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                    <item.icon className="w-7 h-7 text-white" />
+                  {/* Giant Outlined Keyword */}
+                  <div className="absolute -top-8 md:-top-12 left-0 overflow-hidden pointer-events-none">
+                    <span 
+                      className="text-[20vw] md:text-[12vw] font-display font-black leading-none tracking-tighter select-none opacity-10 group-hover:opacity-20 transition-opacity duration-700"
+                      style={{ 
+                        WebkitTextStroke: "1px rgba(255,255,255,0.3)",
+                        WebkitTextFillColor: "transparent"
+                      }}
+                    >
+                      {item.keyword}
+                    </span>
                   </div>
-                  <h3 className="text-2xl font-display font-bold mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+
+                  {/* Content Card */}
+                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 hover:bg-white/10 hover:border-white/20 transition-all duration-500 mt-16 md:mt-20">
+                    {/* Gradient Glow on Hover */}
+                    <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`}></div>
+                    
+                    <div className="relative z-10">
+                      {/* Icon */}
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                        <item.icon className="w-8 h-8 text-white" />
+                      </div>
+
+                      {/* Title */}
+                      <h3 className={`text-2xl md:text-3xl font-display font-bold mb-4 bg-gradient-to-r ${item.gradient} text-transparent bg-clip-text`}>
+                        {item.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-white/60 leading-relaxed text-lg">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
+
+            {/* Bottom Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            >
+              {[
+                { value: "7+", label: "Years Building" },
+                { value: "10+", label: "Apps Shipped" },
+                { value: "500K+", label: "Users Reached" },
+                { value: "$2M+", label: "Value Created" },
+              ].map((stat, idx) => (
+                <div key={idx} className="group">
+                  <div className="text-4xl md:text-5xl font-display font-black mb-2 bg-gradient-to-r from-white to-white/60 text-transparent bg-clip-text group-hover:from-indigo-400 group-hover:to-purple-400 transition-all duration-500">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs uppercase tracking-widest text-white/40">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
