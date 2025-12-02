@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Accountability Buddie & Apps by Edison João</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; color: #333; }
+        h1, h2 { color: #000; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .faq, .contact, .troubleshooting, .privacy { margin-bottom: 30px; }
+        .faq h3 { margin-bottom: 5px; }
+        .faq p { margin-top: 0; }
+        footer { font-size: 0.9em; color: #888; text-align: center; margin-top: 40px; }
+        a { color: #0056b3; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Support Center</h1>
+        <p>Support for <strong>Accountability Buddie</strong> and any application developed by <strong>Edison João</strong>.</p>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Q: Is my data secure?</h3>
+            <p>A: We do not collect personal data from users. We only have access to standard app store download metrics, such as the number of downloads.</p>
+        </section>
+
+        <section class="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <p>If you're experiencing issues, please follow these steps:</p>
+            <ul>
+                <li>Ensure you have the latest version of the app installed.</li>
+                <li>Restart the app.</li>
+                <li>Check your internet connection.</li>
+                <li>Clear the app cache (<em>Settings &gt; Apps &gt; [App Name] &gt; Clear Cache</em>).</li>
+                <li>If problems persist, contact our support team.</li>
+            </ul>
+        </section>
+
+        <section class="privacy" id="privacy">
+            <h2>Privacy Policy</h2>
+            <h3>1. Introduction</h3>
+            <p>This privacy policy explains how Accountability Buddie and applications developed by Edison João handle user information.</p>
+
+            <h3>2. Information We Collect</h3>
+            <p>We do not collect any personal information from users. The only data available to us is the standard anonymous app usage data provided by the app stores (e.g., number of downloads).</p>
+
+            <h3>3. How We Use Information</h3>
+            <p>We use app store data solely to understand overall app performance and to improve user experience.</p>
+
+            <h3>4. Data Security</h3>
+            <p>Since we do not collect personal data, there are no specific user data security measures in place.</p>
+
+            <h3>5. Your Rights</h3>
+            <p>No personal data is collected or stored, therefore no action regarding personal data management is necessary.</p>
+
+            <h3>6. Changes to This Policy</h3>
+            <p>We may occasionally update this policy. Updates will be communicated on this page.</p>
+
+            <h3>7. Contact Us</h3>
+            <p>If you have questions regarding this privacy policy, contact us at: <a href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a></p>
+        </section>
+
+        <section class="plaid-privacy">
+            <h2>Privacy Policy for Plaid Link</h2>
+            <p>For applications that integrate with Plaid for secure financial data connectivity, we maintain a dedicated security and privacy policy.</p>
+            <p><strong>Plaid Security & Privacy Policy:</strong> <a href="plaid-security.html" target="_blank">View Plaid Security Policy</a></p>
+            <p><strong>Direct Link:</strong> <a href="https://edisonjoao1.github.io/edisonjoao/plaid-security.html" target="_blank">https://edisonjoao1.github.io/edisonjoao/plaid-security.html</a></p>
+            <p>This policy covers how we handle user information in applications where Plaid Link is deployed, ensuring transparency and compliance with data protection standards.</p>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>If you couldn't find your answer, please reach out:</p>
+            <ul>
+                <li>Email: <a href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a></li>
+                <li>Phone: <a href="tel:+12393310978">+1 (239) 331-0978</a></li>
+                <li>Hours: Monday to Friday, 9 AM - 5 PM EST</li>
+            </ul>
+        </section>
+
+        <footer>
+            &copy; 2025 Edison João. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
