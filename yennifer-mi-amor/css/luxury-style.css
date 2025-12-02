@@ -23,6 +23,14 @@
     --dusty-rose: #D4A5A5;
     --charcoal: #3A3A3A;
 
+    /* Seductive Darker Tones */
+    --midnight-black: #0D0D0D;
+    --deep-burgundy: #6B1F3F;
+    --sultry-red: #8B2635;
+    --dark-rose: #9C4055;
+    --shadow-plum: #4A2545;
+    --noir-velvet: #1F1B24;
+
     /* Typography */
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -629,14 +637,17 @@ section {
     position: absolute;
     top: 20px;
     left: 20px;
-    background-color: var(--or-rose);
-    color: var(--blanc-pur);
+    background: linear-gradient(135deg, var(--deep-burgundy) 0%, var(--sultry-red) 100%);
+    color: var(--pearl-white);
     font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 8px 16px;
+    padding: 10px 20px;
     z-index: 1;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(107, 31, 63, 0.4);
+    animation: seductivePulse 3s ease-in-out infinite;
 }
 
 .product-image-small {
@@ -1186,4 +1197,307 @@ section {
 .romantic-quote::after {
     bottom: -40px;
     right: 0;
+}
+
+/* ========================================
+   SEDUCTIVE & PROVOCATIVE ELEMENTS
+   ======================================== */
+
+/* Sultry dark overlay effect */
+.seductive-overlay {
+    position: relative;
+}
+
+.seductive-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(107, 31, 63, 0.1) 0%,
+        rgba(74, 37, 69, 0.15) 50%,
+        rgba(13, 13, 13, 0.2) 100%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+.seductive-overlay:hover::before {
+    opacity: 1;
+}
+
+/* Provocative glow effect */
+.provocative-glow {
+    box-shadow:
+        0 0 30px rgba(139, 38, 53, 0.3),
+        0 0 60px rgba(107, 31, 63, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+    transition: box-shadow var(--transition-slow);
+}
+
+.provocative-glow:hover {
+    box-shadow:
+        0 0 40px rgba(139, 38, 53, 0.5),
+        0 0 80px rgba(107, 31, 63, 0.4),
+        inset 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Pulse effect for attention-grabbing */
+@keyframes seductivePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(139, 38, 53, 0.4);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 20px 10px rgba(139, 38, 53, 0);
+    }
+}
+
+.pulse-seductive {
+    animation: seductivePulse 3s ease-in-out infinite;
+}
+
+/* Reveal effect on hover */
+.reveal-on-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-on-hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(13, 13, 13, 0.8) 100%
+    );
+    opacity: 1;
+    transition: opacity var(--transition-slow);
+}
+
+.reveal-on-hover:hover::after {
+    opacity: 0;
+}
+
+/* Sultry text effect */
+.sultry-text {
+    color: var(--deep-burgundy);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 8px rgba(107, 31, 63, 0.3);
+    transition: all var(--transition-smooth);
+}
+
+.sultry-text:hover {
+    color: var(--sultry-red);
+    text-shadow: 0 4px 12px rgba(139, 38, 53, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Midnight elegance background */
+.midnight-elegance {
+    background: linear-gradient(
+        135deg,
+        var(--midnight-black) 0%,
+        var(--noir-velvet) 50%,
+        var(--shadow-plum) 100%
+    );
+    color: var(--pearl-white);
+}
+
+/* Seductive border animation */
+@keyframes seductiveBorder {
+    0%, 100% {
+        border-color: var(--dusty-rose);
+        box-shadow: 0 0 10px rgba(212, 165, 165, 0.3);
+    }
+    50% {
+        border-color: var(--sultry-red);
+        box-shadow: 0 0 20px rgba(139, 38, 53, 0.5);
+    }
+}
+
+.seductive-border {
+    border: 2px solid var(--dusty-rose);
+    animation: seductiveBorder 4s ease-in-out infinite;
+}
+
+/* Intense hover lift */
+.intense-hover {
+    transition: all var(--transition-smooth);
+}
+
+.intense-hover:hover {
+    transform: translateY(-16px) scale(1.02);
+    box-shadow:
+        0 20px 60px rgba(107, 31, 63, 0.3),
+        0 0 40px rgba(139, 38, 53, 0.2);
+}
+
+/* Smoke effect overlay */
+@keyframes smokeFloat {
+    0% {
+        background-position: 0% 0%;
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        background-position: 100% 100%;
+        opacity: 0.1;
+    }
+}
+
+.smoke-effect {
+    position: relative;
+}
+
+.smoke-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(74, 37, 69, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(107, 31, 63, 0.15) 0%, transparent 50%);
+    background-size: 200% 200%;
+    animation: smokeFloat 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Desire button - extra provocative */
+.btn-desire {
+    background: linear-gradient(135deg, var(--deep-burgundy) 0%, var(--sultry-red) 100%);
+    color: var(--pearl-white);
+    padding: 22px 64px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border-radius: var(--radius-large);
+    border: none;
+    box-shadow:
+        0 8px 32px rgba(107, 31, 63, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-smooth);
+    cursor: pointer;
+}
+
+.btn-desire::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-desire:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-desire:hover {
+    background: linear-gradient(135deg, var(--sultry-red) 0%, var(--dark-rose) 100%);
+    transform: translateY(-6px) scale(1.05);
+    box-shadow:
+        0 16px 48px rgba(139, 38, 53, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Silhouette gradient text */
+.silhouette-text {
+    background: linear-gradient(
+        135deg,
+        var(--dusty-rose) 0%,
+        var(--sultry-red) 50%,
+        var(--deep-burgundy) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* Intimate spacing effect */
+.intimate-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(107, 31, 63, 0.1);
+    transition: all var(--transition-slow);
+}
+
+.intimate-card:hover {
+    background: rgba(31, 27, 36, 0.95);
+    border-color: var(--sultry-red);
+    color: var(--pearl-white);
+}
+
+.intimate-card:hover .product-name,
+.intimate-card:hover .product-price {
+    color: var(--pearl-white);
+}
+
+/* Candlelight flicker effect */
+@keyframes candleFlicker {
+    0%, 100% { opacity: 0.9; }
+    25% { opacity: 1; }
+    50% { opacity: 0.85; }
+    75% { opacity: 0.95; }
+}
+
+.candlelight {
+    animation: candleFlicker 4s ease-in-out infinite;
+}
+
+/* Velvet texture overlay */
+.velvet-texture {
+    position: relative;
+}
+
+.velvet-texture::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(107, 31, 63, 0.02) 2px,
+            rgba(107, 31, 63, 0.02) 4px
+        );
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Bold provocative text */
+.provocative-text {
+    font-family: var(--font-heading);
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--deep-burgundy);
+    font-style: italic;
+    letter-spacing: 0.02em;
 }
