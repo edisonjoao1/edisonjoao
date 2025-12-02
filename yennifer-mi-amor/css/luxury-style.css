@@ -1501,3 +1501,231 @@ section {
     font-style: italic;
     letter-spacing: 0.02em;
 }
+
+/* ========================================
+   MASTER PRODUCT PHOTOGRAPHY
+   ======================================== */
+
+/* Real product images */
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow), filter var(--transition-slow);
+    border-radius: var(--radius-soft);
+}
+
+/* Ken Burns effect on hover */
+.master-product:hover .product-img {
+    transform: scale(1.12);
+    filter: brightness(1.1) contrast(1.05) saturate(1.1);
+}
+
+/* Product overlay */
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(13, 13, 13, 0.7) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity var(--transition-slow);
+    border-radius: var(--radius-soft);
+    pointer-events: none;
+}
+
+.master-product:hover .product-overlay {
+    opacity: 0.3;
+}
+
+.product-overlay .image-label {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--pearl-white);
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+    transform: translateY(0);
+    transition: transform var(--transition-slow);
+}
+
+.master-product:hover .product-overlay .image-label {
+    transform: translateY(-10px);
+}
+
+/* Image treatments */
+.product-img {
+    filter: grayscale(0) contrast(1.05) saturate(0.95);
+}
+
+/* Sophisticated vignette */
+.product-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+    border-radius: var(--radius-soft);
+    opacity: 0.6;
+    transition: opacity var(--transition-slow);
+}
+
+.master-product:hover .product-image::before {
+    opacity: 0.3;
+}
+
+/* High-end glow on images */
+.master-product .product-image {
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.master-product:hover .product-image {
+    box-shadow:
+        0 20px 60px rgba(107, 31, 63, 0.35),
+        0 8px 24px rgba(0, 0, 0, 0.2),
+        0 0 60px rgba(139, 38, 53, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Aspect ratio control */
+.product-image {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--noir-velvet);
+}
+
+/* Loading state */
+.product-img[loading="lazy"] {
+    background: linear-gradient(
+        135deg,
+        var(--creme-luxe) 0%,
+        var(--champagne) 100%
+    );
+}
+
+/* Image focus effect */
+@keyframes imageFocus {
+    0%, 100% {
+        filter: blur(0px) brightness(1);
+    }
+    50% {
+        filter: blur(0.5px) brightness(1.05);
+    }
+}
+
+.master-product:hover .product-img {
+    animation: imageFocus 4s ease-in-out infinite;
+}
+
+/* Cinematic letterbox on hover */
+.master-product::before,
+.master-product::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    transition: height var(--transition-slow);
+    pointer-events: none;
+}
+
+.master-product::before {
+    top: 0;
+}
+
+.master-product::after {
+    bottom: 0;
+}
+
+.master-product:hover::before,
+.master-product:hover::after {
+    height: 20px;
+}
+
+/* Premium details reveal */
+.product-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-sm);
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(13, 13, 13, 0.95) 40%
+    );
+    transform: translateY(100%);
+    transition: transform var(--transition-slow);
+    z-index: 3;
+}
+
+.master-product:hover .product-details {
+    transform: translateY(0);
+}
+
+/* Quick view button */
+.quick-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    transition: all var(--transition-smooth);
+}
+
+.master-product:hover .quick-view {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.quick-view-btn {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: var(--deep-burgundy);
+    padding: 16px 40px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 2px solid var(--deep-burgundy);
+    border-radius: var(--radius-large);
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+}
+
+.quick-view-btn:hover {
+    background: var(--deep-burgundy);
+    color: var(--pearl-white);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(107, 31, 63, 0.4);
+}
+
+/* Image quality enhancement */
+.product-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
