@@ -9,11 +9,17 @@
     <!-- Luxury Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/luxury-style.css">
 </head>
 <body>
+    <!-- Floating Petals -->
+    <div class="floating-petal"></div>
+    <div class="floating-petal"></div>
+    <div class="floating-petal"></div>
+    <div class="floating-petal"></div>
+    <div class="floating-petal"></div>
 
     <!-- Navigation -->
     <nav class="main-nav" id="mainNav">
@@ -42,57 +48,60 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero lace-overlay">
         <div class="hero-content">
-            <h1 class="hero-title fade-in">Donde la Elegancia<br>Encuentra su Voz</h1>
-            <p class="hero-subtitle fade-in-delay">Lencería de lujo diseñada y fabricada en Colombia</p>
-            <a href="#collection" class="btn-primary fade-in-delay-2">Descubrir la Colección</a>
+            <p class="script-accent fade-in" style="font-size: 28px; margin-bottom: 20px; opacity: 0.9;">Para la mujer que se atreve</p>
+            <h1 class="hero-title fade-in text-glow">Donde el Deseo<br>Encuentra su Forma</h1>
+            <p class="hero-subtitle fade-in-delay">Lencería íntima diseñada para celebrar cada curva,<br>cada suspiro, cada momento de confianza</p>
+            <a href="#collection" class="btn-primary fade-in-delay-2 shimmer">Descubre tu Esencia</a>
         </div>
         <div class="scroll-indicator">
-            <span class="scroll-text">Deslizar</span>
+            <span class="scroll-text">Explorar</span>
             <div class="scroll-line"></div>
         </div>
     </section>
 
     <!-- Featured Collection -->
-    <section class="featured-collection" id="collection">
+    <section class="featured-collection section-ornament" id="collection">
         <div class="container">
-            <h2 class="section-title">Última Colección</h2>
-            <p class="section-subtitle">Piezas que celebran la feminidad y el empoderamiento</p>
+            <p class="script-accent" style="text-align: center; font-size: 24px; margin-bottom: 12px;">Recién llegadas</p>
+            <h2 class="section-title ribbon-accent">Colección <span class="script-accent">Sensuelle</span></h2>
+            <p class="section-subtitle">Cada pieza susurra secretos de seda y encaje,<br>diseñada para hacer sentir, no solo lucir</p>
+            <div class="section-divider"></div>
 
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card pearl-glow">
                     <div class="product-image">
-                        <div class="product-image-placeholder" style="background: linear-gradient(135deg, #E8DCC8 0%, #D4AF7A 100%);">
-                            <span class="image-label">BUSTIER</span>
+                        <div class="product-image-placeholder breathe" style="background: linear-gradient(135deg, #F0E5D8 0%, #E8C5A8 100%);">
+                            <span class="image-label script-accent">Désir</span>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Bustier Noir</h3>
+                        <h3 class="product-name">Bustier <span class="script-accent">Velours</span></h3>
                         <p class="product-price">$450.000</p>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card pearl-glow">
                     <div class="product-image">
-                        <div class="product-image-placeholder" style="background: linear-gradient(135deg, #F5F3F0 0%, #E8D4D1 100%);">
-                            <span class="image-label">LENCERÍA</span>
+                        <div class="product-image-placeholder breathe" style="background: linear-gradient(135deg, #F9E8E8 0%, #F5E6E8 100%); animation-delay: 0.5s;">
+                            <span class="image-label script-accent">Rêverie</span>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Set Champagne</h3>
+                        <h3 class="product-name">Set <span class="script-accent">Rose Poudré</span></h3>
                         <p class="product-price">$520.000</p>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card pearl-glow">
                     <div class="product-image">
-                        <div class="product-image-placeholder" style="background: linear-gradient(135deg, #2B2B2B 0%, #0A0A0A 100%);">
-                            <span class="image-label" style="color: #F5F3F0;">LÁTEX</span>
+                        <div class="product-image-placeholder breathe" style="background: linear-gradient(135deg, #3A3A3A 0%, #1A1A1A 100%); animation-delay: 1s;">
+                            <span class="image-label script-accent" style="color: #F5E6E8;">Nocturne</span>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Set Látex Couture</h3>
+                        <h3 class="product-name">Set <span class="script-accent">Midnight</span></h3>
                         <p class="product-price">$680.000</p>
                     </div>
                 </div>
@@ -105,28 +114,36 @@
     </section>
 
     <!-- Brand Story -->
-    <section class="brand-story">
+    <section class="brand-story lace-overlay">
         <div class="container">
-            <div class="story-grid">
+            <div class="section-divider"></div>
+            <p class="romantic-quote">
+                La verdadera sensualidad no se encuentra en lo que se revela,<br>
+                sino en la confianza de quien lo lleva
+            </p>
+            <div class="section-divider"></div>
+
+            <div class="story-grid section-ornament">
                 <div class="story-content">
-                    <span class="story-label">Nuestra Historia</span>
-                    <h2 class="story-title">Artesanía Colombiana,<br>Elegancia Atemporal</h2>
+                    <span class="story-label script-accent" style="font-size: 18px;">Nuestra Esencia</span>
+                    <h2 class="story-title">Artesanía Colombiana,<br><span class="script-accent">Alma Femenina</span></h2>
                     <p class="story-text">
-                        Cada pieza es cuidadosamente diseñada y confeccionada en Bogotá, Colombia,
-                        fusionando técnicas artesanales tradicionales con diseño contemporáneo.
-                        Nuestra misión es crear lencería que no solo se vea hermosa, sino que
-                        haga sentir poderosa a quien la lleva.
+                        En el corazón de Bogotá, cada pieza nace de manos expertas que entienden
+                        el lenguaje silencioso de las telas, el susurro de la seda contra la piel,
+                        la caricia del encaje. No creamos simplemente lencería —
+                        <em>creamos momentos de intimidad convertidos en arte</em>.
                     </p>
                     <p class="story-text">
-                        Trabajamos con materiales de la más alta calidad, seleccionados
-                        meticulosamente para garantizar comodidad, durabilidad y un ajuste perfecto.
-                        Cada costura cuenta una historia de dedicación y pasión por el arte de la lencería.
+                        Cada puntada lleva consigo siglos de tradición colombiana, fusionada con
+                        diseño contemporáneo que abraza y celebra la forma femenina. Porque sabemos
+                        que la verdadera elegancia no grita —
+                        <em class="script-accent" style="color: var(--dusty-rose);">seduce con susurros</em>.
                     </p>
-                    <a href="#" class="btn-text">Conocer Más →</a>
+                    <a href="#" class="btn-text delicate-underline">Descubre Nuestra Historia →</a>
                 </div>
                 <div class="story-image">
-                    <div class="story-image-placeholder">
-                        <span class="image-watermark">YENNIFER<br>NUÑEZ</span>
+                    <div class="story-image-placeholder pearl-glow">
+                        <span class="image-watermark script-accent" style="font-size: 64px;">Yennifer<br>Nuñez</span>
                     </div>
                 </div>
             </div>
@@ -134,9 +151,12 @@
     </section>
 
     <!-- Best Sellers -->
-    <section class="best-sellers">
+    <section class="best-sellers section-ornament">
         <div class="container">
-            <h2 class="section-title">Más Deseados</h2>
+            <p class="script-accent" style="text-align: center; font-size: 24px; margin-bottom: 12px;">Los favoritos</p>
+            <h2 class="section-title ribbon-accent">Piezas <span class="script-accent">Intemporales</span></h2>
+            <p class="section-subtitle" style="margin-bottom: var(--spacing-lg);">Las que siempre regresan a tu mente</p>
+            <div class="section-divider"></div>
 
             <div class="product-grid-4">
                 <div class="product-card-small">
@@ -193,11 +213,12 @@
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
-                <h2 class="newsletter-title">Únete a Nuestro Círculo Íntimo</h2>
-                <p class="newsletter-text">Recibe acceso exclusivo a nuevas colecciones y ofertas especiales</p>
+                <p class="script-accent" style="font-size: 24px; margin-bottom: 12px; opacity: 0.9;">Te invitamos</p>
+                <h2 class="newsletter-title">Únete a Nuestro <span class="script-accent">Círculo Privé</span></h2>
+                <p class="newsletter-text">Acceso anticipado a nuevas colecciones, secretos de estilo<br>y momentos de inspiración pensados solo para ti</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Tu correo electrónico" class="newsletter-input" required>
-                    <button type="submit" class="btn-primary">Suscribirse</button>
+                    <input type="email" placeholder="tu@correo.com" class="newsletter-input" required>
+                    <button type="submit" class="btn-primary">Ser Parte</button>
                 </form>
             </div>
         </div>
@@ -248,10 +269,10 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="copyright">© 2025 Yennifer Nuñez. Diseñado y fabricado en Bogotá, Colombia.</p>
+                <p class="copyright">© 2025 Yennifer Nuñez. <span class="script-accent">Diseñado con amor</span> en Bogotá, Colombia.</p>
                 <div class="footer-bottom-links">
-                    <a href="#">Términos</a>
-                    <a href="#">Privacidad</a>
+                    <a href="#" class="delicate-underline">Términos</a>
+                    <a href="#" class="delicate-underline">Privacidad</a>
                 </div>
             </div>
         </div>

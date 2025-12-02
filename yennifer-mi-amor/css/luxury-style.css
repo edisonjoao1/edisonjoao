@@ -7,32 +7,49 @@
    ROOT VARIABLES - COLOR PALETTE
    ======================================== */
 :root {
-    /* Primary Colors */
-    --noir-profond: #0A0A0A;
+    /* Primary Colors - Softer & More Feminine */
+    --noir-profond: #1A1A1A;
     --blanc-pur: #FEFEFE;
-    --creme-luxe: #F5F3F0;
+    --creme-luxe: #FAF8F5;
+    --pearl-white: #FFF9F5;
 
-    /* Accent Colors */
+    /* Feminine Accent Colors */
     --or-rose: #D4AF7A;
-    --champagne: #E8DCC8;
-    --charcoal: #2B2B2B;
-    --blush-subtil: #E8D4D1;
+    --rose-gold-light: #E8C5A8;
+    --champagne: #F0E5D8;
+    --blush-rose: #F5E6E8;
+    --soft-pink: #F9E8E8;
+    --lavender-mist: #EFE9F4;
+    --dusty-rose: #D4A5A5;
+    --charcoal: #3A3A3A;
 
     /* Typography */
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
     --font-accent: 'Playfair Display', serif;
+    --font-script: 'Dancing Script', cursive;
 
-    /* Spacing */
-    --spacing-xs: 20px;
-    --spacing-sm: 40px;
-    --spacing-md: 60px;
-    --spacing-lg: 80px;
-    --spacing-xl: 120px;
+    /* Spacing - Even More Generous */
+    --spacing-xs: 24px;
+    --spacing-sm: 48px;
+    --spacing-md: 72px;
+    --spacing-lg: 96px;
+    --spacing-xl: 144px;
 
-    /* Transitions */
-    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Transitions - Softer & Slower */
+    --transition-smooth: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-slow: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-gentle: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* Shadows - Soft & Delicate */
+    --shadow-soft: 0 8px 32px rgba(212, 175, 122, 0.08);
+    --shadow-delicate: 0 4px 16px rgba(212, 175, 122, 0.12);
+    --shadow-dreamy: 0 12px 48px rgba(244, 213, 213, 0.15);
+
+    /* Border Radius - Elegant Curves */
+    --radius-soft: 12px;
+    --radius-medium: 20px;
+    --radius-large: 32px;
 }
 
 /* ========================================
@@ -52,9 +69,10 @@ html {
 body {
     font-family: var(--font-body);
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.9;
     color: var(--noir-profond);
-    background-color: var(--blanc-pur);
+    background: linear-gradient(to bottom, var(--pearl-white) 0%, var(--blanc-pur) 50%, var(--blush-rose) 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
 }
 
@@ -238,39 +256,62 @@ p {
    ======================================== */
 .btn-primary {
     display: inline-block;
-    background-color: var(--or-rose);
+    background: linear-gradient(135deg, var(--or-rose) 0%, var(--rose-gold-light) 100%);
     color: var(--blanc-pur);
-    padding: 18px 48px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    padding: 20px 56px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    border-radius: 0;
+    border-radius: var(--radius-large);
     transition: all var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    background-color: var(--noir-profond);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--dusty-rose) 0%, var(--or-rose) 100%);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-dreamy);
 }
 
 .btn-secondary {
     display: inline-block;
     background-color: transparent;
-    color: var(--noir-profond);
-    border: 1px solid var(--noir-profond);
-    padding: 18px 48px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    color: var(--dusty-rose);
+    border: 1.5px solid var(--dusty-rose);
+    padding: 20px 56px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
+    border-radius: var(--radius-large);
     transition: all var(--transition-smooth);
+    box-shadow: var(--shadow-delicate);
 }
 
 .btn-secondary:hover {
-    background-color: var(--noir-profond);
-    color: var(--blanc-pur);
+    background: linear-gradient(135deg, var(--blush-rose) 0%, var(--soft-pink) 100%);
+    color: var(--dusty-rose);
+    border-color: transparent;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
 }
 
 .btn-text {
@@ -428,17 +469,25 @@ section {
 
 .product-card {
     cursor: pointer;
-    transition: transform var(--transition-smooth);
+    transition: all var(--transition-smooth);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-xs);
+    box-shadow: var(--shadow-soft);
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-dreamy);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .product-image {
     position: relative;
     margin-bottom: var(--spacing-sm);
     overflow: hidden;
+    border-radius: var(--radius-soft);
 }
 
 .product-image-placeholder {
@@ -446,11 +495,28 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform var(--transition-slow);
+    transition: all var(--transition-slow);
+    position: relative;
+}
+
+.product-image-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
 }
 
 .product-card:hover .product-image-placeholder {
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+.product-card:hover .product-image-placeholder::after {
+    opacity: 1;
 }
 
 .image-label {
@@ -858,4 +924,266 @@ section {
         padding: 16px 32px;
         font-size: 11px;
     }
+}
+
+/* ========================================
+   FEMININE DECORATIVE ELEMENTS
+   ======================================== */
+
+/* Floral accent dividers */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--dusty-rose) 20%,
+        var(--or-rose) 50%,
+        var(--dusty-rose) 80%,
+        transparent 100%);
+    margin: var(--spacing-lg) 0;
+    position: relative;
+}
+
+.section-divider::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--pearl-white);
+    color: var(--dusty-rose);
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+/* Floating floral elements */
+.hero::after {
+    content: '✦ ❀ ✦';
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--dusty-rose);
+    opacity: 0.3;
+    font-size: 20px;
+    letter-spacing: 40px;
+    animation: floralFloat 4s ease-in-out infinite;
+}
+
+@keyframes floralFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.3; }
+    50% { transform: translateX(-50%) translateY(-10px); opacity: 0.5; }
+}
+
+/* Delicate corner ornaments */
+.section-ornament {
+    position: relative;
+}
+
+.section-ornament::before,
+.section-ornament::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.15;
+}
+
+.section-ornament::before {
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--dusty-rose);
+    border-left: 2px solid var(--dusty-rose);
+    border-top-left-radius: 20px;
+}
+
+.section-ornament::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--dusty-rose);
+    border-right: 2px solid var(--dusty-rose);
+    border-bottom-right-radius: 20px;
+}
+
+/* Script font accents */
+.script-accent {
+    font-family: var(--font-script);
+    font-size: 1.2em;
+    color: var(--dusty-rose);
+    font-weight: 400;
+}
+
+/* Delicate shimmer effect */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(232, 197, 168, 0.4) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Pearl-like glow effect */
+.pearl-glow {
+    box-shadow:
+        0 0 20px rgba(255, 249, 245, 0.5),
+        0 0 40px rgba(232, 197, 168, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Soft breath animation */
+@keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+}
+
+.breathe {
+    animation: breathe 4s ease-in-out infinite;
+}
+
+/* Romantic text glow */
+.text-glow {
+    text-shadow:
+        0 0 10px rgba(232, 197, 168, 0.5),
+        0 0 20px rgba(245, 230, 232, 0.3);
+}
+
+/* Lace-like pattern overlay */
+.lace-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.lace-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, transparent 10%, rgba(245, 230, 232, 0.1) 10%, transparent 11%),
+        radial-gradient(circle at 80% 50%, transparent 10%, rgba(245, 230, 232, 0.1) 10%, transparent 11%);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Silk ribbon effect */
+.ribbon-accent {
+    position: relative;
+    display: inline-block;
+}
+
+.ribbon-accent::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--dusty-rose) 50%,
+        transparent 100%);
+}
+
+/* Floating petals animation */
+@keyframes floatingPetals {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.floating-petal {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(ellipse at center, var(--soft-pink) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatingPetals 15s infinite ease-in-out;
+}
+
+.floating-petal:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-petal:nth-child(2) { left: 30%; animation-delay: 3s; }
+.floating-petal:nth-child(3) { left: 50%; animation-delay: 6s; }
+.floating-petal:nth-child(4) { left: 70%; animation-delay: 9s; }
+.floating-petal:nth-child(5) { left: 90%; animation-delay: 12s; }
+
+/* Soft focus background blur */
+.soft-focus {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Delicate underline animation */
+.delicate-underline {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.delicate-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--dusty-rose), transparent);
+    transition: all var(--transition-gentle);
+    transform: translateX(-50%);
+}
+
+.delicate-underline:hover::after {
+    width: 100%;
+}
+
+/* Romantic quote styling */
+.romantic-quote {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 1.3em;
+    color: var(--charcoal);
+    text-align: center;
+    padding: var(--spacing-md);
+    position: relative;
+}
+
+.romantic-quote::before,
+.romantic-quote::after {
+    content: '"';
+    font-size: 3em;
+    color: var(--dusty-rose);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.romantic-quote::before {
+    top: 0;
+    left: 0;
+}
+
+.romantic-quote::after {
+    bottom: -40px;
+    right: 0;
 }
