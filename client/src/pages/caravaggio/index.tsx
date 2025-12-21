@@ -132,7 +132,7 @@ export default function CaravaggioPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Start your <span className="italic">masterpiece</span>
+                Let's build <span className="italic">something great</span>
               </motion.h2>
               <motion.p
                 className="text-xl text-white/50 mb-12 max-w-2xl mx-auto leading-relaxed"
@@ -141,7 +141,7 @@ export default function CaravaggioPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                This is a design showcase by Edison Joao, demonstrating advanced scroll animations and premium web experiences.
+                Have a project in mind? I'm always open to discussing product design work, consulting opportunities, or partnerships.
               </motion.p>
               <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -150,24 +150,22 @@ export default function CaravaggioPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <motion.div
+                <motion.a
+                  href="mailto:edison@ai4u.space"
+                  className="inline-block bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-white/90 transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Link
-                    href="/"
-                    className="inline-block bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-white/90 transition-all duration-300"
-                  >
-                    View Portfolio
-                  </Link>
-                </motion.div>
+                  Get In Touch
+                </motion.a>
                 <motion.a
-                  href="#hero"
+                  href="https://ai4u.space"
+                  target="_blank"
                   className="border border-white/20 px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Back to top
+                  Visit AI 4U Labs
                 </motion.a>
               </motion.div>
             </div>
@@ -180,14 +178,15 @@ export default function CaravaggioPage() {
                 <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center">
                   <span className="text-black text-xs font-bold">E</span>
                 </div>
-                <span className="font-medium text-sm">Edison Joao</span>
+                <span className="font-medium text-sm">Edison Espinosa</span>
               </div>
               <div className="flex gap-8 text-sm text-white/40">
                 <Link href="/" className="hover:text-white/70 transition-colors duration-200">Portfolio</Link>
-                <a href="#" className="hover:text-white/70 transition-colors duration-200">GitHub</a>
-                <a href="#" className="hover:text-white/70 transition-colors duration-200">LinkedIn</a>
+                <a href="https://apps.apple.com/us/developer/edison-espinosa/id1368707952" target="_blank" className="hover:text-white/70 transition-colors duration-200">App Store</a>
+                <a href="https://linkedin.com/in/edisonespinosa" target="_blank" className="hover:text-white/70 transition-colors duration-200">LinkedIn</a>
+                <a href="https://twitter.com/edisonjoao1" target="_blank" className="hover:text-white/70 transition-colors duration-200">Twitter</a>
               </div>
-              <p className="text-sm text-white/30">Design Showcase 2026</p>
+              <p className="text-sm text-white/30">Senior PM • AI Specialist • iOS Engineer</p>
             </div>
           </footer>
         </motion.main>
