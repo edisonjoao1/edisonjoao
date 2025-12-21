@@ -320,6 +320,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Design Portfolio CTA */}
+      <div className="bg-white py-16 border-t border-black/5">
+        <div className="container mx-auto px-6">
+          <motion.a
+            href="/design"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group block relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-800 to-black p-8 md:p-12"
+          >
+            {/* Background Image Overlay */}
+            <div
+              className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-700"
+              style={{
+                backgroundImage: 'url(/images/caravaggio/calling-of-saint-matthew.jpg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+
+            <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-3">Design Portfolio</p>
+                <h3 className="text-3xl md:text-5xl font-display font-black text-white mb-4">
+                  The <span className="italic font-light">Ren</span><span className="text-amber-400 italic">ai</span><span className="italic font-light">ssance</span> Edition
+                </h3>
+                <p className="text-white/60 max-w-lg">
+                  A curated showcase of design philosophy, product craft, and the art of building.
+                  Explore the full portfolio through the lens of a modern renaissance.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 px-6 py-3 bg-white text-black rounded-full font-bold group-hover:bg-amber-400 transition-colors">
+                Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </motion.a>
+        </div>
+      </div>
+
       {/* Transition: Capabilities to Built Universe */}
       <div className="h-32 bg-gradient-to-b from-white via-zinc-100 to-black relative z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent"></div>
@@ -982,6 +1022,7 @@ export default function Home() {
             </div>
             
             <div className="flex flex-wrap gap-6 text-sm">
+              <a href="/design" className="text-white/60 hover:text-white transition-colors">Design</a>
               <a href="https://ai4u.space" target="_blank" className="text-white/60 hover:text-white transition-colors">AI 4U Labs</a>
               <a href="https://foxie.cool" target="_blank" className="text-white/60 hover:text-white transition-colors">Foxie</a>
               <a href="https://apps.apple.com/us/developer/edison-espinosa/id1368707952" target="_blank" className="text-white/60 hover:text-white transition-colors">App Store</a>

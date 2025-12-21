@@ -9,6 +9,8 @@ export interface Section {
   features?: {
     title: string;
     description: string;
+    appUrl?: string;
+    appIcon?: string;
   }[];
 }
 
@@ -36,10 +38,12 @@ export const sections: Section[] = [
       {
         title: "AI 4U Labs",
         description: "The modern workshop. We forge intelligence—payment systems that reason, apps that comprehend, conversations that resonate.",
+        appUrl: "https://ai4u.space",
       },
       {
-        title: "20+ Creations",
-        description: "Each app a study. Each launch an exhibition. SheGPT: six days from spark to store.",
+        title: "SheGPT",
+        description: "Six days from spark to store. AI crafted for women, by design.",
+        appUrl: "https://apps.apple.com/us/app/shegpt/id6744063469",
       },
     ],
   },
@@ -55,6 +59,7 @@ export const sections: Section[] = [
       {
         title: "A Decade in Swift",
         description: "10 years refining the craft. SwiftUI, UIKit, the entire Apple ecosystem. Precision in every interaction.",
+        appUrl: "https://apps.apple.com/us/developer/edison-espinosa/id1368707952",
       },
     ],
   },
@@ -70,6 +75,7 @@ export const sections: Section[] = [
       {
         title: "Foxie — 4.9★",
         description: "500K+ users. #10 in Social. Post. Connect. Engage. Go Out. A community, not just an app.",
+        appUrl: "https://apps.apple.com/us/app/foxie/id1369279200",
       },
     ],
   },
@@ -85,10 +91,12 @@ export const sections: Section[] = [
       {
         title: "AI Amigo — 5.0★",
         description: "The friend who's always there. 3am conversations. No judgment. Pure understanding.",
+        appUrl: "https://apps.apple.com/us/app/ai-amigo/id6670725604",
       },
       {
         title: "Sober AI — 5.0★",
         description: "For the bravest journey. Technology that walks beside you on the road to recovery.",
+        appUrl: "https://apps.apple.com/us/app/sober-ai/id6740759999",
       },
     ],
   },
@@ -104,6 +112,7 @@ export const sections: Section[] = [
       {
         title: "$2M+ in Value Architected",
         description: "Roadmaps. Prioritization. Go-to-market. The blueprint before the building.",
+        appUrl: "https://ai4u.space",
       },
     ],
   },
@@ -119,6 +128,7 @@ export const sections: Section[] = [
       {
         title: "Absolute Intent",
         description: "No more art for art's sake. Every creation must solve a problem. Every product must leave a legacy.",
+        appUrl: "https://apps.apple.com/us/developer/edison-espinosa/id1368707952",
       },
     ],
   },
@@ -134,6 +144,7 @@ export const sections: Section[] = [
       {
         title: "Full-Spectrum Creation",
         description: "From first sketch to final deployment. No middlemen. No committees. The complete vision, executed.",
+        appUrl: "https://ai4u.space",
       },
     ],
   },
@@ -149,6 +160,7 @@ export const sections: Section[] = [
       {
         title: "1 Million Calls Daily",
         description: "10+ labs. 25+ models. Voice. Vision. Reasoning. Every AI mind, orchestrated.",
+        appUrl: "https://ai4u.space",
       },
     ],
   },
@@ -164,6 +176,7 @@ export const sections: Section[] = [
       {
         title: "Living Creations",
         description: "Not museum pieces. Living, breathing products generating revenue, solving problems, touching lives daily.",
+        appUrl: "https://apps.apple.com/us/developer/edison-espinosa/id1368707952",
       },
     ],
   },
@@ -179,6 +192,7 @@ export const sections: Section[] = [
       {
         title: "The Exhibition",
         description: "Women's health. Productivity. Creative tools. All AI-powered. All live on the App Store. All reaching those who need them.",
+        appUrl: "https://apps.apple.com/us/developer/edison-espinosa/id1368707952",
       },
     ],
   },
@@ -194,6 +208,7 @@ export const sections: Section[] = [
       {
         title: "Speed Is a Feature",
         description: "2-4 weeks to MVP. Production-ready from the first brushstroke. No compromises.",
+        appUrl: "https://ai4u.space",
       },
     ],
   },
@@ -209,6 +224,7 @@ export const sections: Section[] = [
       {
         title: "edison@ai4u.space",
         description: "The workshop is ready. The guild stands by. What shall we build together?",
+        appUrl: "mailto:edison@ai4u.space",
       },
     ],
   },

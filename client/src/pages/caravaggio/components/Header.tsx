@@ -35,14 +35,14 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-black text-xs font-bold">C</span>
+              <span className="text-black text-xs font-bold">E</span>
             </motion.div>
             <span className="text-[13px] font-medium tracking-tight">
-              Caravaggio Editions
+              Edison Design
             </span>
           </a>
 
-          <span className="text-[13px] text-white/50 font-light">Winter '26</span>
+          <span className="text-[13px] text-white/50 font-light">Portfolio '25</span>
 
           {/* Editions Dropdown */}
           <button
@@ -84,10 +84,10 @@ export default function Header() {
             whileTap={{ scale: 0.98 }}
           >
             <a
-              href="#hero"
+              href="mailto:edison@ai4u.space"
               className="bg-white text-black px-5 py-2 rounded-full text-[13px] font-medium hover:bg-white/90 transition-colors duration-200"
             >
-              Start for free
+              Get in Touch
             </a>
           </motion.div>
         </div>

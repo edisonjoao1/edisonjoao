@@ -133,20 +133,49 @@ export default function ContentSection({ section, index }: ContentSectionProps) 
                   transition={{ duration: 0.6, delay: 0.4 + i * 0.15 }}
                   whileHover={{ y: -4 }}
                 >
-                  {/* Feature Image/Demo Placeholder */}
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#e8e4dc] to-[#d4cfc4] rounded-lg mb-6 overflow-hidden relative">
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
+                  {/* Feature Image/App Link */}
+                  {feature.appUrl && (
+                    <a
+                      href={feature.appUrl}
+                      target={feature.appUrl.startsWith('mailto:') ? undefined : '_blank'}
+                      rel="noopener noreferrer"
+                      className="block aspect-[4/3] bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] rounded-lg mb-6 overflow-hidden relative group/img"
                     >
-                      <div className="text-[#1a1a1a]/20">
-                        <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                    </motion.div>
-                  </div>
+                      <motion.div
+                        className="absolute inset-0 flex items-center justify-center"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <div className="text-center">
+                          <div className="text-white/80 mb-2">
+                            <svg className="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                          </div>
+                          <span className="text-white/60 text-sm font-medium group-hover/img:text-white transition-colors">
+                            {feature.appUrl.includes('apps.apple.com') ? 'View on App Store' :
+                             feature.appUrl.includes('mailto:') ? 'Send Email' : 'Visit Site'}
+                          </span>
+                        </div>
+                      </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity" />
+                    </a>
+                  )}
+                  {!feature.appUrl && (
+                    <div className="aspect-[4/3] bg-gradient-to-br from-[#e8e4dc] to-[#d4cfc4] rounded-lg mb-6 overflow-hidden relative">
+                      <motion.div
+                        className="absolute inset-0 flex items-center justify-center"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <div className="text-[#1a1a1a]/20">
+                          <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                      </motion.div>
+                    </div>
+                  )}
 
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-[#1a1a1a] transition-colors">
                     {feature.title}
@@ -155,18 +184,23 @@ export default function ContentSection({ section, index }: ContentSectionProps) 
                     {feature.description}
                   </p>
 
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 text-sm text-[#1a1a1a] font-medium group/link"
-                  >
-                    <span className="relative">
-                      Read help doc
-                      <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 group-hover/link:w-full" />
-                    </span>
-                    <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
+                  {feature.appUrl && (
+                    <a
+                      href={feature.appUrl}
+                      target={feature.appUrl.startsWith('mailto:') ? undefined : '_blank'}
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#1a1a1a] font-medium group/link"
+                    >
+                      <span className="relative">
+                        {feature.appUrl.includes('apps.apple.com') ? 'View on App Store' :
+                         feature.appUrl.includes('mailto:') ? 'Get in Touch' : 'Learn More'}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300 group-hover/link:w-full" />
+                      </span>
+                      <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  )}
                 </motion.article>
               ))}
             </div>
