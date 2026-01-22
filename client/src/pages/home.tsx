@@ -174,6 +174,8 @@ export default function Home() {
               <p className="text-lg md:text-xl font-medium leading-relaxed text-white">
                 Architecting systems that bridge AI, mobile, and reality.
                 <br/>
+                <span className="text-white/70">Former PM at Deloitte, Intuit, Citibank. Built AI 4U Labs and worked with startups worldwide</span> — years of experience leading teams and products across enterprise and startup environments.
+                <br/>
                 <span className="text-amber-400">Tested by loss. Driven by outcome.</span>
               </p>
 
@@ -349,6 +351,7 @@ export default function Home() {
 
             <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
               <div>
+                <p className="text-sm text-white/70 mb-4 font-medium">Product Design Skills & Visual Craft</p>
                 <p className="text-xs uppercase tracking-widest text-white/50 mb-3">Design Portfolio</p>
                 <h3 className="text-3xl md:text-5xl font-display font-black text-white mb-4">
                   The <span className="italic font-light">Ren</span><span className="text-amber-400 italic">ai</span><span className="italic font-light">ssance</span> Edition
