@@ -40,11 +40,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       />
 
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-start mix-blend-difference text-white pointer-events-none">
-        <Link href="/" className="group flex flex-col gap-1 cursor-pointer pointer-events-auto">
+        <Link href="/" className="group cursor-pointer pointer-events-auto">
           <span className="text-xl font-display font-black tracking-tighter leading-none">EDISON©</span>
-          <span className="text-[10px] font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">
-            Est. 2025
-          </span>
         </Link>
 
         <div className="hidden md:flex flex-col items-center gap-2 fixed left-1/2 -translate-x-1/2 top-6 pointer-events-auto">
@@ -104,27 +101,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-grow">
         {children}
       </main>
-
-      <footer className="bg-background text-foreground py-20 border-t border-black/5">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end">
-            <div>
-              <h2 className="text-[10vw] leading-none font-display font-black tracking-tighter opacity-5 select-none">
-                EDISON
-              </h2>
-            </div>
-            <div className="flex gap-8 text-sm font-mono uppercase tracking-widest mb-4 md:mb-0">
-              <a href="#" className="hover:underline">Twitter</a>
-              <a href="#" className="hover:underline">LinkedIn</a>
-              <a href="#" className="hover:underline">GitHub</a>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-black/5 flex justify-between text-[10px] font-mono uppercase opacity-40">
-            <span>© 2025 Edison Espinosa</span>
-            <span>Architecting Systems</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

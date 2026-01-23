@@ -174,9 +174,9 @@ export default function Home() {
               <p className="text-lg md:text-xl font-medium leading-relaxed text-white">
                 Architecting systems that bridge AI, mobile, and reality.
                 <br/>
-                <span className="text-white/70">Former PM at Deloitte, Intuit, Citibank. Built AI 4U Labs and worked with startups worldwide</span> — years of experience leading teams and products across enterprise and startup environments.
+                <span className="text-cyan-400 font-bold">Senior PM & AI Lead at AI 4U Labs. Former startup founder. Former PM at Deloitte, Intuit, Citibank</span> — years of experience leading teams and products across enterprise and startup environments.
                 <br/>
-                <span className="text-amber-400">Tested by loss. Driven by outcome.</span>
+                <span className="text-amber-400 font-semibold">Tested by loss. Driven by outcome.</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -444,7 +444,7 @@ export default function Home() {
                     <img src={soberScreen} alt="Sober AI" className="w-full h-full object-cover" />
                   </div>
                 </div>
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity">
                   <div className="font-bold text-sm">Sober AI</div>
                   <div className="text-xs text-white/50">Health & Wellness</div>
                 </div>
@@ -460,8 +460,8 @@ export default function Home() {
               >
                 <div className="absolute -inset-8 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <div className="w-56 md:w-64 lg:w-72 rounded-[3rem] bg-gradient-to-b from-zinc-700 to-zinc-900 p-2 shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
-                  <div className="rounded-[2.5rem] overflow-hidden bg-black aspect-[9/19.5]">
-                    <img src={foxieScreen} alt="Foxie" className="w-full h-full object-cover" />
+                  <div className="rounded-[2.5rem] overflow-hidden bg-white aspect-[9/19.5]">
+                    <img src={foxieScreen} alt="Foxie" className="w-full h-full object-contain" />
                   </div>
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full"></div>
                 </div>
@@ -487,7 +487,7 @@ export default function Home() {
                     <img src={aiAmigoScreen} alt="AI Amigo" className="w-full h-full object-cover" />
                   </div>
                 </div>
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity">
                   <div className="font-bold text-sm">AI Amigo</div>
                   <div className="text-xs text-white/50">AI Companion</div>
                 </div>
@@ -528,10 +528,10 @@ export default function Home() {
           >
             <div className="bg-black text-white rounded-3xl p-6 md:p-10">
               <p className="text-lg md:text-xl lg:text-2xl leading-tight">
-                <span className="font-bold">Principal PM work isn't about</span> <span className="italic text-yellow-400">managing backlogs</span>
+                <span className="font-bold">Principal PM & AI Product Leadership is about</span> <span className="italic text-yellow-400">seeing what others miss</span>
               </p>
               <p className="text-sm md:text-base leading-relaxed mt-3 text-white/80">
-                It's about identifying blue ocean markets with zero competition, optimizing conversion rates to 2x industry averages, shipping MVPs in 24 hours to validate hypotheses, and scaling products to hundreds of thousands of users through product-led growth. These case studies show systems thinking, strategic execution, and measurable business impact—not just features shipped.
+                Building systems that scale exponentially, not linearly. Identifying opportunities where others see obstacles. Shipping vision in 24 hours to validate what the future wants. These case studies show strategic foresight, systems thinking, and transformative impact—not incremental improvements.
               </p>
             </div>
           </motion.div>
@@ -608,14 +608,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-4">
-                    <a href="https://ai4u.space" target="_blank" className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-black/90 transition-all group">
-                      Start a Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                    <a href="https://ai4u.space/work" target="_blank" className="inline-flex items-center gap-2 px-8 py-4 border border-black/20 rounded-full font-bold hover:border-black hover:bg-black hover:text-white transition-all">
-                      View Our Work
-                    </a>
-                  </div>
                 </motion.div>
 
                 {/* Right - Flip Card Style */}
@@ -1597,12 +1589,11 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div>
               <div className="text-2xl font-display font-black mb-2">Edison Espinosa</div>
-              <p className="text-sm text-white/50">Principal Product Manager • AI Systems • 50+ Projects</p>
+              <p className="text-sm text-white/50">Principal Product Manager • AI Product Delivery • AI Systems • 50+ Projects</p>
             </div>
             
             <div className="flex flex-wrap gap-6 text-sm">
               <a href="/design" className="text-white/60 hover:text-white transition-colors">Design</a>
-              <a href="https://ai4u.space" target="_blank" className="text-white/60 hover:text-white transition-colors">AI 4U Labs</a>
               <a href="https://foxie.cool" target="_blank" className="text-white/60 hover:text-white transition-colors">Foxie</a>
               <a href="https://apps.apple.com/us/developer/edison-espinosa/id1368707952" target="_blank" className="text-white/60 hover:text-white transition-colors">App Store</a>
               <a href="https://www.linkedin.com/in/edisonespinosa1/" target="_blank" className="text-white/60 hover:text-white transition-colors">LinkedIn</a>
