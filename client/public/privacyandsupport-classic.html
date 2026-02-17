@@ -100,8 +100,8 @@
     </div>
 
 <script>
-// Same data source as the interactive page (jsonblob.com)
-var BLOB_URL = 'https://jsonblob.com/api/jsonBlob/019c6989-b6cf-70a7-bf6e-10bf3144c31e';
+// Same data source as the interactive page
+var DATA_URL = '/apps.json';
 
 var fallbackApps = [
     { id: "accountability-buddy", name: "Accountability Buddy", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria" },
@@ -144,7 +144,7 @@ function esc(s) {
 (async function() {
     var apps = fallbackApps;
     try {
-        var res = await fetch(BLOB_URL, { headers: { 'Accept': 'application/json' } });
+        var res = await fetch(DATA_URL + '?t=' + Date.now());
         if (res.ok) {
             var data = await res.json();
             if (Array.isArray(data) && data.length > 0) apps = data;
