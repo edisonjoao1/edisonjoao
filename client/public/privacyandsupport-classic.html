@@ -101,7 +101,7 @@
 
 <script>
 // Same data source as the interactive page
-var DATA_URL = '/apps.json';
+var DATA_URL = '/api/apps';
 
 var fallbackApps = [
     { id: "accountability-buddy", name: "Accountability Buddy", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria" },
@@ -144,7 +144,7 @@ function esc(s) {
 (async function() {
     var apps = fallbackApps;
     try {
-        var res = await fetch(DATA_URL + '?t=' + Date.now());
+        var res = await fetch(DATA_URL);
         if (res.ok) {
             var data = await res.json();
             if (Array.isArray(data) && data.length > 0) apps = data;

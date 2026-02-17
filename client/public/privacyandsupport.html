@@ -482,9 +482,7 @@
  * Deep link from your app: ?app=your-app-id
  */
 
-const DATA_URL = '/apps.json';
-const GITHUB_REPO = 'edisonjoao1/edisonjoao';
-const GITHUB_FILE_PATH = 'client/public/apps.json';
+const API_URL = '/api/apps';
 const ADMIN_PASSWORD = 'edison2026';
 
 // Fallback if jsonblob is unreachable
@@ -506,10 +504,10 @@ const grid = document.getElementById('appGrid');
 const section = document.getElementById('appSpecificSection');
 const adminEl = document.getElementById('adminPanel');
 
-// ── Load apps from static JSON ──
+// ── Load apps ──
 async function loadApps() {
     try {
-        const res = await fetch(DATA_URL + '?t=' + Date.now());
+        const res = await fetch(API_URL);
         if (!res.ok) throw new Error('fetch failed');
         apps = await res.json();
         if (!Array.isArray(apps) || apps.length === 0) apps = fallbackApps;
@@ -521,49 +519,15 @@ async function loadApps() {
     if (isAdmin) renderAdminPanel();
 }
 
-// ── Save apps via GitHub API (commits apps.json to the repo) ──
-let githubToken = localStorage.getItem('gh_token') || '';
-
+// ── Save apps ──
 async function saveApps() {
-    if (!githubToken) {
-        githubToken = prompt('Enter your GitHub Personal Access Token (needs "repo" scope):');
-        if (!githubToken) return false;
-        localStorage.setItem('gh_token', githubToken);
-    }
-
     try {
-        // Get current file SHA (required for updates)
-        const getRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`, {
-            headers: { 'Authorization': 'Bearer ' + githubToken }
-        });
-        const fileData = await getRes.json();
-        const sha = fileData.sha;
-
-        // Commit the updated JSON
-        const content = btoa(unescape(encodeURIComponent(JSON.stringify(apps, null, 2) + '\n')));
-        const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`, {
+        const res = await fetch(API_URL, {
             method: 'PUT',
-            headers: {
-                'Authorization': 'Bearer ' + githubToken,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: 'Update apps.json via admin panel',
-                content: content,
-                sha: sha
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(apps)
         });
-
-        if (!putRes.ok) {
-            const err = await putRes.json();
-            if (err.message && err.message.includes('Bad credentials')) {
-                localStorage.removeItem('gh_token');
-                githubToken = '';
-                showStatus('Invalid token. Try again.', 'error');
-            }
-            return false;
-        }
-        return true;
+        return res.ok;
     } catch (e) {
         return false;
     }

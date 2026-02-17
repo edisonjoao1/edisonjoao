@@ -4,6 +4,6 @@
   "framework": null,
   "installCommand": "npm install",
   "rewrites": [
-    { "source": "/((?!assets|images).*)", "destination": "/index.html" }
+    { "source": "/((?!assets|images|api).*)", "destination": "/index.html" }
   ]
 }
