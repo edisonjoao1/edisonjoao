@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <script>
-    // 50/50 split: half the time show the classic page
-    // Admin and deep links always stay here
+    // 50/50 split: half the time show the classic page (same URL)
     (function() {
         var p = new URLSearchParams(window.location.search);
         if (!p.get('admin') && !p.get('app') && Math.random() < 0.5) {
-            window.location.replace('privacyandsupport-classic.html');
+            document.documentElement.style.visibility = 'hidden';
+            fetch('privacyandsupport-classic.html')
+                .then(function(r) { return r.text(); })
+                .then(function(html) {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                });
         }
     })();
     </script>
