@@ -697,10 +697,6 @@ function renderForm(app) {
         <div class="admin-form">
             <h3>${title}</h3>
             <div class="admin-field">
-                <label>App ID (URL-friendly, e.g. "my-app")</label>
-                <input id="fId" value="${escHtml(app.id)}" placeholder="my-cool-app" ${editingIndex !== -1 ? 'readonly style="background:#f5f5f7;"' : ''}>
-            </div>
-            <div class="admin-field">
                 <label>App Name</label>
                 <input id="fName" value="${escHtml(app.name)}" placeholder="My Cool App">
             </div>
@@ -743,10 +739,11 @@ function toggleAIFields() {
         document.getElementById('fUsesAI').checked ? 'block' : 'none';
 }
 
+
 async function saveForm() {
-    const id = document.getElementById('fId').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
     const name = document.getElementById('fName').value.trim();
-    if (!id || !name) { showStatus('Please fill in App ID and Name.', 'error'); return; }
+    if (!name) { showStatus('Please enter an app name.', 'error'); return; }
+    const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
     const appData = {
         id: id,
