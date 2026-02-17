@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Apps by Edison Jo&atilde;o</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; line-height: 1.6; color: #444; background-color: #f8f9fa; }
+        h1, h2 { color: #0056b3; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
+        .faq, .contact, .troubleshooting, .privacy { margin-bottom: 30px; }
+        .faq h3, .privacy h3 { margin-bottom: 5px; color: #333; }
+        .faq p, .privacy p { margin-top: 0; }
+        footer { font-size: 0.9em; color: #aaa; text-align: center; margin-top: 40px; }
+        a { color: #28a745; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: square; margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Support Center!</h1>
+        <p>We're here to assist with <strong id="appList">Accountability Buddy, AI Amigo, Sober AI, Inteligencia Artificial, Activi Match</strong>, and any exciting new apps developed by <strong>Edison Jo&atilde;o</strong>.</p>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Is my data secure?</h3>
+            <p>Absolutely! We don't collect personal data. We only see basic app store metrics like download counts&mdash;your privacy matters!</p>
+        </section>
+
+        <section class="troubleshooting">
+            <h2>Quick Troubleshooting Tips</h2>
+            <p>Having issues? Try these quick fixes:</p>
+            <ul>
+                <li>Make sure your app is updated to the latest version.</li>
+                <li>Restart the app to refresh it.</li>
+                <li>Confirm your internet connection is stable.</li>
+                <li>Clear your app cache (<em>Settings &gt; Apps &gt; [App Name] &gt; Clear Cache</em>).</li>
+                <li>Still stuck? Reach out&mdash;we've got your back!</li>
+            </ul>
+        </section>
+
+        <section class="privacy" id="privacy">
+            <h2>Privacy Policy</h2>
+            <h3>Introduction</h3>
+            <p>This explains how <span id="policyAppList">Accountability Buddy, AI Amigo, Sober AI, Inteligencia Artificial, Activi Match</span>, and future apps by Edison Jo&atilde;o handle information.</p>
+
+            <h3>Information We Collect</h3>
+            <p>We do not collect personal information. We only access anonymous app store data (like download numbers).</p>
+
+            <h3>Third-Party AI Services</h3>
+            <div id="aiSection">
+                <p>Some of our apps use third-party AI services (such as OpenAI) to power features like chat, analysis, and suggestions. When you use these features:</p>
+                <ul>
+                    <li>Your messages and relevant app data are sent to the AI provider to generate a response.</li>
+                    <li>We do not store this data on any server &mdash; it is sent directly from your device to the AI provider.</li>
+                    <li>No personal identifiers (name, email, phone) are included in these requests.</li>
+                    <li>The AI provider's own privacy policy governs how they handle the data they receive.</li>
+                </ul>
+                <p><strong>Apps that use AI services:</strong></p>
+                <ul id="aiAppsList"></ul>
+            </div>
+
+            <h3>How We Use Information</h3>
+            <p>We use anonymous app store data to check app performance and enhance your experience.</p>
+
+            <h3>Data Security</h3>
+            <p>Your data stays on your device. All communication with third-party services uses encrypted HTTPS connections.</p>
+
+            <h3>Your Rights</h3>
+            <p>Since your data is stored locally on your device, you have full control. You can delete all app data at any time by uninstalling the app.</p>
+
+            <h3>Changes to This Policy</h3>
+            <p>Updates will be posted here if anything changes.</p>
+
+            <h3>Contact Us</h3>
+            <p>Questions? Email us at: <a href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a></p>
+        </section>
+
+        <section class="plaid-privacy">
+            <h2>Privacy Policy for Plaid Link</h2>
+            <p>For applications that integrate with Plaid for secure financial data connectivity, we maintain a dedicated security and privacy policy.</p>
+            <p><strong>Plaid Security &amp; Privacy Policy:</strong> <a href="plaid-security.html" target="_blank">View Plaid Security Policy</a></p>
+        </section>
+
+        <section class="contact">
+            <h2>Need More Help?</h2>
+            <p>Didn't find your answer? Let's chat:</p>
+            <ul>
+                <li>Email: <a href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a></li>
+                <li>Phone: <a href="tel:+12393310978">+1 (239) 331-0978</a></li>
+                <li>Available: Monday to Friday, 9 AM - 5 PM EST</li>
+            </ul>
+        </section>
+
+        <footer>
+            &copy; 2026 Edison Jo&atilde;o. All rights reserved.
+        </footer>
+    </div>
+
+<script>
+// Same data source as the interactive page (jsonblob.com)
+var BLOB_URL = 'https://jsonblob.com/api/jsonBlob/019c6989-b6cf-70a7-bf6e-10bf3144c31e';
+
+var fallbackApps = [
+    { id: "accountability-buddy", name: "Accountability Buddy", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria" },
+    { id: "ai-amigo", name: "AI Amigo", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context" },
+    { id: "sober-ai", name: "Sober AI", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered support and guidance", dataSent: "Your messages and conversation context" },
+    { id: "inteligencia-artificial", name: "Inteligencia Artificial", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context" },
+    { id: "activi-match", name: "Activi Match", usesAI: false }
+];
+
+function render(apps) {
+    // Build the app name list
+    var names = apps.map(function(a) { return a.name; });
+    var nameStr = names.join(', ');
+    document.getElementById('appList').textContent = nameStr;
+    document.getElementById('policyAppList').textContent = nameStr;
+
+    // Build the AI apps list
+    var aiApps = apps.filter(function(a) { return a.usesAI; });
+    var listEl = document.getElementById('aiAppsList');
+
+    if (aiApps.length === 0) {
+        document.getElementById('aiSection').style.display = 'none';
+        return;
+    }
+
+    listEl.innerHTML = '';
+    aiApps.forEach(function(app) {
+        var li = document.createElement('li');
+        li.innerHTML = '<strong>' + esc(app.name) + '</strong> &mdash; Uses ' + esc(app.aiProvider) + ' for ' + esc(app.aiFeatures) + '. Data sent: ' + esc(app.dataSent) + '.';
+        listEl.appendChild(li);
+    });
+}
+
+function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+}
+
+(async function() {
+    var apps = fallbackApps;
+    try {
+        var res = await fetch(BLOB_URL, { headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+            var data = await res.json();
+            if (Array.isArray(data) && data.length > 0) apps = data;
+        }
+    } catch (e) {}
+    render(apps);
+})();
+</script>
+</body>
+</html>

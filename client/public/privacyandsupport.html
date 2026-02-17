@@ -3,89 +3,811 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support | Accountability Buddie & Apps by Edison João</title>
+    <title>Privacy & Support | Apps by Edison Jo&atilde;o</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; line-height: 1.6; color: #444; background-color: #f8f9fa; }
-        h1, h2 { color: #0056b3; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
-        .faq, .contact, .troubleshooting, .privacy { margin-bottom: 30px; }
-        .faq h3, .privacy h3 { margin-bottom: 5px; color: #333; }
-        .faq p, .privacy p { margin-top: 0; }
-        footer { font-size: 0.9em; color: #aaa; text-align: center; margin-top: 40px; }
-        a { color: #28a745; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        ul { list-style-type: square; margin-left: 20px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 48px 24px 36px;
+            text-align: center;
+            color: white;
+        }
+        .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+        .header p { font-size: 15px; opacity: 0.85; }
+
+        .container {
+            max-width: 720px;
+            margin: -20px auto 40px;
+            padding: 0 16px;
+        }
+
+        /* App Selector */
+        .app-selector {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 16px;
+        }
+        .app-selector-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+        }
+        .app-chip {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 2px solid #e5e5ea;
+            background: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            user-select: none;
+        }
+        .app-chip:hover { border-color: #667eea; color: #667eea; }
+        .app-chip.active { border-color: #667eea; background: #667eea; color: white; }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 16px;
+        }
+        .card h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+        .card h3 { font-size: 16px; font-weight: 600; margin: 16px 0 6px; }
+        .card p, .card li { font-size: 15px; color: #424245; }
+        .card ul { margin: 8px 0 8px 20px; }
+        .card li { margin-bottom: 4px; }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0edff;
+            color: #5b4fc4;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        /* Accordion */
+        .accordion { border-top: 1px solid #f0f0f0; }
+        .accordion:first-of-type { border-top: none; }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+        .accordion-header h3 { margin: 0; font-size: 15px; font-weight: 600; }
+        .accordion-arrow {
+            font-size: 12px;
+            color: #86868b;
+            transition: transform 0.2s ease;
+        }
+        .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-body.open { max-height: 1000px; }
+        .accordion-body-inner { padding-bottom: 14px; }
+
+        /* Contact */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 0;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .contact-link:last-child { border-bottom: none; }
+        .contact-link:hover { opacity: 0.8; }
+
+        footer {
+            text-align: center;
+            padding: 24px 16px 40px;
+            font-size: 13px;
+            color: #86868b;
+        }
+
+        .tip-list { list-style: none; margin: 0; padding: 0; }
+        .tip-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f7;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .tip-list li:last-child { border-bottom: none; }
+        .tip-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: #f0edff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .loading { text-align: center; padding: 20px; color: #86868b; font-size: 14px; }
+
+        /* ── Admin Panel ── */
+        .admin-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 16px;
+            border: 2px solid #667eea;
+        }
+        .admin-panel h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #667eea;
+        }
+        .admin-subtitle {
+            font-size: 13px;
+            color: #86868b;
+            margin-bottom: 16px;
+        }
+        .admin-app-list {
+            list-style: none;
+            margin: 0 0 16px;
+            padding: 0;
+        }
+        .admin-app-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border: 1px solid #e5e5ea;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .admin-app-item .app-name { font-weight: 600; }
+        .admin-app-item .app-ai-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #f0edff;
+            color: #5b4fc4;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .admin-app-item .app-no-ai-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #f0f0f0;
+            color: #86868b;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .admin-btns { display: flex; gap: 6px; }
+        .admin-btns button {
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #e5e5ea;
+            background: white;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .admin-btns .edit-btn:hover { background: #f0edff; color: #5b4fc4; }
+        .admin-btns .del-btn { color: #ff3b30; }
+        .admin-btns .del-btn:hover { background: #fff0f0; }
+
+        .admin-form { margin-top: 16px; border-top: 1px solid #f0f0f0; padding-top: 16px; }
+        .admin-form h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+        .admin-field { margin-bottom: 12px; }
+        .admin-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #424245;
+            margin-bottom: 4px;
+        }
+        .admin-field input,
+        .admin-field textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e5e5ea;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .admin-field textarea { resize: vertical; min-height: 60px; }
+        .admin-field input:focus,
+        .admin-field textarea:focus { outline: none; border-color: #667eea; }
+
+        .admin-toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .admin-toggle-row label { margin: 0; font-size: 14px; font-weight: 500; }
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #e5e5ea;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            left: 2px; bottom: 2px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .toggle-switch input:checked + .toggle-slider { background: #667eea; }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+        .admin-actions { display: flex; gap: 8px; margin-top: 16px; }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.85; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-secondary { background: #f0f0f0; color: #424245; }
+        .btn-add { background: #34c759; color: white; margin-bottom: 12px; }
+
+        .admin-status {
+            font-size: 13px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            display: none;
+        }
+        .admin-status.success { display: block; background: #e8f8ee; color: #1a7a3a; }
+        .admin-status.error { display: block; background: #fff0f0; color: #ff3b30; }
+
+        /* Login overlay */
+        .admin-login {
+            text-align: center;
+            padding: 20px;
+        }
+        .admin-login input {
+            padding: 10px 16px;
+            border: 2px solid #e5e5ea;
+            border-radius: 10px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .admin-login input:focus { outline: none; border-color: #667eea; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>👋 Welcome to Our Support Center!</h1>
-        <p>We're here to assist with <strong>Accountability Buddie, Activi Match, Inteligencia Artificial, AI Amigo, Sober AI</strong>, and any exciting new apps developed by <strong>Edison João</strong>.</p>
 
-        <section class="faq">
-            <h2>🤔 Frequently Asked Questions</h2>
+<div class="header">
+    <h1>Privacy & Support</h1>
+    <p>Apps by Edison Jo&atilde;o</p>
+</div>
 
-            <h3>Is my data secure?</h3>
-            <p>Absolutely! We don't collect personal data. We only see basic app store metrics like download counts—your privacy matters!</p>
-        </section>
+<div class="container">
 
-        <section class="troubleshooting">
-            <h2>🛠️ Quick Troubleshooting Tips</h2>
-            <p>Having issues? Try these quick fixes:</p>
-            <ul>
-                <li>Make sure your app is updated to the latest version.</li>
-                <li>Restart the app to refresh it.</li>
-                <li>Confirm your internet connection is stable.</li>
-                <li>Clear your app cache (<em>Settings &gt; Apps &gt; [App Name] &gt; Clear Cache</em>).</li>
-                <li>Still stuck? Reach out—we've got your back!</li>
-            </ul>
-        </section>
+    <!-- Admin Panel (only visible with ?admin=true) -->
+    <div id="adminPanel" style="display:none;"></div>
 
-        <section class="privacy" id="privacy">
-            <h2>🔒 Privacy Policy</h2>
-            <h3>Introduction</h3>
-            <p>This explains how Accountability Buddie, Activi Match, Inteligencia Artificial, AI Amigo, Sober AI, and future apps by Edison João handle information.</p>
-
-            <h3>Information We Collect</h3>
-            <p>We do not collect personal information. We only access anonymous app store data (like download numbers).</p>
-
-            <h3>How We Use Information</h3>
-            <p>We use this anonymous data to check app performance and enhance your experience.</p>
-
-            <h3>Data Security</h3>
-            <p>No personal data means no security risk—your privacy is inherently protected.</p>
-
-            <h3>Your Rights</h3>
-            <p>No personal data is collected, so there's nothing to manage or delete.</p>
-
-            <h3>Changes to This Policy</h3>
-            <p>Updates will be posted here if anything changes.</p>
-
-            <h3>Contact Us</h3>
-            <p>Questions? Email us at: <a href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a></p>
-        </section>
-
-        <section class="plaid-privacy">
-            <h2>🔗 Privacy Policy for Plaid Link</h2>
-            <p>For applications that integrate with Plaid for secure financial data connectivity, we maintain a dedicated security and privacy policy.</p>
-            <p><strong>Plaid Security & Privacy Policy:</strong> <a href="plaid-security.html" target="_blank">View Plaid Security Policy</a></p>
-            <p><strong>Direct Link:</strong> <a href="https://edisonjoao1.github.io/edisonjoao/plaid-security.html" target="_blank">https://edisonjoao1.github.io/edisonjoao/plaid-security.html</a></p>
-            <p>This policy covers how we handle user information in applications where Plaid Link is deployed, ensuring transparency and compliance with data protection standards.</p>
-        </section>
-
-        <section class="contact">
-            <h2>📞 Need More Help?</h2>
-            <p>Didn't find your answer? Let's chat:</p>
-            <ul>
-                <li>Email: <a href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a></li>
-                <li>Phone: <a href="tel:+12393310978">+1 (239) 331-0978</a></li>
-                <li>Available: Monday to Friday, 9 AM - 5 PM EST</li>
-            </ul>
-        </section>
-
-        <footer>
-            🚀 &copy; 2025 Edison João. All rights reserved.
-        </footer>
+    <!-- App Selector -->
+    <div class="app-selector">
+        <div class="app-selector-label">Select Your App</div>
+        <div class="app-grid" id="appGrid"></div>
     </div>
+
+    <!-- App-Specific Info (populated by JS) -->
+    <div id="appSpecificSection"></div>
+
+    <!-- General Privacy Policy -->
+    <div class="card">
+        <h2>Privacy Policy</h2>
+        <p>This policy applies to all apps developed by Edison Jo&atilde;o.</p>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Data We Collect</h3>
+                <span class="accordion-arrow">&#9660;</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p>We do not collect, store, or sell your personal information. All your data stays on your device. We only have access to anonymous App Store metrics like download counts.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Third-Party AI Services</h3>
+                <span class="accordion-arrow">&#9660;</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p>Some of our apps use third-party AI services to power features like chat, analysis, and suggestions. When you use these features:</p>
+                    <ul>
+                        <li>Your messages and relevant app data are sent to the AI provider to generate a response.</li>
+                        <li>We do not store this data on any server — it is sent directly from your device to the AI provider.</li>
+                        <li>No personal identifiers (name, email, phone) are included in these requests.</li>
+                        <li>The AI provider's own privacy policy governs how they handle the data they receive.</li>
+                    </ul>
+                    <p>Apps that use AI features will ask for your consent before any data is sent. Select an app above to see exactly what data it sends.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Analytics</h3>
+                <span class="accordion-arrow">&#9660;</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p>Some apps use Firebase Analytics to collect anonymous usage data (screen views, feature usage, crash reports). This data contains no personal information and is used solely to improve app quality.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Data Security</h3>
+                <span class="accordion-arrow">&#9660;</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p>Your data stays on your device. Since we don't collect or store personal data on any server, there is no centralized database that could be compromised. All communication with third-party services uses encrypted HTTPS connections.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Your Rights</h3>
+                <span class="accordion-arrow">&#9660;</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p>Since your data is stored locally on your device, you have full control. You can delete all app data at any time by uninstalling the app. For AI-powered features, you can revoke consent within the app's settings.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Changes to This Policy</h3>
+                <span class="accordion-arrow">&#9660;</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p>Any updates to this policy will be posted on this page.</p>
+                    <p><strong>Last updated:</strong> February 16, 2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plaid Policy -->
+    <div class="card">
+        <h2>Plaid Integration Policy</h2>
+        <p>For apps that integrate with Plaid for secure financial data connectivity, we maintain a dedicated policy.</p>
+        <p style="margin-top: 8px;"><a href="plaid-security.html" style="color: #667eea; font-weight: 500;">View Plaid Security Policy &rarr;</a></p>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="card">
+        <h2>Troubleshooting</h2>
+        <ul class="tip-list">
+            <li><div class="tip-icon">1</div><span>Make sure your app is updated to the latest version.</span></li>
+            <li><div class="tip-icon">2</div><span>Restart the app to refresh it.</span></li>
+            <li><div class="tip-icon">3</div><span>Confirm your internet connection is stable.</span></li>
+            <li><div class="tip-icon">4</div><span>Clear your app cache in Settings > Apps > [App Name].</span></li>
+            <li><div class="tip-icon">5</div><span>Still stuck? Reach out below.</span></li>
+        </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+        <h2>Contact Us</h2>
+        <a class="contact-link" href="mailto:edison.j.espinosa@gmail.com">&#9993;&nbsp; edison.j.espinosa@gmail.com</a>
+        <a class="contact-link" href="tel:+12393310978">&#9742;&nbsp; +1 (239) 331-0978</a>
+        <div class="contact-link" style="cursor: default; color: #424245;">&#128339;&nbsp; Monday – Friday, 9 AM – 5 PM EST</div>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Edison Jo&atilde;o. All rights reserved.
+</footer>
+
+<script>
+/*
+ * APP DATA MANAGEMENT
+ *
+ * Apps are stored on jsonblob.com (free, no signup, REST API).
+ * - Regular visitors just see the apps.
+ * - To manage apps, go to: ?admin=true
+ * - Password: edison2026  (change below)
+ *
+ * Deep link from your app: ?app=your-app-id
+ */
+
+const BLOB_ID = '019c6989-b6cf-70a7-bf6e-10bf3144c31e';
+const BLOB_URL = 'https://jsonblob.com/api/jsonBlob/' + BLOB_ID;
+const ADMIN_PASSWORD = 'edison2026';
+
+// Fallback if jsonblob is unreachable
+const fallbackApps = [
+    { id: "accountability-buddy", name: "Accountability Buddy", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria", extraNote: "The app asks for your explicit consent before any data is sent to the AI service." },
+    { id: "ai-amigo", name: "AI Amigo", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "sober-ai", name: "Sober AI", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered support and guidance", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "inteligencia-artificial", name: "Inteligencia Artificial", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "activi-match", name: "Activi Match", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" }
+];
+
+let apps = [];
+let activeApp = null;
+let isAdmin = false;
+let adminLoggedIn = false;
+let editingIndex = -1;
+
+const grid = document.getElementById('appGrid');
+const section = document.getElementById('appSpecificSection');
+const adminEl = document.getElementById('adminPanel');
+
+// ── Load apps from jsonblob ──
+async function loadApps() {
+    try {
+        const res = await fetch(BLOB_URL, { headers: { 'Accept': 'application/json' } });
+        if (!res.ok) throw new Error('fetch failed');
+        apps = await res.json();
+        if (!Array.isArray(apps) || apps.length === 0) apps = fallbackApps;
+    } catch (e) {
+        apps = fallbackApps;
+    }
+    renderChips();
+    checkDeepLink();
+    if (isAdmin) renderAdminPanel();
+}
+
+// ── Save apps to jsonblob ──
+async function saveApps() {
+    try {
+        const res = await fetch(BLOB_URL, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(apps)
+        });
+        return res.ok;
+    } catch (e) {
+        return false;
+    }
+}
+
+// ── Init ──
+const params = new URLSearchParams(window.location.search);
+isAdmin = params.get('admin') === 'true';
+loadApps();
+
+// ── Render app chips ──
+function renderChips() {
+    grid.innerHTML = '';
+    apps.forEach(app => {
+        const chip = document.createElement('div');
+        chip.className = 'app-chip' + (activeApp === app.id ? ' active' : '');
+        chip.textContent = app.name;
+        chip.dataset.id = app.id;
+        chip.onclick = () => selectApp(app.id);
+        grid.appendChild(chip);
+    });
+}
+
+// ── Deep link ──
+function checkDeepLink() {
+    const appId = params.get('app');
+    if (appId && apps.find(a => a.id === appId)) {
+        selectApp(appId);
+        setTimeout(() => {
+            document.getElementById('appSpecificSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+}
+
+// ── Select app ──
+function selectApp(id) {
+    if (activeApp === id) {
+        activeApp = null;
+        document.querySelectorAll('.app-chip').forEach(c => c.classList.remove('active'));
+        section.innerHTML = '';
+        history.replaceState(null, '', window.location.pathname + (isAdmin ? '?admin=true' : ''));
+        return;
+    }
+
+    activeApp = id;
+    const app = apps.find(a => a.id === id);
+
+    document.querySelectorAll('.app-chip').forEach(c => {
+        c.classList.toggle('active', c.dataset.id === id);
+    });
+
+    history.replaceState(null, '', '?app=' + id + (isAdmin ? '&admin=true' : ''));
+
+    let html = '<div class="card">';
+    html += '<h2>' + escHtml(app.name) + '</h2>';
+
+    if (app.usesAI) {
+        html += '<div class="ai-badge">&#9889; Uses AI Services</div>';
+        html += '<h3>AI-Powered Features</h3>';
+        html += '<p>This app uses <strong>' + escHtml(app.aiProvider) + '</strong> to power: ' + escHtml(app.aiFeatures) + '.</p>';
+        html += '<h3>What Data Is Sent</h3>';
+        html += '<p>' + escHtml(app.dataSent) + ' are sent to ' + escHtml(app.aiProvider) + ' to generate responses. This data is transmitted directly from your device — we do not store it on any server.</p>';
+        html += '<h3>What Is NOT Sent</h3>';
+        html += '<p>Your name, email, phone number, or any other personal identifiers are never included in AI requests.</p>';
+        if (app.extraNote) {
+            html += '<p style="margin-top: 10px; font-style: italic; color: #5b4fc4;">' + escHtml(app.extraNote) + '</p>';
+        }
+    } else {
+        html += '<p>This app does not use any third-party AI services. All data stays on your device.</p>';
+    }
+
+    html += '</div>';
+    section.innerHTML = html;
+}
+
+function escHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+}
+
+// ── Accordion ──
+function toggleAccordion(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
+}
+
+// ══════════════════════════════════════
+//  ADMIN PANEL
+// ══════════════════════════════════════
+function renderAdminPanel() {
+    if (!isAdmin) { adminEl.style.display = 'none'; return; }
+    adminEl.style.display = 'block';
+
+    if (!adminLoggedIn) {
+        adminEl.innerHTML = `
+            <div class="admin-panel">
+                <h2>Admin Panel</h2>
+                <div class="admin-login">
+                    <p style="margin-bottom:12px;color:#424245;font-size:14px;">Enter password to manage apps.</p>
+                    <input type="password" id="adminPwd" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()">
+                    <br>
+                    <button class="btn btn-primary" onclick="adminLogin()">Unlock</button>
+                    <div id="loginError" class="admin-status" style="margin-top:12px;"></div>
+                </div>
+            </div>`;
+        document.getElementById('adminPwd').focus();
+        return;
+    }
+
+    // Logged in — show full admin panel
+    let listHtml = '';
+    apps.forEach((app, i) => {
+        const tag = app.usesAI
+            ? '<span class="app-ai-tag">AI</span>'
+            : '<span class="app-no-ai-tag">No AI</span>';
+        listHtml += `
+            <li class="admin-app-item">
+                <div><span class="app-name">${escHtml(app.name)}</span>${tag}</div>
+                <div class="admin-btns">
+                    <button class="edit-btn" onclick="editApp(${i})">Edit</button>
+                    <button class="del-btn" onclick="deleteApp(${i})">Delete</button>
+                </div>
+            </li>`;
+    });
+
+    adminEl.innerHTML = `
+        <div class="admin-panel">
+            <h2>Admin Panel</h2>
+            <p class="admin-subtitle">${apps.length} app${apps.length !== 1 ? 's' : ''} registered</p>
+            <button class="btn btn-add" onclick="showAddForm()">+ Add New App</button>
+            <ul class="admin-app-list">${listHtml}</ul>
+            <div id="adminForm"></div>
+            <div id="adminStatus" class="admin-status"></div>
+        </div>`;
+}
+
+function adminLogin() {
+    const pwd = document.getElementById('adminPwd').value;
+    if (pwd === ADMIN_PASSWORD) {
+        adminLoggedIn = true;
+        renderAdminPanel();
+    } else {
+        const err = document.getElementById('loginError');
+        err.textContent = 'Wrong password.';
+        err.className = 'admin-status error';
+    }
+}
+
+function showAddForm() {
+    editingIndex = -1;
+    renderForm({ id: '', name: '', usesAI: false, aiProvider: '', aiFeatures: '', dataSent: '', extraNote: '' });
+}
+
+function editApp(i) {
+    editingIndex = i;
+    renderForm(apps[i]);
+}
+
+function renderForm(app) {
+    const formEl = document.getElementById('adminForm');
+    const title = editingIndex === -1 ? 'Add New App' : 'Edit: ' + escHtml(app.name);
+    const aiChecked = app.usesAI ? 'checked' : '';
+
+    formEl.innerHTML = `
+        <div class="admin-form">
+            <h3>${title}</h3>
+            <div class="admin-field">
+                <label>App ID (URL-friendly, e.g. "my-app")</label>
+                <input id="fId" value="${escHtml(app.id)}" placeholder="my-cool-app" ${editingIndex !== -1 ? 'readonly style="background:#f5f5f7;"' : ''}>
+            </div>
+            <div class="admin-field">
+                <label>App Name</label>
+                <input id="fName" value="${escHtml(app.name)}" placeholder="My Cool App">
+            </div>
+            <div class="admin-toggle-row">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="fUsesAI" ${aiChecked} onchange="toggleAIFields()">
+                    <span class="toggle-slider"></span>
+                </label>
+                <label>Uses AI Services</label>
+            </div>
+            <div id="aiFields" style="display:${app.usesAI ? 'block' : 'none'}">
+                <div class="admin-field">
+                    <label>AI Provider (e.g. OpenAI, Google)</label>
+                    <input id="fProvider" value="${escHtml(app.aiProvider)}" placeholder="OpenAI">
+                </div>
+                <div class="admin-field">
+                    <label>AI Features (what the AI does)</label>
+                    <textarea id="fFeatures" placeholder="AI-powered chat, analysis...">${escHtml(app.aiFeatures)}</textarea>
+                </div>
+                <div class="admin-field">
+                    <label>Data Sent (what data goes to the AI)</label>
+                    <textarea id="fData" placeholder="Your messages and conversation context">${escHtml(app.dataSent)}</textarea>
+                </div>
+            </div>
+            <div class="admin-field">
+                <label>Extra Note (optional)</label>
+                <textarea id="fNote" placeholder="Any additional note...">${escHtml(app.extraNote)}</textarea>
+            </div>
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="saveForm()">Save</button>
+                <button class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
+            </div>
+        </div>`;
+
+    formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function toggleAIFields() {
+    document.getElementById('aiFields').style.display =
+        document.getElementById('fUsesAI').checked ? 'block' : 'none';
+}
+
+async function saveForm() {
+    const id = document.getElementById('fId').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
+    const name = document.getElementById('fName').value.trim();
+    if (!id || !name) { showStatus('Please fill in App ID and Name.', 'error'); return; }
+
+    const appData = {
+        id: id,
+        name: name,
+        usesAI: document.getElementById('fUsesAI').checked,
+        aiProvider: document.getElementById('fProvider')?.value.trim() || '',
+        aiFeatures: document.getElementById('fFeatures')?.value.trim() || '',
+        dataSent: document.getElementById('fData')?.value.trim() || '',
+        extraNote: document.getElementById('fNote')?.value.trim() || ''
+    };
+
+    if (editingIndex === -1) {
+        // Adding new — check for duplicate ID
+        if (apps.find(a => a.id === id)) { showStatus('An app with that ID already exists.', 'error'); return; }
+        apps.push(appData);
+    } else {
+        apps[editingIndex] = appData;
+    }
+
+    const ok = await saveApps();
+    if (ok) {
+        showStatus(editingIndex === -1 ? 'App added!' : 'App updated!', 'success');
+        editingIndex = -1;
+        renderAdminPanel();
+        renderChips();
+    } else {
+        showStatus('Failed to save. Check your connection and try again.', 'error');
+    }
+}
+
+async function deleteApp(i) {
+    if (!confirm('Delete "' + apps[i].name + '"? This cannot be undone.')) return;
+    apps.splice(i, 1);
+    const ok = await saveApps();
+    if (ok) {
+        showStatus('App deleted.', 'success');
+        renderAdminPanel();
+        renderChips();
+        // If the deleted app was selected, clear it
+        if (activeApp && !apps.find(a => a.id === activeApp)) {
+            activeApp = null;
+            section.innerHTML = '';
+        }
+    } else {
+        showStatus('Failed to delete. Check your connection.', 'error');
+    }
+}
+
+function cancelForm() {
+    editingIndex = -1;
+    document.getElementById('adminForm').innerHTML = '';
+}
+
+function showStatus(msg, type) {
+    const el = document.getElementById('adminStatus');
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'admin-status ' + type;
+    setTimeout(() => { el.className = 'admin-status'; }, 4000);
+}
+</script>
+
 </body>
 </html>
