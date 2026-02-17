@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+    // 50/50 split: half the time show the classic page
+    // Admin and deep links always stay here
+    (function() {
+        var p = new URLSearchParams(window.location.search);
+        if (!p.get('admin') && !p.get('app') && Math.random() < 0.5) {
+            window.location.replace('privacyandsupport-classic.html');
+        }
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy & Support | Apps by Edison Jo&atilde;o</title>
     <style>
