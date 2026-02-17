@@ -485,13 +485,28 @@
 const API_URL = '/api/apps';
 const ADMIN_PASSWORD = 'edison2026';
 
-// Fallback if jsonblob is unreachable
+// Fallback if API is unreachable
 const fallbackApps = [
-    { id: "accountability-buddy", name: "Accountability Buddy", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria", extraNote: "The app asks for your explicit consent before any data is sent to the AI service." },
-    { id: "ai-amigo", name: "AI Amigo", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "sober-ai", name: "Sober AI", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered support and guidance", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "inteligencia-artificial", name: "Inteligencia Artificial", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "activi-match", name: "Activi Match", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" }
+    { id: "accountability-buddy", name: "Accountability Buddie", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria", extraNote: "The app asks for your explicit consent before any data is sent to the AI service." },
+    { id: "ai-amigo", name: "ai amigo", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "sober-ai", name: "sober ai", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered support and guidance", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "inteligencia-artificial-ia", name: "Inteligencia Artificial IA", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "inteligencia-artificial", name: "Int\u00eagligencia Artificial", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "intelligence-artificielle-gpt", name: "Intelligence Artificielle GPT", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations in French", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "shegpt", name: "SheGPT", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "foxie", name: "Foxie.", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context", extraNote: "" },
+    { id: "my-love", name: "My Love - Love Poems", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "new-dad", name: "New Dad : The Dad App", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "health-anxiety", name: "Health Anxiety : Anxiety Coach", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "la-biblia", name: "La Biblia.", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "new-year-new-you", name: "New Year New You :Goal Tracker", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "pet-health-scan", name: "Pet Health Scan", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "relationship-app", name: "Relationship App :Couple Goals", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "unbiased-news", name: "Unbiased News: Media Analysis", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "rate-anything", name: "Rate Anything", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "days-together", name: "Days Together: Love Tracker", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "biblia", name: "Biblia.", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
+    { id: "ai-image-create", name: "Ai image Create", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" }
 ];
 
 let apps = [];
