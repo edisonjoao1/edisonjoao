@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tourist Support</title>
+<meta name="description" content="Simple help and contact information for Tourist on iPhone.">
+<style>
+  :root { color-scheme: light; --ink: #17252f; --muted: #60717c; --line: #d8e2e5; --teal: #087f8c; --coral: #de6247; --soft: #edf8f8; --paper: #fbfcfa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }
+  main { width: min(760px, calc(100% - 40px)); margin: 0 auto; padding: 56px 0 72px; }
+  header { padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+  .brand { color: var(--teal); font-size: 1rem; font-weight: 800; text-transform: uppercase; }
+  h1 { margin: 8px 0 6px; font-size: clamp(2.35rem, 9vw, 4.6rem); line-height: 1.02; letter-spacing: 0; }
+  h2 { margin: 0 0 8px; font-size: 1.15rem; letter-spacing: 0; }
+  p { font-size: 1rem; }
+  a { color: var(--teal); }
+  .muted { color: var(--muted); }
+  .contact { margin-top: 28px; padding: 20px; background: var(--soft); border-left: 4px solid var(--teal); border-radius: 0 8px 8px 0; }
+  .button { display: inline-block; margin-top: 8px; padding: 11px 16px; color: white; background: var(--teal); border-radius: 8px; text-decoration: none; font-weight: 700; }
+  section { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .q { margin: 18px 0 4px; font-weight: 750; }
+  .warning { color: var(--coral); font-weight: 650; }
+  footer { padding-top: 30px; color: var(--muted); font-size: .9rem; }
+  @media (max-width: 520px) { main { width: min(100% - 28px, 760px); padding-top: 36px; } section { padding: 20px 0; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">Tourist</div>
+  <h1>Support</h1>
+  <p class="muted">Simple help for getting back to your trip.</p>
+</header>
+
+<div class="contact">
+  <h2>Contact</h2>
+  <p>We normally respond within 1 or 2 business days. Include your iPhone model, iOS version, and a short description of what happened.</p>
+  <a class="button" href="sms:+12393310978">Send a message</a>
+  <p class="warning">Do not send passwords, private recordings, or payment information.</p>
+</div>
+
+<section>
+  <h2>Walk Here</h2>
+  <p class="q">Tourist cannot find my location.</p>
+  <p>Open iPhone Settings, find Tourist, and allow location access. Return to Tourist in an open area and try Walk Here again.</p>
+  <p class="q">Narration stopped in the background.</p>
+  <p>Confirm an active walk is still open and that media volume is audible. Reopen Tourist and resume the walk if iOS paused playback.</p>
+</section>
+
+<section>
+  <h2>Interpreter</h2>
+  <p class="q">The interpreter cannot hear me.</p>
+  <p>Open iPhone Settings, find Tourist, and enable Microphone. Move closer to the phone, speak a complete phrase, and try again with a stable internet connection.</p>
+  <p class="q">The translation session will not start.</p>
+  <p>Stop any active narrated walk, confirm your internet connection, then reopen the Translate tab and tap Start Interpreter.</p>
+</section>
+
+<section>
+  <h2>Tourist Plus</h2>
+  <p class="q">I subscribed, but Plus is not active.</p>
+  <p>Open Profile, choose Tourist Plus, and tap Restore Purchases. Confirm you are using the same Apple Account that completed the purchase.</p>
+  <p class="q">How do I cancel?</p>
+  <p>Manage or cancel Tourist Plus in your App Store subscriptions. Apple handles renewal, cancellation, billing, and refund requests.</p>
+</section>
+
+<section>
+  <h2>Privacy</h2>
+  <p>Read the <a href="/tourist-privacy.html">Tourist Privacy Policy</a> for details about location, microphone use, local trip data, live processing, and analytics.</p>
+</section>
+
+<footer>&copy; 2026 Tourist. All rights reserved.</footer>
+</main>
+</body>
+</html>
