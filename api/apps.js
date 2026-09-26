@@ -7,14 +7,5 @@ export default async function handler(req, res) {
     return res.json(data);
   }
 
-  if (req.method === 'PUT') {
-    const r = await fetch(BLOB_URL, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(req.body)
-    });
-    return res.status(r.ok ? 200 : 500).json({ ok: r.ok });
-  }
-
   res.status(405).json({ error: 'Method not allowed' });
 }

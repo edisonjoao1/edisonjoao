@@ -1,840 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <script>
-    // 50/50 split: half the time show the classic page (same URL)
-    (function() {
-        var p = new URLSearchParams(window.location.search);
-        if (!p.get('admin') && !p.get('app') && Math.random() < 0.5) {
-            document.documentElement.style.visibility = 'hidden';
-            fetch('privacyandsupport-classic.html')
-                .then(function(r) { return r.text(); })
-                .then(function(html) {
-                    document.open();
-                    document.write(html);
-                    document.close();
-                });
-        }
-    })();
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy & Support | Apps by Edison Jo&atilde;o</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f7;
-            color: #1d1d1f;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 48px 24px 36px;
-            text-align: center;
-            color: white;
-        }
-        .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-        .header p { font-size: 15px; opacity: 0.85; }
-
-        .container {
-            max-width: 720px;
-            margin: -20px auto 40px;
-            padding: 0 16px;
-        }
-
-        /* App Selector */
-        .app-selector {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            margin-bottom: 16px;
-        }
-        .app-selector-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #86868b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-        }
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 8px;
-        }
-        .app-chip {
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 2px solid #e5e5ea;
-            background: white;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: center;
-            user-select: none;
-        }
-        .app-chip:hover { border-color: #667eea; color: #667eea; }
-        .app-chip.active { border-color: #667eea; background: #667eea; color: white; }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            margin-bottom: 16px;
-        }
-        .card h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
-        .card h3 { font-size: 16px; font-weight: 600; margin: 16px 0 6px; }
-        .card p, .card li { font-size: 15px; color: #424245; }
-        .card ul { margin: 8px 0 8px 20px; }
-        .card li { margin-bottom: 4px; }
-
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #f0edff;
-            color: #5b4fc4;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
-
-        /* Accordion */
-        .accordion { border-top: 1px solid #f0f0f0; }
-        .accordion:first-of-type { border-top: none; }
-        .accordion-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            cursor: pointer;
-            user-select: none;
-        }
-        .accordion-header h3 { margin: 0; font-size: 15px; font-weight: 600; }
-        .accordion-arrow {
-            font-size: 12px;
-            color: #86868b;
-            transition: transform 0.2s ease;
-        }
-        .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
-        .accordion-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .accordion-body.open { max-height: 1000px; }
-        .accordion-body-inner { padding-bottom: 14px; }
-
-        /* Contact */
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 0;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .contact-link:last-child { border-bottom: none; }
-        .contact-link:hover { opacity: 0.8; }
-
-        footer {
-            text-align: center;
-            padding: 24px 16px 40px;
-            font-size: 13px;
-            color: #86868b;
-        }
-
-        .tip-list { list-style: none; margin: 0; padding: 0; }
-        .tip-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #f5f5f7;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .tip-list li:last-child { border-bottom: none; }
-        .tip-icon {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            background: #f0edff;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        .loading { text-align: center; padding: 20px; color: #86868b; font-size: 14px; }
-
-        /* ── Admin Panel ── */
-        .admin-panel {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            margin-bottom: 16px;
-            border: 2px solid #667eea;
-        }
-        .admin-panel h2 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: #667eea;
-        }
-        .admin-subtitle {
-            font-size: 13px;
-            color: #86868b;
-            margin-bottom: 16px;
-        }
-        .admin-app-list {
-            list-style: none;
-            margin: 0 0 16px;
-            padding: 0;
-        }
-        .admin-app-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 12px;
-            border: 1px solid #e5e5ea;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        .admin-app-item .app-name { font-weight: 600; }
-        .admin-app-item .app-ai-tag {
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 6px;
-            background: #f0edff;
-            color: #5b4fc4;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        .admin-app-item .app-no-ai-tag {
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 6px;
-            background: #f0f0f0;
-            color: #86868b;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        .admin-btns { display: flex; gap: 6px; }
-        .admin-btns button {
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid #e5e5ea;
-            background: white;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .admin-btns .edit-btn:hover { background: #f0edff; color: #5b4fc4; }
-        .admin-btns .del-btn { color: #ff3b30; }
-        .admin-btns .del-btn:hover { background: #fff0f0; }
-
-        .admin-form { margin-top: 16px; border-top: 1px solid #f0f0f0; padding-top: 16px; }
-        .admin-form h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
-        .admin-field { margin-bottom: 12px; }
-        .admin-field label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #424245;
-            margin-bottom: 4px;
-        }
-        .admin-field input,
-        .admin-field textarea {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #e5e5ea;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-        .admin-field textarea { resize: vertical; min-height: 60px; }
-        .admin-field input:focus,
-        .admin-field textarea:focus { outline: none; border-color: #667eea; }
-
-        .admin-toggle-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .admin-toggle-row label { margin: 0; font-size: 14px; font-weight: 500; }
-        .toggle-switch {
-            position: relative;
-            width: 44px;
-            height: 24px;
-            cursor: pointer;
-        }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .toggle-slider {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #e5e5ea;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
-        .toggle-slider::before {
-            content: '';
-            position: absolute;
-            width: 20px; height: 20px;
-            left: 2px; bottom: 2px;
-            background: white;
-            border-radius: 50%;
-            transition: 0.2s;
-        }
-        .toggle-switch input:checked + .toggle-slider { background: #667eea; }
-        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
-
-        .admin-actions { display: flex; gap: 8px; margin-top: 16px; }
-        .btn {
-            padding: 10px 20px;
-            border-radius: 10px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .btn:hover { opacity: 0.85; }
-        .btn-primary { background: #667eea; color: white; }
-        .btn-secondary { background: #f0f0f0; color: #424245; }
-        .btn-add { background: #34c759; color: white; margin-bottom: 12px; }
-
-        .admin-status {
-            font-size: 13px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-top: 12px;
-            display: none;
-        }
-        .admin-status.success { display: block; background: #e8f8ee; color: #1a7a3a; }
-        .admin-status.error { display: block; background: #fff0f0; color: #ff3b30; }
-
-        /* Login overlay */
-        .admin-login {
-            text-align: center;
-            padding: 20px;
-        }
-        .admin-login input {
-            padding: 10px 16px;
-            border: 2px solid #e5e5ea;
-            border-radius: 10px;
-            font-size: 16px;
-            width: 200px;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        .admin-login input:focus { outline: none; border-color: #667eea; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Privacy & Support | Edison João</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #faf9f6; color: #252923; font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(100% - 40px, 680px); margin: 0 auto; padding: 72px 0 88px; }
+    .eyebrow { color: #69766b; font-size: 13px; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
+    h1 { margin: 12px 0 8px; font-size: clamp(34px, 7vw, 52px); line-height: 1.1; letter-spacing: -.04em; }
+    .intro { margin: 0 0 44px; color: #59635a; font-size: 18px; }
+    section { padding: 28px 0; border-top: 1px solid #dfe4dc; }
+    h2 { margin: 0 0 10px; font-size: 21px; line-height: 1.3; letter-spacing: -.02em; }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+    a { color: #315c42; text-underline-offset: 3px; }
+    .contact { display: inline-block; margin-top: 4px; font-weight: 650; }
+    footer { margin-top: 24px; color: #69766b; font-size: 13px; }
+    [hidden] { display: none !important; }
+    .app-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .app-list a { display: inline-block; padding: 8px 12px; border: 1px solid #dfe4dc; border-radius: 12px; text-decoration: none; }
+    .app-list a:hover { background: #eef3ec; }
+    .field { display: block; margin: 16px 0; font-weight: 650; }
+    .field input, .field textarea { display: block; width: 100%; margin-top: 6px; padding: 12px; border: 1px solid #cbd4c9; border-radius: 10px; background: white; color: #252923; font: inherit; font-weight: 400; }
+    .field textarea { min-height: 94px; resize: vertical; }
+    .field input:focus, .field textarea:focus { outline: 2px solid #315c42; outline-offset: 2px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    button { padding: 10px 16px; border: 0; border-radius: 10px; background: #315c42; color: white; font: inherit; font-weight: 650; cursor: pointer; }
+    button:disabled { opacity: .45; cursor: wait; }
+    button.secondary { background: #e8eee7; color: #315c42; }
+    .status { min-height: 26px; margin-top: 12px; color: #315c42; }
+    .status.error { color: #9a3737; }
+    .manage-link { margin-left: 12px; color: #69766b; font-weight: 400; }
+  </style>
 </head>
 <body>
-
-<div class="header">
+  <main>
+    <div class="eyebrow">Apps by Edison João</div>
     <h1>Privacy & Support</h1>
-    <p>Apps by Edison Jo&atilde;o</p>
-</div>
+    <p class="intro">A clear explanation of how our apps handle your information and where to get help.</p>
 
-<div class="container">
+    <section id="appPage" hidden aria-live="polite">
+      <div class="eyebrow">App privacy details</div>
+      <h2 id="appTitle"></h2>
+      <h3>Information you save</h3><p id="appLocal"></p>
+      <h3>Connected features</h3><p id="appConnected"></p>
+      <h3>Analytics and purchases</h3><p id="appAnalytics"></p>
+      <h3>Your choices</h3><p id="appChoices"></p>
+    </section>
 
-    <!-- Admin Panel (only visible with ?admin=true) -->
-    <div id="adminPanel" style="display:none;"></div>
+    <section aria-labelledby="saved">
+      <h2 id="saved">Information you save</h2>
+      <p>Drafts, preferences, and other content may be stored on your device. Apps with accounts or synced features may also store information online so you can continue using those features. Uninstalling an app removes its local data, but does not necessarily remove online data.</p>
+    </section>
 
-    <!-- App Selector -->
-    <div class="app-selector">
-        <div class="app-selector-label">Select Your App</div>
-        <div class="app-grid" id="appGrid"></div>
-    </div>
+    <section aria-labelledby="sectionConnected">
+      <h2 id="sectionConnected">Connected features</h2>
+      <p>When you choose to use writing, chat, image, voice, analysis, or other connected features, the app may send your request, relevant context, and any text or media you select to external providers, sometimes through our service, to produce the result. Some apps retain conversations or generated content so you can return to them. We do not sell your personal information.</p>
+    </section>
 
-    <!-- App-Specific Info (populated by JS) -->
-    <div id="appSpecificSection"></div>
+    <section aria-labelledby="sectionAnalytics">
+      <h2 id="sectionAnalytics">Analytics and purchases</h2>
+      <p>Some apps use Firebase for account verification, analytics, crash diagnostics, or notifications. These services may process device identifiers and usage information. Apple handles in-app purchases and subscriptions; we do not receive your payment card details.</p>
+    </section>
 
-    <!-- General Privacy Policy -->
-    <div class="card">
-        <h2>Privacy Policy</h2>
-        <p>This policy applies to all apps developed by Edison Jo&atilde;o.</p>
+    <section aria-labelledby="sectionChoices">
+      <h2 id="sectionChoices">Your choices</h2>
+      <p>You can remove local data by deleting the app. For questions about information stored online, or to request access or deletion, contact us. If your app uses Plaid, read its <a href="plaid-security.html">separate security and privacy policy</a>.</p>
+    </section>
 
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>Data We Collect</h3>
-                <span class="accordion-arrow">&#9660;</span>
-            </div>
-            <div class="accordion-body">
-                <div class="accordion-body-inner">
-                    <p>We do not collect, store, or sell your personal information. All your data stays on your device. We only have access to anonymous App Store metrics like download counts.</p>
-                </div>
-            </div>
-        </div>
+    <section aria-labelledby="support">
+      <h2 id="support">Need help?</h2>
+      <p>Make sure you have the latest app version and try reopening it. If something still is not working, tell us the app name and what happened.</p>
+      <a class="contact" href="mailto:edison.j.espinosa@gmail.com">edison.j.espinosa@gmail.com</a>
+    </section>
 
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>Third-Party AI Services</h3>
-                <span class="accordion-arrow">&#9660;</span>
-            </div>
-            <div class="accordion-body">
-                <div class="accordion-body-inner">
-                    <p>Some of our apps use third-party AI services to power features like chat, analysis, and suggestions. When you use these features:</p>
-                    <ul>
-                        <li>Your messages and relevant app data are sent to the AI provider to generate a response.</li>
-                        <li>We do not store this data on any server — it is sent directly from your device to the AI provider.</li>
-                        <li>No personal identifiers (name, email, phone) are included in these requests.</li>
-                        <li>The AI provider's own privacy policy governs how they handle the data they receive.</li>
-                    </ul>
-                    <p>Apps that use AI features will ask for your consent before any data is sent. Select an app above to see exactly what data it sends.</p>
-                </div>
-            </div>
-        </div>
+    <section id="appLinksSection" hidden aria-labelledby="appLinksTitle">
+      <h2 id="appLinksTitle">Privacy by app</h2>
+      <div id="appLinks" class="app-list"></div>
+    </section>
 
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>Analytics</h3>
-                <span class="accordion-arrow">&#9660;</span>
-            </div>
-            <div class="accordion-body">
-                <div class="accordion-body-inner">
-                    <p>Some apps use Firebase Analytics to collect anonymous usage data (screen views, feature usage, crash reports). This data contains no personal information and is used solely to improve app quality.</p>
-                </div>
-            </div>
-        </div>
+    <section id="manageSection" hidden aria-labelledby="manageTitle">
+      <h2 id="manageTitle">Manage app privacy pages</h2>
+      <p>Add an app, write its specific details, and save. The page link appears here as soon as it is published.</p>
+      <label class="field">Access code<input id="accessCode" type="password" autocomplete="off" spellcheck="false"></label>
+      <div class="actions"><button id="newApp" class="secondary" type="button">Add an app</button><div id="editApps" class="app-list"></div></div>
+      <form id="appForm">
+        <label class="field">App name<input id="name" required maxlength="100" placeholder="App name"></label>
+        <label class="field">Page URL<input id="slug" required maxlength="80" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="app-name"></label>
+        <label class="field">Information saved<input id="local" required maxlength="3000" placeholder="What stays on device or is stored online?"></label>
+        <label class="field">Connected features<textarea id="connected" required maxlength="3000" placeholder="What does the app send to produce a result?"></textarea></label>
+        <label class="field">Analytics and purchases<textarea id="analytics" required maxlength="3000" placeholder="Which services process usage, diagnostics, and payments?"></textarea></label>
+        <label class="field">Your choices<textarea id="choices" required maxlength="3000" placeholder="How can someone access or delete their information?"></textarea></label>
+        <div class="actions"><button id="saveApp" type="submit">Publish page</button><a id="publishedLink" hidden>View app page</a></div>
+      </form>
+      <p id="manageStatus" class="status" role="status" aria-live="polite"></p>
+    </section>
 
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>Data Security</h3>
-                <span class="accordion-arrow">&#9660;</span>
-            </div>
-            <div class="accordion-body">
-                <div class="accordion-body-inner">
-                    <p>Your data stays on your device. Since we don't collect or store personal data on any server, there is no centralized database that could be compromised. All communication with third-party services uses encrypted HTTPS connections.</p>
-                </div>
-            </div>
-        </div>
+    <footer>Last updated September 26, 2026 <a class="manage-link" href="?manage=1">Manage pages</a></footer>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const $ = id => document.getElementById(id);
+    let pages = [];
+    let editingSlug = null;
 
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>Your Rights</h3>
-                <span class="accordion-arrow">&#9660;</span>
-            </div>
-            <div class="accordion-body">
-                <div class="accordion-body-inner">
-                    <p>Since your data is stored locally on your device, you have full control. You can delete all app data at any time by uninstalling the app. For AI-powered features, you can revoke consent within the app's settings.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>Changes to This Policy</h3>
-                <span class="accordion-arrow">&#9660;</span>
-            </div>
-            <div class="accordion-body">
-                <div class="accordion-body-inner">
-                    <p>Any updates to this policy will be posted on this page.</p>
-                    <p><strong>Last updated:</strong> February 16, 2026</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Plaid Policy -->
-    <div class="card">
-        <h2>Plaid Integration Policy</h2>
-        <p>For apps that integrate with Plaid for secure financial data connectivity, we maintain a dedicated policy.</p>
-        <p style="margin-top: 8px;"><a href="plaid-security.html" style="color: #667eea; font-weight: 500;">View Plaid Security Policy &rarr;</a></p>
-    </div>
-
-    <!-- Troubleshooting -->
-    <div class="card">
-        <h2>Troubleshooting</h2>
-        <ul class="tip-list">
-            <li><div class="tip-icon">1</div><span>Make sure your app is updated to the latest version.</span></li>
-            <li><div class="tip-icon">2</div><span>Restart the app to refresh it.</span></li>
-            <li><div class="tip-icon">3</div><span>Confirm your internet connection is stable.</span></li>
-            <li><div class="tip-icon">4</div><span>Clear your app cache in Settings > Apps > [App Name].</span></li>
-            <li><div class="tip-icon">5</div><span>Still stuck? Reach out below.</span></li>
-        </ul>
-    </div>
-
-    <!-- Contact -->
-    <div class="card">
-        <h2>Contact Us</h2>
-        <a class="contact-link" href="mailto:edison.j.espinosa@gmail.com">&#9993;&nbsp; edison.j.espinosa@gmail.com</a>
-        <a class="contact-link" href="tel:+12393310978">&#9742;&nbsp; +1 (239) 331-0978</a>
-        <div class="contact-link" style="cursor: default; color: #424245;">&#128339;&nbsp; Monday – Friday, 9 AM – 5 PM EST</div>
-    </div>
-
-</div>
-
-<footer>
-    &copy; 2026 Edison Jo&atilde;o. All rights reserved.
-</footer>
-
-<script>
-/*
- * APP DATA MANAGEMENT
- *
- * Apps are stored on jsonblob.com (free, no signup, REST API).
- * - Regular visitors just see the apps.
- * - To manage apps, go to: ?admin=true
- * - Password: edison2026  (change below)
- *
- * Deep link from your app: ?app=your-app-id
- */
-
-const API_URL = '/api/apps';
-const ADMIN_PASSWORD = 'edison2026';
-
-// Fallback if API is unreachable
-const fallbackApps = [
-    { id: "accountability-buddy", name: "Accountability Buddie", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI chat, goal analysis, task suggestions, weekly plans, and motivational messages", dataSent: "Your messages, goal titles, descriptions, progress, task lists, and S.M.A.R.T. criteria", extraNote: "The app asks for your explicit consent before any data is sent to the AI service." },
-    { id: "ai-amigo", name: "ai amigo", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "sober-ai", name: "sober ai", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered support and guidance", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "inteligencia-artificial-ia", name: "Inteligencia Artificial IA", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "inteligencia-artificial", name: "Int\u00eagligencia Artificial", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "intelligence-artificielle-gpt", name: "Intelligence Artificielle GPT", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations in French", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "shegpt", name: "SheGPT", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "foxie", name: "Foxie.", usesAI: true, aiProvider: "OpenAI", aiFeatures: "AI-powered conversations and assistance", dataSent: "Your messages and conversation context", extraNote: "" },
-    { id: "my-love", name: "My Love - Love Poems", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "new-dad", name: "New Dad : The Dad App", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "health-anxiety", name: "Health Anxiety : Anxiety Coach", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "la-biblia", name: "La Biblia.", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "new-year-new-you", name: "New Year New You :Goal Tracker", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "pet-health-scan", name: "Pet Health Scan", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "relationship-app", name: "Relationship App :Couple Goals", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "unbiased-news", name: "Unbiased News: Media Analysis", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "rate-anything", name: "Rate Anything", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "days-together", name: "Days Together: Love Tracker", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "biblia", name: "Biblia.", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" },
-    { id: "ai-image-create", name: "Ai image Create", usesAI: false, aiProvider: "", aiFeatures: "", dataSent: "", extraNote: "" }
-];
-
-let apps = [];
-let activeApp = null;
-let isAdmin = false;
-let adminLoggedIn = false;
-let editingIndex = -1;
-
-const grid = document.getElementById('appGrid');
-const section = document.getElementById('appSpecificSection');
-const adminEl = document.getElementById('adminPanel');
-
-// ── Load apps ──
-async function loadApps() {
-    try {
-        const res = await fetch(API_URL);
-        if (!res.ok) throw new Error('fetch failed');
-        apps = await res.json();
-        if (!Array.isArray(apps) || apps.length === 0) apps = fallbackApps;
-    } catch (e) {
-        apps = fallbackApps;
+    function setStatus(message, isError = false) {
+      $('manageStatus').textContent = message;
+      $('manageStatus').classList.toggle('error', isError);
     }
-    renderChips();
-    checkDeepLink();
-    if (isAdmin) renderAdminPanel();
-}
 
-// ── Save apps ──
-async function saveApps() {
-    try {
-        const res = await fetch(API_URL, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(apps)
+    function pageLink(page) {
+      return location.pathname + '?app=' + encodeURIComponent(page.slug);
+    }
+
+    function render() {
+      const selected = pages.find(page => page.slug === params.get('app'));
+      $('appPage').hidden = !selected;
+      if (selected) {
+        $('appTitle').textContent = selected.name;
+        for (const key of ['local', 'connected', 'analytics', 'choices']) {
+          $('app' + key[0].toUpperCase() + key.slice(1)).textContent = selected[key];
+        }
+        document.title = selected.name + ' Privacy | Edison João';
+      }
+
+      $('appLinksSection').hidden = pages.length === 0;
+      $('appLinks').replaceChildren();
+      $('editApps').replaceChildren();
+      for (const page of pages) {
+        const link = document.createElement('a');
+        link.href = pageLink(page);
+        link.textContent = page.name;
+        $('appLinks').append(link);
+
+        const edit = document.createElement('button');
+        edit.type = 'button';
+        edit.className = 'secondary';
+        edit.textContent = page.name;
+        edit.addEventListener('click', () => editPage(page));
+        $('editApps').append(edit);
+      }
+    }
+
+    function editPage(page) {
+      editingSlug = page.slug;
+      for (const key of ['name', 'slug', 'local', 'connected', 'analytics', 'choices']) {
+        $(key).value = page[key];
+      }
+      $('publishedLink').href = pageLink(page);
+      $('publishedLink').hidden = false;
+      setStatus('Editing ' + page.name);
+    }
+
+    $('manageSection').hidden = !params.has('manage');
+    $('newApp').addEventListener('click', () => {
+      editingSlug = null;
+      $('appForm').reset();
+      $('publishedLink').hidden = true;
+      setStatus('New app page');
+      $('name').focus();
+    });
+    $('name').addEventListener('blur', () => {
+      if ($('slug').value || editingSlug) return;
+      $('slug').value = $('name').value.toLowerCase().normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    });
+
+    $('appForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const token = $('accessCode').value.trim();
+      if (!token) return setStatus('Enter the access code to publish.', true);
+      const page = Object.fromEntries(['name', 'slug', 'local', 'connected', 'analytics', 'choices']
+        .map(key => [key, $(key).value.trim()]));
+      if (pages.some(item => item.slug === page.slug && item.slug !== editingSlug)) {
+        return setStatus('That page URL is already in use.', true);
+      }
+      const nextPages = pages.filter(item => item.slug !== editingSlug).concat(page)
+        .sort((a, b) => a.name.localeCompare(b.name));
+      $('saveApp').disabled = true;
+      setStatus('Publishing...');
+      try {
+        const response = await fetch('/api/privacy-pages', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+          body: JSON.stringify({ pages: nextPages }),
         });
-        return res.ok;
-    } catch (e) {
-        return false;
-    }
-}
-
-// ── Init ──
-const params = new URLSearchParams(window.location.search);
-isAdmin = params.get('admin') === 'true';
-loadApps();
-
-// ── Render app chips ──
-function renderChips() {
-    grid.innerHTML = '';
-    apps.forEach(app => {
-        const chip = document.createElement('div');
-        chip.className = 'app-chip' + (activeApp === app.id ? ' active' : '');
-        chip.textContent = app.name;
-        chip.dataset.id = app.id;
-        chip.onclick = () => selectApp(app.id);
-        grid.appendChild(chip);
-    });
-}
-
-// ── Deep link ──
-function checkDeepLink() {
-    const appId = params.get('app');
-    if (appId && apps.find(a => a.id === appId)) {
-        selectApp(appId);
-        setTimeout(() => {
-            document.getElementById('appSpecificSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-    }
-}
-
-// ── Select app ──
-function selectApp(id) {
-    if (activeApp === id) {
-        activeApp = null;
-        document.querySelectorAll('.app-chip').forEach(c => c.classList.remove('active'));
-        section.innerHTML = '';
-        history.replaceState(null, '', window.location.pathname + (isAdmin ? '?admin=true' : ''));
-        return;
-    }
-
-    activeApp = id;
-    const app = apps.find(a => a.id === id);
-
-    document.querySelectorAll('.app-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.id === id);
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'Could not publish.');
+        pages = result.pages;
+        editingSlug = page.slug;
+        render();
+        $('publishedLink').href = pageLink(page);
+        $('publishedLink').hidden = false;
+        setStatus('Published. The app page is ready.');
+      } catch (error) {
+        setStatus(error.message, true);
+      } finally {
+        $('saveApp').disabled = false;
+      }
     });
 
-    history.replaceState(null, '', '?app=' + id + (isAdmin ? '&admin=true' : ''));
-
-    let html = '<div class="card">';
-    html += '<h2>' + escHtml(app.name) + '</h2>';
-
-    if (app.usesAI) {
-        html += '<div class="ai-badge">&#9889; Uses AI Services</div>';
-        html += '<h3>AI-Powered Features</h3>';
-        html += '<p>This app uses <strong>' + escHtml(app.aiProvider) + '</strong> to power: ' + escHtml(app.aiFeatures) + '.</p>';
-        html += '<h3>What Data Is Sent</h3>';
-        html += '<p>' + escHtml(app.dataSent) + ' are sent to ' + escHtml(app.aiProvider) + ' to generate responses. This data is transmitted directly from your device — we do not store it on any server.</p>';
-        html += '<h3>What Is NOT Sent</h3>';
-        html += '<p>Your name, email, phone number, or any other personal identifiers are never included in AI requests.</p>';
-        if (app.extraNote) {
-            html += '<p style="margin-top: 10px; font-style: italic; color: #5b4fc4;">' + escHtml(app.extraNote) + '</p>';
-        }
-    } else {
-        html += '<p>This app does not use any third-party AI services. All data stays on your device.</p>';
-    }
-
-    html += '</div>';
-    section.innerHTML = html;
-}
-
-function escHtml(s) {
-    const d = document.createElement('div');
-    d.textContent = s || '';
-    return d.innerHTML;
-}
-
-// ── Accordion ──
-function toggleAccordion(header) {
-    header.classList.toggle('open');
-    header.nextElementSibling.classList.toggle('open');
-}
-
-// ══════════════════════════════════════
-//  ADMIN PANEL
-// ══════════════════════════════════════
-function renderAdminPanel() {
-    if (!isAdmin) { adminEl.style.display = 'none'; return; }
-    adminEl.style.display = 'block';
-
-    if (!adminLoggedIn) {
-        adminEl.innerHTML = `
-            <div class="admin-panel">
-                <h2>Admin Panel</h2>
-                <div class="admin-login">
-                    <p style="margin-bottom:12px;color:#424245;font-size:14px;">Enter password to manage apps.</p>
-                    <input type="password" id="adminPwd" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()">
-                    <br>
-                    <button class="btn btn-primary" onclick="adminLogin()">Unlock</button>
-                    <div id="loginError" class="admin-status" style="margin-top:12px;"></div>
-                </div>
-            </div>`;
-        document.getElementById('adminPwd').focus();
-        return;
-    }
-
-    // Logged in — show full admin panel
-    let listHtml = '';
-    apps.forEach((app, i) => {
-        const tag = app.usesAI
-            ? '<span class="app-ai-tag">AI</span>'
-            : '<span class="app-no-ai-tag">No AI</span>';
-        listHtml += `
-            <li class="admin-app-item">
-                <div><span class="app-name">${escHtml(app.name)}</span>${tag}</div>
-                <div class="admin-btns">
-                    <button class="edit-btn" onclick="editApp(${i})">Edit</button>
-                    <button class="del-btn" onclick="deleteApp(${i})">Delete</button>
-                </div>
-            </li>`;
+    fetch('/api/privacy-pages').then(async response => {
+      if (!response.ok) throw new Error('App pages are unavailable. The main policy still applies.');
+      const result = await response.json();
+      pages = result.pages;
+      render();
+      const selected = pages.find(page => page.slug === params.get('app'));
+      if (selected && params.has('manage')) editPage(selected);
+    }).catch(error => {
+      if (params.has('manage')) setStatus(error.message, true);
     });
-
-    adminEl.innerHTML = `
-        <div class="admin-panel">
-            <h2>Admin Panel</h2>
-            <p class="admin-subtitle">${apps.length} app${apps.length !== 1 ? 's' : ''} registered</p>
-            <button class="btn btn-add" onclick="showAddForm()">+ Add New App</button>
-            <ul class="admin-app-list">${listHtml}</ul>
-            <div id="adminForm"></div>
-            <div id="adminStatus" class="admin-status"></div>
-        </div>`;
-}
-
-function adminLogin() {
-    const pwd = document.getElementById('adminPwd').value;
-    if (pwd === ADMIN_PASSWORD) {
-        adminLoggedIn = true;
-        renderAdminPanel();
-    } else {
-        const err = document.getElementById('loginError');
-        err.textContent = 'Wrong password.';
-        err.className = 'admin-status error';
-    }
-}
-
-function showAddForm() {
-    editingIndex = -1;
-    renderForm({ id: '', name: '', usesAI: false, aiProvider: '', aiFeatures: '', dataSent: '', extraNote: '' });
-}
-
-function editApp(i) {
-    editingIndex = i;
-    renderForm(apps[i]);
-}
-
-function renderForm(app) {
-    const formEl = document.getElementById('adminForm');
-    const title = editingIndex === -1 ? 'Add New App' : 'Edit: ' + escHtml(app.name);
-    const aiChecked = app.usesAI ? 'checked' : '';
-
-    formEl.innerHTML = `
-        <div class="admin-form">
-            <h3>${title}</h3>
-            <div class="admin-field">
-                <label>App Name</label>
-                <input id="fName" value="${escHtml(app.name)}" placeholder="My Cool App">
-            </div>
-            <div class="admin-toggle-row">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="fUsesAI" ${aiChecked} onchange="toggleAIFields()">
-                    <span class="toggle-slider"></span>
-                </label>
-                <label>Uses AI Services</label>
-            </div>
-            <div id="aiFields" style="display:${app.usesAI ? 'block' : 'none'}">
-                <div class="admin-field">
-                    <label>AI Provider (e.g. OpenAI, Google)</label>
-                    <input id="fProvider" value="${escHtml(app.aiProvider)}" placeholder="OpenAI">
-                </div>
-                <div class="admin-field">
-                    <label>AI Features (what the AI does)</label>
-                    <textarea id="fFeatures" placeholder="AI-powered chat, analysis...">${escHtml(app.aiFeatures)}</textarea>
-                </div>
-                <div class="admin-field">
-                    <label>Data Sent (what data goes to the AI)</label>
-                    <textarea id="fData" placeholder="Your messages and conversation context">${escHtml(app.dataSent)}</textarea>
-                </div>
-            </div>
-            <div class="admin-field">
-                <label>Extra Note (optional)</label>
-                <textarea id="fNote" placeholder="Any additional note...">${escHtml(app.extraNote)}</textarea>
-            </div>
-            <div class="admin-actions">
-                <button class="btn btn-primary" onclick="saveForm()">Save</button>
-                <button class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
-            </div>
-        </div>`;
-
-    formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function toggleAIFields() {
-    document.getElementById('aiFields').style.display =
-        document.getElementById('fUsesAI').checked ? 'block' : 'none';
-}
-
-
-async function saveForm() {
-    const name = document.getElementById('fName').value.trim();
-    if (!name) { showStatus('Please enter an app name.', 'error'); return; }
-    const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-
-    const appData = {
-        id: id,
-        name: name,
-        usesAI: document.getElementById('fUsesAI').checked,
-        aiProvider: document.getElementById('fProvider')?.value.trim() || '',
-        aiFeatures: document.getElementById('fFeatures')?.value.trim() || '',
-        dataSent: document.getElementById('fData')?.value.trim() || '',
-        extraNote: document.getElementById('fNote')?.value.trim() || ''
-    };
-
-    if (editingIndex === -1) {
-        // Adding new — check for duplicate ID
-        if (apps.find(a => a.id === id)) { showStatus('An app with that ID already exists.', 'error'); return; }
-        apps.push(appData);
-    } else {
-        apps[editingIndex] = appData;
-    }
-
-    const ok = await saveApps();
-    if (ok) {
-        showStatus(editingIndex === -1 ? 'App added!' : 'App updated!', 'success');
-        editingIndex = -1;
-        renderAdminPanel();
-        renderChips();
-    } else {
-        showStatus('Failed to save. Check your connection and try again.', 'error');
-    }
-}
-
-async function deleteApp(i) {
-    if (!confirm('Delete "' + apps[i].name + '"? This cannot be undone.')) return;
-    apps.splice(i, 1);
-    const ok = await saveApps();
-    if (ok) {
-        showStatus('App deleted.', 'success');
-        renderAdminPanel();
-        renderChips();
-        // If the deleted app was selected, clear it
-        if (activeApp && !apps.find(a => a.id === activeApp)) {
-            activeApp = null;
-            section.innerHTML = '';
-        }
-    } else {
-        showStatus('Failed to delete. Check your connection.', 'error');
-    }
-}
-
-function cancelForm() {
-    editingIndex = -1;
-    document.getElementById('adminForm').innerHTML = '';
-}
-
-function showStatus(msg, type) {
-    const el = document.getElementById('adminStatus');
-    if (!el) return;
-    el.textContent = msg;
-    el.className = 'admin-status ' + type;
-    setTimeout(() => { el.className = 'admin-status'; }, 4000);
-}
-</script>
-
+  </script>
 </body>
 </html>
